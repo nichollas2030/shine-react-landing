@@ -1,0 +1,126 @@
+/* 🚀 ANIMAÇÕES GPU-OTIMIZADAS - TC SHINE CLEANING */
+
+/* Animações que usam apenas transform e opacity para máxima performance */
+
+/* WhatsApp pulse animation otimizada */
+@keyframes pulse-whatsapp-optimized {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.05); 
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-whatsapp {
+  animation: pulse-whatsapp-optimized 2s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Fade in otimizado */
+@keyframes fade-in-optimized {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-optimized 0.6s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+/* Slide in otimizado */
+@keyframes slide-in-optimized {
+  from { 
+    opacity: 0; 
+    transform: translateX(-30px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in-optimized 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+/* Hover effects otimizados */
+.optimized-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+.optimized-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Scale hover otimizado */
+.optimized-scale-hover {
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.optimized-scale-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Loading spinner otimizado */
+@keyframes spin-optimized {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+.animate-spin-optimized {
+  animation: spin-optimized 1s linear infinite;
+  will-change: transform;
+}
+
+/* Evita layout shifts */
+.prevent-layout-shift {
+  contain: layout style paint;
+}
+
+/* Otimizações para elementos que mudam frequentemente */
+.frequently-animated {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove will-change após animação para economizar recursos */
+.animation-complete {
+  will-change: auto;
+}
+
+/* Media queries para reduzir animações em dispositivos com pouca bateria */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-whatsapp,
+  .animate-fade-in,
+  .animate-slide-in,
+  .animate-spin-optimized {
+    animation: none;
+  }
+  
+  .optimized-hover,
+  .optimized-scale-hover {
+    transition: none;
+  }
+  
+  .optimized-hover:hover,
+  .optimized-scale-hover:hover {
+    transform: none;
+  }
+}

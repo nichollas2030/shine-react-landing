@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preconnects críticos para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- DNS prefetch para WhatsApp -->
+    <link rel="dns-prefetch" href="https://wa.me">
+    
     <title>TC Shine Cleaning - Limpeza Residencial Premium na Flórida</title>
     <meta name="description" content="Serviços de limpeza residencial premium para famílias ocupadas e propriedades Airbnb em Miami, Fort Lauderdale e West Palm Beach" />
     <meta name="author" content="TC Shine Cleaning" />
 
+    <!-- Fontes otimizadas com font-display: swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Meta tags para SEO e compartilhamento -->
     <meta property="og:title" content="TC Shine Cleaning - Limpeza Residencial Premium na Flórida" />
     <meta property="og:description" content="Serviços de limpeza residencial premium para famílias ocupadas e propriedades Airbnb em Miami, Fort Lauderdale e West Palm Beach" />
     <meta property="og:type" content="website" />
@@ -15,10 +27,37 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@tcshinefl" />
     <meta name="twitter:image" content="/placeholder.svg" />
+
+    <!-- CSS crítico inline para LCP -->
+    <style>
+      /* Critical CSS para evitar FOUC */
+      body { 
+        margin: 0; 
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.5;
+      }
+      #root { 
+        min-height: 100vh; 
+      }
+      /* Hero section crítico */
+      .hero-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading state otimizado -->
+      <div class="hero-loading">
+        <div>Carregando TC Shine Cleaning...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

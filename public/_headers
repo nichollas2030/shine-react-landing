@@ -1,0 +1,61 @@
+# 🛡️ HEADERS DE SEGURANÇA - TC SHINE CLEANING LANDING PAGE
+# Para usar no Netlify, coloque este arquivo na pasta public como _headers
+
+/*
+  # Segurança de Conteúdo
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://wa.me; frame-ancestors 'none';
+  
+  # Prevenção de Clickjacking
+  X-Frame-Options: DENY
+  
+  # Prevenção de MIME sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Política de Referrer
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Cross-Origin Opener Policy
+  Cross-Origin-Opener-Policy: same-origin
+  
+  # Cross-Origin Embedder Policy
+  Cross-Origin-Embedder-Policy: require-corp
+  
+  # Strict Transport Security (HTTPS)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  
+  # Permissions Policy
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  
+  # Cache Control para assets estáticos
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache específico para HTML
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# Cache para CSS e JS
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache para imagens
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache para fontes
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable

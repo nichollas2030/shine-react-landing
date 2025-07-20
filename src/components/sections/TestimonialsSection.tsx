@@ -140,40 +140,57 @@ export default function TestimonialsSection() {
             </AnimatePresence>
           </div>
           
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - CORRIGIDO: Adicionados aria-labels e maior área de toque */}
           <button
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-tc-primary-600 hover:text-tc-primary-700 hover:shadow-xl transition-all duration-300 z-10"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 min-w-12 min-h-12 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-tc-primary-600 hover:text-tc-primary-700 hover:shadow-xl transition-all duration-300 z-10 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2"
             onClick={() => paginate(-1)}
+            aria-label="Ver depoimento anterior"
+            type="button"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           <button
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-tc-primary-600 hover:text-tc-primary-700 hover:shadow-xl transition-all duration-300 z-10"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 min-w-12 min-h-12 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-tc-primary-600 hover:text-tc-primary-700 hover:shadow-xl transition-all duration-300 z-10 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2"
             onClick={() => paginate(1)}
+            aria-label="Ver próximo depoimento"
+            type="button"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
           
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 gap-2">
+          {/* Dots Indicator - CORRIGIDO: Área de toque adequada e aria-labels */}
+          <div className="flex justify-center mt-8 gap-2" role="tablist" aria-label="Navegação de depoimentos">
             {testimonialsContent.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`relative min-w-12 min-h-12 p-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
                   index === currentIndex 
-                    ? 'bg-tc-primary-500 scale-125' 
-                    : 'bg-tc-neutral-300 hover:bg-tc-neutral-400'
+                    ? 'bg-tc-primary-50' 
+                    : 'hover:bg-tc-neutral-100'
                 }`}
                 onClick={() => {
                   setDirection(index > currentIndex ? 1 : -1)
                   setCurrentIndex(index)
                 }}
-              />
+                aria-label={`Ver depoimento ${index + 1} de ${testimonialsContent.length}`}
+                aria-selected={index === currentIndex}
+                role="tab"
+                type="button"
+              >
+                <span 
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-tc-primary-500 scale-125' 
+                      : 'bg-tc-neutral-300'
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
             ))}
           </div>
         </div>

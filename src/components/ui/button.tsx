@@ -18,7 +18,7 @@ const buttonVariants = cva(
         // TC Shine Custom Variants
         whatsapp: "bg-gradient-to-r from-tc-whatsapp-500 to-tc-whatsapp-600 text-white hover:from-tc-whatsapp-600 hover:to-tc-whatsapp-700 hover:scale-105 hover:shadow-lg focus:ring-tc-whatsapp-500 focus:ring-offset-2 animate-pulse-whatsapp hover:animate-none",
         primary: "bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 text-white hover:from-tc-primary-600 hover:to-tc-primary-700 hover:scale-105 hover:shadow-lg focus:ring-tc-primary-500 focus:ring-offset-2",
-        hero: "bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:scale-105 backdrop-blur-sm focus:ring-white/50 focus:ring-offset-2",
+        hero: "bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:scale-105 backdrop-blur-sm focus:ring-white/50 focus:ring-offset-0",
       },
       size: {
         default: "h-10 px-4 py-2",

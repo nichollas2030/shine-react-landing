@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+import HeroSection from '@/components/sections/HeroSection'
+import ServicesGrid from '@/components/sections/ServicesGrid'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import ContactForm from '@/components/sections/ContactForm'
+import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <div id="hero">
+          <HeroSection />
+        </div>
+        <div id="services">
+          <ServicesGrid />
+        </div>
+        <div id="testimonials">
+          <TestimonialsSection />
+        </div>
+        <div id="contact">
+          <ContactForm />
+        </div>
+      </main>
+      <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };

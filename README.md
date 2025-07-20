@@ -1,73 +1,83 @@
-# Welcome to your Lovable project
+# TC Shine Cleaning - Landing Page
 
-## Project info
+Landing page para serviços de limpeza residencial premium na Flórida.
 
-**URL**: https://lovable.dev/projects/f99cae8e-ff6c-4d87-835e-ad3e5d5ba946
+## Sobre o Projeto
 
-## How can I edit this code?
+Este projeto é uma landing page moderna e responsiva para a TC Shine Cleaning, empresa especializada em limpeza residencial premium atendendo famílias ocupadas e propriedades Airbnb de Miami até West Palm Beach.
 
-There are several ways of editing your application.
+## Como executar o projeto
 
-**Use Lovable**
+### Pré-requisitos
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f99cae8e-ff6c-4d87-835e-ad3e5d5ba946) and start prompting.
+- Node.js (versão 18 ou superior)
+- npm ou yarn
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Instalação
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 1. Clone o repositório
+git clone <URL_DO_REPOSITORIO>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 2. Navegue até o diretório do projeto
+cd shine-react-landing
 
-# Step 3: Install the necessary dependencies.
-npm i
+# 3. Instale as dependências
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+O projeto será executado em `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Scripts disponíveis
 
-**Use GitHub Codespaces**
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Cria a versão de produção
+- `npm run build:dev` - Cria a versão de desenvolvimento
+- `npm run preview` - Preview da versão de produção
+- `npm run lint` - Executa o linting do código
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Tecnologias utilizadas
 
-## What technologies are used for this project?
+- **Vite** - Build tool e dev server
+- **React** - Biblioteca JavaScript para UI
+- **TypeScript** - Linguagem com tipagem estática
+- **Tailwind CSS** - Framework CSS utilitário
+- **shadcn/ui** - Componentes UI reutilizáveis
+- **Framer Motion** - Biblioteca para animações
+- **React Router** - Roteamento
+- **React Hook Form** - Gerenciamento de formulários
+- **Zod** - Validação de esquemas
 
-This project is built with:
+## Estrutura do projeto
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/         # Componentes React
+│   ├── content/       # Conteúdo das seções
+│   ├── layout/        # Componentes de layout
+│   ├── sections/      # Seções da página
+│   └── ui/           # Componentes de UI reutilizáveis
+├── hooks/             # Custom hooks
+├── lib/               # Utilitários e configurações
+├── pages/             # Páginas da aplicação
+└── types/             # Definições de tipos TypeScript
+```
 
-## How can I deploy this project?
+## Deploy
 
-Simply open [Lovable](https://lovable.dev/projects/f99cae8e-ff6c-4d87-835e-ad3e5d5ba946) and click on Share -> Publish.
+Para fazer deploy do projeto:
 
-## Can I connect a custom domain to my Lovable project?
+1. Execute `npm run build` para gerar os arquivos de produção
+2. Os arquivos estarão na pasta `dist/`
+3. Faça upload dos arquivos para seu servidor web ou serviço de hosting
 
-Yes, you can!
+## Contribuição
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request

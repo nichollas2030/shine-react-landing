@@ -4,17 +4,14 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { WhatsAppButton, Button } from '@/components/ui/button'
 import { heroContent, companyContent } from '@/components/content'
-import heroImage from '@/assets/hero-bg.jpg'
+// import heroImage from '@/assets/hero-bg.jpg'
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
+        className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400"
       >
         <div className="absolute inset-0 hero-overlay" />
       </div>

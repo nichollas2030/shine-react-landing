@@ -1,28 +1,63 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { Button, WhatsAppButton } from '@/components/ui/button'
 import { contactContent } from '@/components/content'
 
-const contactSchema = z.object({
-  name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres').max(100, 'Nome muito longo'),
-  email: z.string().email('Email inválido'),
-  service: z.string().min(1, 'Selecione um serviço'),
-  message: z.string().max(500, 'Máximo 500 caracteres').optional()
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+interface ContactFormData {
+  name: string
+  email: string
+  service: string
+  message?: string
+}
 
 export default function ContactForm() {
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema)
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    service: '',
+    message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({})
 
-  const onSubmit = async (data: ContactFormData) => {
+  const validateForm = (): boolean => {
+    const newErrors: Partial<ContactFormData> = {}
+    
+    if (!formData.name.trim() || formData.name.length < 2) {
+      newErrors.name = 'Nome deve ter pelo menos 2 caracteres'
+    }
+    
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email inválido'
+    }
+    
+    if (!formData.service) {
+      newErrors.service = 'Selecione um serviço'
+    }
+    
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }))
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!validateForm()) return
+    
+    setIsSubmitting(true)
+    
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000))
@@ -31,10 +66,10 @@ export default function ContactForm() {
       const message = `
 🏠 *Nova Solicitação de Orçamento - TC Shine Cleaning*
 
-👤 *Nome:* ${data.name}
-📧 *Email:* ${data.email}
-🧹 *Serviço:* ${data.service}
-${data.message ? `📝 *Detalhes:* ${data.message}` : ''}
+👤 *Nome:* ${formData.name}
+📧 *Email:* ${formData.email}
+🧹 *Serviço:* ${formData.service}
+${formData.message ? `📝 *Detalhes:* ${formData.message}` : ''}
 
 _Enviado através do site tcshine.com_
       `.trim()
@@ -43,13 +78,15 @@ _Enviado através do site tcshine.com_
       window.open(`https://wa.me/15615231300?text=${encodeURIComponent(message)}`, '_blank')
       
       // Reset form
-      reset()
+      setFormData({ name: '', email: '', service: '', message: '' })
+      setErrors({})
       
-      // You could add a toast notification here
       console.log('Formulário enviado com sucesso!')
       
     } catch (error) {
       console.error('Erro ao enviar formulário:', error)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -71,21 +108,23 @@ _Enviado através do site tcshine.com_
               {contactContent.subtitle}
             </p>
             
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   {contactContent.formLabels.name}
                 </label>
                 <input
-                  {...register('name')}
+                  name="name"
                   type="text"
                   id="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-tc-neutral-800 border border-tc-neutral-700 text-white placeholder-tc-neutral-400 focus:border-tc-primary-400 focus:ring-1 focus:ring-tc-primary-400 focus:outline-none transition-colors duration-300"
                   placeholder="Seu nome completo"
                 />
                 {errors.name && (
-                  <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
+                  <p className="text-red-400 text-sm mt-1">{errors.name}</p>
                 )}
               </div>
               
@@ -95,14 +134,16 @@ _Enviado através do site tcshine.com_
                   {contactContent.formLabels.email}
                 </label>
                 <input
-                  {...register('email')}
+                  name="email"
                   type="email"
                   id="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-tc-neutral-800 border border-tc-neutral-700 text-white placeholder-tc-neutral-400 focus:border-tc-primary-400 focus:ring-1 focus:ring-tc-primary-400 focus:outline-none transition-colors duration-300"
                   placeholder="seu@email.com"
                 />
                 {errors.email && (
-                  <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
+                  <p className="text-red-400 text-sm mt-1">{errors.email}</p>
                 )}
               </div>
               
@@ -112,8 +153,10 @@ _Enviado através do site tcshine.com_
                   {contactContent.formLabels.service}
                 </label>
                 <select
-                  {...register('service')}
+                  name="service"
                   id="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-tc-neutral-800 border border-tc-neutral-700 text-white focus:border-tc-primary-400 focus:ring-1 focus:ring-tc-primary-400 focus:outline-none transition-colors duration-300"
                 >
                   <option value="">Selecione um serviço...</option>
@@ -124,7 +167,7 @@ _Enviado através do site tcshine.com_
                   <option value="Personalizada">Solução Personalizada</option>
                 </select>
                 {errors.service && (
-                  <p className="text-red-400 text-sm mt-1">{errors.service.message}</p>
+                  <p className="text-red-400 text-sm mt-1">{errors.service}</p>
                 )}
               </div>
               
@@ -134,14 +177,16 @@ _Enviado através do site tcshine.com_
                   {contactContent.formLabels.message}
                 </label>
                 <textarea
-                  {...register('message')}
+                  name="message"
                   id="message"
                   rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 rounded-lg bg-tc-neutral-800 border border-tc-neutral-700 text-white placeholder-tc-neutral-400 focus:border-tc-primary-400 focus:ring-1 focus:ring-tc-primary-400 focus:outline-none transition-colors duration-300 resize-vertical"
                   placeholder="Ex: Casa de 3 quartos, 2 banheiros. Preciso de limpeza quinzenal. Tenho pets em casa."
                 />
                 {errors.message && (
-                  <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>
+                  <p className="text-red-400 text-sm mt-1">{errors.message}</p>
                 )}
               </div>
               

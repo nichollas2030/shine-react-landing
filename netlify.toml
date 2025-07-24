@@ -81,15 +81,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  
-# 🚀 LIGHTHOUSE: Compressão de assets
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-
-[[plugins]]
-  package = "netlify-plugin-minify-html"
-  
-# 🚀 LIGHTHOUSE: Build optimizations
-[build.environment]
-  NODE_ENV = "production"
-  VITE_BUILD_OPTIMIZE = "true"

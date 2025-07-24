@@ -55,11 +55,4 @@ export default defineConfig(({ mode }) => ({
     include: ['react', 'react-dom', 'framer-motion'],
     exclude: ['@vite/client', '@vite/env'],
   },
-  
-  // 🚀 LIGHTHOUSE: Configurações experimentais para performance
-  experimental: {
-    renderBuiltUrl(filename: string) {
-      return '/' + filename
-    }
-  },
 }));

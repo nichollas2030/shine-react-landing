@@ -11,28 +11,35 @@ export default {
 	],
 	prefix: "",
 	theme: {
-		// COBERTURA COMPLETA DE DISPOSITIVOS - Estratégia Universal TC Shine
+		// 🔧 SISTEMA MOBILE-FIRST ROBUSTO - Cobertura total de dispositivos
 		screens: {
-			'xs': '475px',      // Gap entre mobile muito pequeno e small
-			'sm': '640px',      // Large Mobile/Phablet
-			'md': '768px',      // Tablet Portrait
-			'lg': '1024px',     // Desktop Small
-			'xl': '1280px',     // Desktop Medium
-			'2xl': '1536px',    // Desktop Large
+			'xs': '360px',      // Galaxy Fold, dispositivos ultra-small
+			'sm': '480px',      // iPhone SE, dispositivos small
+			'md': '768px',      // iPad Mini, tablets portrait
+			'lg': '1024px',     // Desktop small, tablets landscape
+			'xl': '1280px',     // Desktop medium
+			'2xl': '1536px',    // Desktop large
+			// Breakpoints auxiliares para casos específicos
+			'iPhone': '375px',
+			'phablet': '600px',
 		},
 		container: {
 			center: true,
 			padding: {
-				DEFAULT: '1rem',    // 320px+: padding mínimo
-				'xs': '1.5rem',     // 475px+: espaço adicional
-				'sm': '2rem',       // 640px+: padding confortável
-				'md': '2.5rem',     // 768px+: tablet spacing
-				'lg': '3rem',       // 1024px+: desktop spacing
-				'xl': '4rem',       // 1280px+: large desktop
-				'2xl': '5rem',      // 1536px+: ultra-wide comfort
+				DEFAULT: '0.875rem',  // 14px - Para devices 320px+ (safe spacing)
+				'xs': '1rem',         // 16px - 360px+ (Galaxy, small phones)
+				'sm': '1.25rem',      // 20px - 480px+ (iPhone SE+)
+				'md': '2rem',         // 32px - 768px+ (tablets)
+				'lg': '2.5rem',       // 40px - 1024px+ (desktop)
+				'xl': '3rem',         // 48px - 1280px+ (large desktop)
+				'2xl': '4rem',        // 64px - 1536px+ (ultra-wide)
 			},
 			screens: {
-				'2xl': '1400px'     // Max-width para ultra-wide
+				'sm': '100%',         // Full width até tablet
+				'md': '768px',        // Max width tablet
+				'lg': '1024px',       // Max width desktop small
+				'xl': '1280px',       // Max width desktop medium
+				'2xl': '1400px'       // Max width desktop large
 			}
 		},
 		extend: {

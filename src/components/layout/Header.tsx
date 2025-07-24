@@ -65,26 +65,26 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20">
-          {/* Logo */}
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between h-14 xs:h-16 sm:h-18 md:h-20">
+          {/* Logo - MOBILE OPTIMIZED */}
           <motion.div
-            className="flex items-center gap-2 xs:gap-3"
+            className="flex items-center gap-2 xs:gap-3 min-w-0 flex-1 sm:flex-initial"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 rounded-lg flex items-center justify-center shadow-md">
+            <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 rounded-lg flex items-center justify-center shadow-md flex-shrink-0">
               <svg
-                className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white"
+                className="w-3 h-3 xs:w-4 xs:h-4 sm:w-6 sm:h-6 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1 sm:flex-initial">
               <h1
-                className={`font-heading font-bold text-sm xs:text-base sm:text-lg leading-tight truncate transition-colors duration-300 ${
+                className={`font-heading font-bold text-xs xs:text-sm sm:text-base md:text-lg leading-tight truncate transition-colors duration-300 ${
                   isScrolled ? "text-tc-neutral-900" : "text-white"
                 }`}
               >
@@ -92,7 +92,7 @@ export default function Header() {
                 <span className="text-tc-primary-500">Shine</span>
               </h1>
               <p
-                className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 ${
+                className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 truncate ${
                   isScrolled ? "text-tc-neutral-600" : "text-white/80"
                 }`}
               >

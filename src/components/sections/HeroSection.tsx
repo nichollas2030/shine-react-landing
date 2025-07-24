@@ -18,16 +18,16 @@ export default function HeroSection() {
       
       {/* Content */}
       <div className="relative z-10 w-full">
-        <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-16 xs:py-20 sm:py-24 lg:py-32">
+        <div className="container mx-auto py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-4xl"
+            className="max-w-5xl mx-auto"
           >
-            {/* Main Headline */}
+            {/* Main Headline - MOBILE FIRST */}
             <motion.h1 
-              className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 xs:mb-6 leading-tight"
+              className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 xs:mb-6 md:mb-8 leading-[1.15] xs:leading-[1.1] tracking-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -35,9 +35,9 @@ export default function HeroSection() {
               {heroContent.headline}
             </motion.h1>
             
-            {/* Subheadline */}
+            {/* Subheadline - RESPONSIVE */}
             <motion.p 
-              className="text-sm xs:text-base sm:text-lg md:text-xl text-white/90 mb-6 xs:mb-8 leading-relaxed max-w-3xl"
+              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -45,9 +45,9 @@ export default function HeroSection() {
               {heroContent.subheadline}
             </motion.p>
             
-            {/* Social Proof */}
+            {/* Social Proof - MOBILE OPTIMIZED */}
             <motion.div 
-              className="flex flex-wrap items-center gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 text-white/80"
+              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/80"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -55,26 +55,28 @@ export default function HeroSection() {
               <div className="flex items-center gap-2">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3 h-3 xs:w-4 xs:h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <svg key={i} className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
                       <path d="M10 15l-5.5 3 1-6.5L0 6l6.5-1L10 0l3.5 5L20 6l-5.5 5.5 1 6.5z"/>
                     </svg>
                   ))}
                 </div>
-                <span className="text-xs xs:text-sm font-medium">5.0 • {companyContent.socialProof.happyClients}+ clientes</span>
+                <span className="text-xs xs:text-sm sm:text-base font-medium whitespace-nowrap">
+                  5.0 • {companyContent.socialProof.happyClients}+ clientes
+                </span>
               </div>
               
-              <div className="text-xs xs:text-sm">
+              <div className="text-xs xs:text-sm sm:text-base whitespace-nowrap">
                 <span className="font-medium">{companyContent.socialProof.yearsExperience}+ anos</span> de experiência
               </div>
               
-              <div className="text-xs xs:text-sm">
+              <div className="text-xs xs:text-sm sm:text-base whitespace-nowrap">
                 <span className="font-medium">{companyContent.socialProof.cleaningsCompleted.toLocaleString()}+</span> limpezas realizadas
               </div>
             </motion.div>
             
-            {/* CTAs */}
+            {/* CTAs - MOBILE FIRST DESIGN */}
             <motion.div 
-              className="flex flex-col xs:flex-row gap-3 xs:gap-4 w-full xs:max-w-md"
+              className="flex flex-col sm:flex-row gap-3 xs:gap-4 w-full max-w-lg"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -82,7 +84,7 @@ export default function HeroSection() {
               <WhatsAppButton 
                 size="lg"
                 message="Olá! Gostaria de solicitar um orçamento para limpeza residencial."
-                className="flex-1 min-h-touch"
+                className="w-full sm:flex-1 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium px-4 xs:px-6"
               >
                 {heroContent.ctaText}
               </WhatsAppButton>
@@ -95,7 +97,7 @@ export default function HeroSection() {
                     behavior: 'smooth' 
                   })
                 }}
-                className="flex-1 sm:flex-initial min-h-touch text-sm xs:text-base"
+                className="w-full sm:w-auto sm:px-6 xs:sm:px-8 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium"
               >
                 Ver Serviços
               </Button>

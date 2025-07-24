@@ -2,11 +2,118 @@
 <html lang="en-US">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
 
-    <!-- Preconnects críticos para performance -->
+    <!-- 🔧 CORREÇÃO CRÍTICA: Font loading otimizado para eliminar FOUT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload da fonte principal imediatamente -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- Fallback CSS inline para prevenir layout shift -->
+    <style>
+      /* 🔧 Critical CSS: Fonte system fallback imediata */
+      * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      /* Prevenir layout shift durante font loading */
+      body {
+        font-synthesis: none;
+        text-rendering: optimizeSpeed;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* 🔧 CRITICAL MOBILE CSS: Layout mobile-first robusto */
+      .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.875rem; /* 14px base para 320px+ */
+        padding-right: 0.875rem;
+      }
+      
+      /* Progressive container sizing */
+      @media (min-width: 360px) {
+        .container { padding-left: 1rem; padding-right: 1rem; }
+      }
+      
+      @media (min-width: 480px) {
+        .container { padding-left: 1.25rem; padding-right: 1.25rem; }
+      }
+      
+      @media (min-width: 768px) {
+        .container { padding-left: 2rem; padding-right: 2rem; max-width: 768px; }
+      }
+      
+      /* Mobile-first responsive grid base */
+      .grid {
+        display: grid;
+      }
+      
+      .grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+      
+      /* Mobile typography base - Escala mobile-first */
+      .text-xs { font-size: 0.75rem; line-height: 1.5; }
+      .text-sm { font-size: 0.875rem; line-height: 1.5; }
+      .text-base { font-size: 1rem; line-height: 1.6; }
+      .text-lg { font-size: 1.125rem; line-height: 1.6; }
+      
+      /* Mobile spacing - Otimizado para small screens */
+      .p-3 { padding: 0.75rem; }
+      .p-4 { padding: 1rem; }
+      .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+      .gap-3 { gap: 0.75rem; }
+      .gap-4 { gap: 1rem; }
+      
+      /* Layout estável */
+      .min-h-screen { min-height: 100vh; }
+      .w-full { width: 100%; }
+      .flex { display: flex; }
+      .flex-col { flex-direction: column; }
+      .items-center { align-items: center; }
+      .justify-between { justify-content: space-between; }
+      
+      /* Overflow prevention - CRÍTICO */
+      * {
+        box-sizing: border-box;
+        max-width: 100%;
+      }
+      
+      body {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Touch-friendly mobile - Dispositivos específicos */
+      @media (max-width: 359px) {
+        .container { 
+          padding-left: 0.75rem; 
+          padding-right: 0.75rem; 
+        }
+        .text-2xl { font-size: 1.25rem !important; }
+        .text-3xl { font-size: 1.5rem !important; }
+        .gap-3 { gap: 0.5rem; }
+      }
+      
+      @media (max-width: 768px) {
+        .min-h-touch { min-height: 44px; }
+        .container { max-width: 100%; }
+        
+        /* Prevent horizontal scroll */
+        html, body {
+          overflow-x: hidden;
+          width: 100%;
+        }
+      }
+    </style>
 
     <!-- DNS prefetch para WhatsApp -->
     <link rel="dns-prefetch" href="https://wa.me" />

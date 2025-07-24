@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 📋 Documentation files - Local only (não commitados)
+DEPLOY_SUMMARY.md
+SECURITY_ANALYSIS.md
+LIGHTHOUSE_OPTIMIZATIONS.md
+build.sh
+netlify.yml
+
+# 🔧 Development files - Local only
+.nvmrc
+.node-version

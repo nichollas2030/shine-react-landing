@@ -1,6 +1,20 @@
-// 🚀 LIGHTHOUSE OPTIMIZATION: Service Worker para cache e performance
+// 🚀 LIGHTHOUSE OPTIMIZATION + 🔒 SECURITY: Service Worker para cache e performance
 const CACHE_NAME = 'tc-shine-v1';
 const STATIC_CACHE_NAME = 'tc-shine-static-v1';
+const FONT_CACHE_NAME = 'tc-shine-fonts-v1';
+
+// 🔒 SECURITY: Origens permitidas
+const ALLOWED_ORIGINS = [
+  'https://cleaningserviceladingpage.netlify.app',
+  'https://tc-shine-cleaning.netlify.app',
+  self.location.origin
+];
+
+// 🔒 SECURITY: URLs permitidas para cache
+const ALLOWED_CACHE_URLS = [
+  'https://fonts.googleapis.com',
+  'https://fonts.gstatic.com'
+];
 
 // Recursos críticos para cache
 const CRITICAL_RESOURCES = [
@@ -15,29 +29,50 @@ const STATIC_RESOURCES = [
   '/robots.txt',
 ];
 
-// 🚀 LIGHTHOUSE: Cache de fontes do Google
-const FONT_CACHE_NAME = 'tc-shine-fonts-v1';
-const FONT_URLS = [
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-  'https://fonts.gstatic.com',
-];
+// � SECURITY: Validar origem da request
+function isAllowedOrigin(url) {
+  try {
+    const requestUrl = new URL(url);
+    return ALLOWED_ORIGINS.some(origin => 
+      requestUrl.origin === origin || 
+      ALLOWED_CACHE_URLS.some(allowed => requestUrl.origin === allowed)
+    );
+  } catch (e) {
+    console.error('🔒 SW Security: Invalid URL', url);
+    return false;
+  }
+}
+
+// 🔒 SECURITY: Sanitizar cache key
+function sanitizeCacheKey(request) {
+  const url = new URL(request.url);
+  // Remove query parameters que podem conter dados sensíveis
+  url.search = '';
+  url.hash = '';
+  return url.toString();
+}
 
 // Install Event - Cache recursos críticos
 self.addEventListener('install', (event) => {
-  console.log('Service Worker: Installing...');
+  // 🔒 SECURITY: Não loggar informações sensíveis em produção
+  if (self.location.hostname === 'localhost') {
+    console.log('Service Worker: Installing...');
+  }
   
   event.waitUntil(
     Promise.all([
       // Cache crítico
       caches.open(CACHE_NAME).then((cache) => {
-        console.log('Service Worker: Caching critical resources');
-        return cache.addAll(CRITICAL_RESOURCES);
+        return cache.addAll(CRITICAL_RESOURCES).catch(err => {
+          console.error('🔒 SW Security: Failed to cache critical resources', err);
+        });
       }),
       
       // Cache estático
       caches.open(STATIC_CACHE_NAME).then((cache) => {
-        console.log('Service Worker: Caching static resources');
-        return cache.addAll(STATIC_RESOURCES);
+        return cache.addAll(STATIC_RESOURCES).catch(err => {
+          console.error('🔒 SW Security: Failed to cache static resources', err);
+        });
       })
     ])
   );
@@ -48,14 +83,15 @@ self.addEventListener('install', (event) => {
 
 // Activate Event - Limpar caches antigos
 self.addEventListener('activate', (event) => {
-  console.log('Service Worker: Activating...');
+  if (self.location.hostname === 'localhost') {
+    console.log('Service Worker: Activating...');
+  }
   
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (![CACHE_NAME, STATIC_CACHE_NAME, FONT_CACHE_NAME].includes(cacheName)) {
-            console.log('Service Worker: Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -67,12 +103,16 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim());
 });
 
-// Fetch Event - Estratégia de cache inteligente
+// Fetch Event - Estratégia de cache segura
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   
-  // 🚀 LIGHTHOUSE: Pular requests não-GET
+  // � SECURITY: Validações de segurança
   if (request.method !== 'GET') return;
+  if (!isAllowedOrigin(request.url)) return;
+  
+  // 🔒 SECURITY: Sanitizar URL para cache
+  const sanitizedUrl = sanitizeCacheKey(request);
   
   // 🚀 LIGHTHOUSE: Cache de fontes do Google (Cache First)
   if (request.url.includes('fonts.googleapis.com') || request.url.includes('fonts.gstatic.com')) {

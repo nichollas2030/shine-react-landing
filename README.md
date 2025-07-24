@@ -29,8 +29,6 @@ npm install
 npm run dev
 ```
 
-O projeto será executado em `http://localhost:8080`
-
 ### Scripts disponíveis
 
 - `npm run dev` - Inicia o servidor de desenvolvimento
@@ -65,6 +63,36 @@ src/
 ├── pages/             # Páginas da aplicação
 └── types/             # Definições de tipos TypeScript
 ```
+
+## Design System & Responsividade
+
+### Sistema de Breakpoints Universal
+- **xs: 475px** - Dispositivos muito pequenos
+- **sm: 640px** - Tablets pequenos
+- **md: 768px** - Tablets
+- **lg: 1024px** - Laptops
+- **xl: 1280px** - Desktops
+- **2xl: 1536px** - Telas grandes
+
+### Características Responsivas
+- **Mobile-First Design**: Todas as classes começam com mobile e escalam para desktop
+- **Touch Optimization**: Área mínima de toque de 44px (`min-h-touch`)
+- **Typography Scale**: Sistema progressivo de tipografia para todos os dispositivos
+- **Universal Spacing**: Sistema consistente de padding, margin e gaps
+- **Performance Optimizada**: Classes Tailwind otimizadas para carregamento rápido
+
+### Header Otimizado
+- **Layout Adaptativo**: Transição suave entre mobile e desktop
+- **Menu Hamburger**: Touch-friendly com ícones e área de toque adequada
+- **CTA Estratégico**: Contato clicável e botão de orçamento em desktop
+- **Navegação Intuitiva**: Scroll suave para seções com offset para header fixo
+
+### Componentes 100% Responsivos
+- **HeroSection**: Tipografia e espaçamento progressivos
+- **ServicesGrid**: Grid adaptativo com ícones escaláveis
+- **TestimonialsSection**: Carrossel otimizado para touch
+- **ContactForm**: Formulário com inputs touch-friendly
+- **Footer**: Layout flexível em grid responsivo
 
 ## Deploy
 

@@ -10,6 +10,17 @@
 /* TC Shine Cleaning Services - Advanced Design System */
 
 @layer base {
+  /* Scroll suave universal para navegação */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Compensa o header fixo */
+  }
+  
+  /* Melhor performance em dispositivos móveis */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
   :root {
     /* Core Brand Colors - TC Shine Cleaning */
     --tc-primary: 214 88% 27%;        /* Deep trust blue #0d5cb6 */
@@ -251,5 +262,39 @@
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* 📱 Otimizações Mobile - TC Shine Universal */
+@layer utilities {
+  /* Touch targets otimizados */
+  .min-w-touch {
+    min-width: 2.75rem; /* 44px - WCAG touch minimum */
+  }
+  
+  .min-h-touch {
+    min-height: 2.75rem; /* 44px - WCAG touch minimum */
+  }
+  
+  /* Header responsivo com z-index otimizado */
+  .header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* Menu mobile com transições suaves */
+  .mobile-menu-enter {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+  
+  /* Performance otimizada para scroll */
+  .scroll-optimized {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 }

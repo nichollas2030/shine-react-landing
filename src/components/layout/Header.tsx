@@ -1,84 +1,114 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Button, WhatsAppButton } from '@/components/ui/button'
-import { companyContent } from '@/components/content'
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { companyContent } from "@/components/content";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+      setIsScrolled(window.scrollY > 50);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsMobileMenuOpen(false)
+      // Fechar o menu mobile primeiro
+      setIsMobileMenuOpen(false);
+      
+      // Aguardar um pouco para o menu fechar antes do scroll
+      setTimeout(() => {
+        // Calcular offset para compensar o header fixo
+        const headerHeight = 80; // altura aproximada do header
+        const elementPosition = element.offsetTop - headerHeight;
+        
+        // Tentar scroll suave primeiro
+        if ('scrollBehavior' in document.documentElement.style) {
+          element.scrollIntoView({ 
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest"
+          });
+        } else {
+          // Fallback para navegadores que não suportam scroll suave
+          window.scrollTo({
+            top: elementPosition,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }
+      }, 150);
     }
-  }
+  };
 
   const navItems = [
-    { label: 'Início', id: 'hero' },
-    { label: 'Serviços', id: 'services' },
-    { label: 'Depoimentos', id: 'testimonials' },
-    { label: 'Contato', id: 'contact' }
-  ]
+    { label: "Início", id: "hero" },
+    { label: "Serviços", id: "services" },
+    { label: "Depoimentos", id: "testimonials" },
+    { label: "Contato", id: "contact" },
+  ];
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container-responsive">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 xs:h-18 sm:h-20">
           {/* Logo */}
-          <motion.div 
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.05 }}
+          <motion.div
+            className="flex items-center gap-2 xs:gap-3"
+            whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 rounded-lg flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            <div className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 rounded-lg flex items-center justify-center shadow-md">
+              <svg
+                className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
               </svg>
             </div>
-            <div>
-              <h1 className={`font-heading font-bold text-lg leading-tight ${
-                isScrolled ? 'text-tc-neutral-900' : 'text-white'
-              }`}>
-                {companyContent.name.split(' ')[0]} <span className="text-tc-primary-500">Shine</span>
+            <div className="min-w-0">
+              <h1
+                className={`font-heading font-bold text-sm xs:text-base sm:text-lg leading-tight truncate transition-colors duration-300 ${
+                  isScrolled ? "text-tc-neutral-900" : "text-white"
+                }`}
+              >
+                {companyContent.name.split(" ")[0]}{" "}
+                <span className="text-tc-primary-500">Shine</span>
               </h1>
-              <p className={`text-xs ${
-                isScrolled ? 'text-tc-neutral-600' : 'text-white/80'
-              }`}>
+              <p
+                className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 ${
+                  isScrolled ? "text-tc-neutral-600" : "text-white/80"
+                }`}
+              >
                 {companyContent.tagline}
               </p>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navItems.slice(0, 3).map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-medium transition-colors duration-300 hover:text-tc-primary-500 ${
-                  isScrolled ? 'text-tc-neutral-700' : 'text-white/90'
+                className={`font-medium text-sm lg:text-base transition-colors duration-300 hover:text-tc-primary-500 px-2 py-1 rounded-md hover:bg-white/10 ${
+                  isScrolled ? "text-tc-neutral-700 hover:bg-tc-neutral-100" : "text-white/90"
                 }`}
               >
                 {item.label}
@@ -86,34 +116,63 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <a 
+          {/* Desktop CTA & Contact */}
+          <div className="hidden md:flex items-center gap-3 lg:gap-4">
+            <a
               href={`tel:${companyContent.phone}`}
-              className={`font-medium transition-colors duration-300 ${
-                isScrolled ? 'text-tc-neutral-700' : 'text-white/90'
+              className={`font-medium text-sm lg:text-base transition-all duration-300 px-3 py-2 rounded-lg hover:scale-105 min-h-touch flex items-center gap-2 ${
+                isScrolled 
+                  ? "text-tc-neutral-700 hover:bg-tc-neutral-100" 
+                  : "text-white/90 hover:bg-white/10"
+              }`}
+              aria-label="Ligar para TC Shine"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span className="hidden lg:inline">Contato</span>
+              <span className="font-semibold">{companyContent.phone}</span>
+            </a>
+            
+            <button
+              onClick={() => scrollToSection('contact')}
+              className={`btn-primary text-sm px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 min-h-touch ${
+                isScrolled ? "shadow-md" : ""
               }`}
             >
-              {companyContent.phone}
-            </a>
-            <WhatsAppButton size="sm">
-              WhatsApp
-            </WhatsAppButton>
+              Orçamento
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
-              isScrolled ? 'text-tc-neutral-700' : 'text-white'
+            className={`md:hidden p-2 min-w-touch min-h-touch rounded-lg transition-all duration-300 ${
+              isScrolled ? "text-tc-neutral-700" : "text-white"
             }`}
             aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -121,37 +180,62 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <motion.div
-          className={`md:hidden overflow-hidden ${isMobileMenuOpen ? 'max-h-96' : 'max-h-0'}`}
+          className={`md:hidden overflow-hidden ${
+            isMobileMenuOpen ? "max-h-96" : "max-h-0"
+          }`}
           initial={false}
-          animate={{ height: isMobileMenuOpen ? 'auto' : 0 }}
-          transition={{ duration: 0.3 }}
+          animate={{ height: isMobileMenuOpen ? "auto" : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <div className="py-4 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
-            <nav className="flex flex-col gap-4 px-6">
+          <div className="py-4 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg border border-white/20">
+            <nav className="flex flex-col gap-1 px-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-left font-medium text-tc-neutral-700 hover:text-tc-primary-500 transition-colors duration-300"
+                  className="text-left font-medium text-tc-neutral-700 hover:text-tc-primary-500 transition-all duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-neutral-100 flex items-center gap-3"
                 >
+                  {item.id === 'hero' && (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  )}
+                  {item.id === 'services' && (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.5 2.5L16 4.5 13.5 7 16 9.5 13.5 12 16 14.5 13.5 17 16 19.5 13.5 22 16 24" />
+                    </svg>
+                  )}
+                  {item.id === 'testimonials' && (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  )}
+                  {item.id === 'contact' && (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
                   {item.label}
                 </button>
               ))}
-              <div className="flex flex-col gap-3 pt-4 border-t border-tc-neutral-200">
-                <a 
+              
+              {/* Mobile Contact Section */}
+              <div className="border-t border-tc-neutral-200 mt-2 pt-3">
+                <a
                   href={`tel:${companyContent.phone}`}
-                  className="font-medium text-tc-neutral-700"
+                  className="flex items-center gap-3 text-tc-primary-600 hover:text-tc-primary-700 transition-colors duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-primary-50 font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  📞 {companyContent.phone}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Ligar: {companyContent.phone}
                 </a>
-                <WhatsAppButton size="sm" className="justify-center">
-                  Conversar no WhatsApp
-                </WhatsAppButton>
               </div>
             </nav>
           </div>
         </motion.div>
       </div>
     </motion.header>
-  )
+  );
 }

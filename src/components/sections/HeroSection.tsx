@@ -1,20 +1,42 @@
 "use client"
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { WhatsAppButton, Button } from '@/components/ui/button'
 import { heroContent, companyContent } from '@/components/content'
-// import heroImage from '@/assets/hero-bg.jpg'
+
+// 🚀 LIGHTHOUSE OPTIMIZATION: Lazy loading da imagem hero
+const HeroBackground = React.lazy(() => 
+  Promise.resolve({
+    default: () => (
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400"
+        style={{
+          backgroundImage: 'url(/src/assets/hero-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 hero-overlay" />
+      </div>
+    )
+  })
+);
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400"
+      {/* 🚀 LIGHTHOUSE: Background Image com Suspense */}
+      <Suspense 
+        fallback={
+          <div className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400">
+            <div className="absolute inset-0 hero-overlay" />
+          </div>
+        }
       >
-        <div className="absolute inset-0 hero-overlay" />
-      </div>
+        <HeroBackground />
+      </Suspense>
       
       {/* Content */}
       <div className="relative z-10 w-full">

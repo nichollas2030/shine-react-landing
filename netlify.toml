@@ -1,0 +1,95 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# 🚀 LIGHTHOUSE OPTIMIZATION: Compressão e caching otimizados
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Permitir fontes do Google Fonts e data URIs para Tailwind
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-eval' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' https://wa.me https://api.whatsapp.com;
+      frame-src https://wa.me;
+    '''
+    
+    # Otimizações de performance
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # 🚀 LIGHTHOUSE: Compressão de texto ativada
+    X-Content-Encoding = "gzip, br"
+    
+    # 🚀 LIGHTHOUSE: Headers de performance
+    X-DNS-Prefetch-Control = "on"
+    X-Preconnect = "https://fonts.googleapis.com, https://fonts.gstatic.com"
+
+# 🚀 LIGHTHOUSE: Cache otimizado para recursos estáticos
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 🚀 LIGHTHOUSE: Cache de imagens otimizado
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# 🚀 LIGHTHOUSE: Redirecionamentos otimizados
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
+# 🚀 LIGHTHOUSE: Compressão de assets
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+[[plugins]]
+  package = "netlify-plugin-minify-html"
+  
+# 🚀 LIGHTHOUSE: Build optimizations
+[build.environment]
+  NODE_ENV = "production"
+  VITE_BUILD_OPTIMIZE = "true"

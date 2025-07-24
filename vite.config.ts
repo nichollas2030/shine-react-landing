@@ -17,29 +17,49 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Otimizações críticas de performance
+    // 🚀 LIGHTHOUSE OPTIMIZATION: Otimizações críticas de performance
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: mode === 'production',
         drop_debugger: true,
+        pure_funcs: mode === 'production' ? ['console.log', 'console.info'] : [],
       },
     },
     rollupOptions: {
       output: {
-        // Code splitting para reduzir bundle inicial
+        // 🚀 LIGHTHOUSE: Code splitting otimizado para reduzir bundle inicial
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          ui: ['framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog'],
-          router: ['react-router-dom'],
+          ui: ['framer-motion'],
+          utils: ['clsx', 'tailwind-merge'],
         },
+        // 🚀 LIGHTHOUSE: Nomes de arquivo com hash para cache busting
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]',
       },
     },
-    // Chunk size warnings
-    chunkSizeWarningLimit: 500,
+    // 🚀 LIGHTHOUSE: Reduzir limite de chunk size warning
+    chunkSizeWarningLimit: 300,
+    
+    // 🚀 LIGHTHOUSE: Otimizações de CSS
+    cssCodeSplit: true,
+    
+    // 🚀 LIGHTHOUSE: Source maps otimizados para produção
+    sourcemap: mode === 'development',
   },
-  // Otimização de dependências
+  
+  // 🚀 LIGHTHOUSE: Otimização de dependências
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion'],
+    exclude: ['@vite/client', '@vite/env'],
+  },
+  
+  // 🚀 LIGHTHOUSE: Configurações experimentais para performance
+  experimental: {
+    renderBuiltUrl(filename: string) {
+      return '/' + filename
+    }
   },
 }));

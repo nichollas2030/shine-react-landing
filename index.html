@@ -12,6 +12,13 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
     
+    <!-- 🚀 LIGHTHOUSE OPTIMIZATION: Preload LCP image -->
+    <link rel="preload" as="image" href="/src/assets/hero-bg.jpg" fetchpriority="high" />
+    
+    <!-- 🚀 DNS Prefetch para recursos críticos -->
+    <link rel="dns-prefetch" href="https://wa.me" />
+    <link rel="dns-prefetch" href="https://api.whatsapp.com" />
+    
     <!-- Fallback CSS inline para prevenir layout shift -->
     <style>
       /* 🔧 Critical CSS: Fonte system fallback imediata */
@@ -117,6 +124,19 @@
 
     <!-- DNS prefetch para WhatsApp -->
     <link rel="dns-prefetch" href="https://wa.me" />
+
+    <!-- 🚀 LIGHTHOUSE OPTIMIZATION: PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- 🚀 LIGHTHOUSE: Meta tags para PWA -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="TC Shine" />
+    
+    <!-- 🚀 LIGHTHOUSE: Favicon otimizado -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/placeholder.svg" />
 
     <title>TC Shine Cleaning - Limpeza Residencial Premium na Flórida</title>
     <meta

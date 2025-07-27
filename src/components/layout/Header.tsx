@@ -23,26 +23,26 @@ export default function Header() {
     if (element) {
       // Fechar o menu mobile primeiro
       setIsMobileMenuOpen(false);
-      
+
       // Aguardar um pouco para o menu fechar antes do scroll
       setTimeout(() => {
         // Calcular offset para compensar o header fixo
         const headerHeight = 80; // altura aproximada do header
         const elementPosition = element.offsetTop - headerHeight;
-        
+
         // Tentar scroll suave primeiro
-        if ('scrollBehavior' in document.documentElement.style) {
-          element.scrollIntoView({ 
+        if ("scrollBehavior" in document.documentElement.style) {
+          element.scrollIntoView({
             behavior: "smooth",
             block: "start",
-            inline: "nearest"
+            inline: "nearest",
           });
         } else {
           // Fallback para navegadores que não suportam scroll suave
           window.scrollTo({
             top: elementPosition,
             left: 0,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
         }
       }, 150);
@@ -108,42 +108,15 @@ export default function Header() {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`font-medium text-sm lg:text-base transition-colors duration-300 hover:text-tc-primary-500 px-2 py-1 rounded-md hover:bg-white/10 ${
-                  isScrolled ? "text-tc-neutral-700 hover:bg-tc-neutral-100" : "text-white/90"
+                  isScrolled
+                    ? "text-tc-neutral-700 hover:bg-tc-neutral-100"
+                    : "text-white/90"
                 }`}
               >
                 {item.label}
               </button>
             ))}
           </nav>
-
-          {/* Desktop CTA & Contact */}
-          <div className="hidden md:flex items-center gap-3 lg:gap-4">
-            <a
-              href={`tel:${companyContent.phone}`}
-              className={`font-medium text-sm lg:text-base transition-all duration-300 px-3 py-2 rounded-lg hover:scale-105 min-h-touch flex items-center gap-2 ${
-                isScrolled 
-                  ? "text-tc-neutral-700 hover:bg-tc-neutral-100" 
-                  : "text-white/90 hover:bg-white/10"
-              }`}
-              aria-label="Ligar para TC Shine"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span className="hidden lg:inline">Contato</span>
-              <span className="font-semibold">{companyContent.phone}</span>
-            </a>
-            
-            <button
-              onClick={() => scrollToSection('contact')}
-              className={`btn-primary text-sm px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 min-h-touch ${
-                isScrolled ? "shadow-md" : ""
-              }`}
-            >
-              Orçamento
-            </button>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -195,43 +168,69 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   className="text-left font-medium text-tc-neutral-700 hover:text-tc-primary-500 transition-all duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-neutral-100 flex items-center gap-3"
                 >
-                  {item.id === 'hero' && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  {item.id === "hero" && (
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                      />
                     </svg>
                   )}
-                  {item.id === 'services' && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.5 2.5L16 4.5 13.5 7 16 9.5 13.5 12 16 14.5 13.5 17 16 19.5 13.5 22 16 24" />
+                  {item.id === "services" && (
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.5 2.5L16 4.5 13.5 7 16 9.5 13.5 12 16 14.5 13.5 17 16 19.5 13.5 22 16 24"
+                      />
                     </svg>
                   )}
-                  {item.id === 'testimonials' && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  {item.id === "testimonials" && (
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                      />
                     </svg>
                   )}
-                  {item.id === 'contact' && (
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  {item.id === "contact" && (
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
                     </svg>
                   )}
                   {item.label}
                 </button>
               ))}
-              
-              {/* Mobile Contact Section */}
-              <div className="border-t border-tc-neutral-200 mt-2 pt-3">
-                <a
-                  href={`tel:${companyContent.phone}`}
-                  className="flex items-center gap-3 text-tc-primary-600 hover:text-tc-primary-700 transition-colors duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-primary-50 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  Ligar: {companyContent.phone}
-                </a>
-              </div>
             </nav>
           </div>
         </motion.div>

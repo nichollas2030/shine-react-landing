@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function WhatsAppFloat() {
   const [isVisible, setIsVisible] = useState(false)
-  const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
     // Show button after 3 seconds
@@ -13,20 +12,8 @@ export default function WhatsAppFloat() {
       setIsVisible(true)
     }, 3000)
 
-    // Show tooltip after 10 seconds, then every 30 seconds
-    const tooltipTimer = setTimeout(() => {
-      setShowTooltip(true)
-      const interval = setInterval(() => {
-        setShowTooltip(true)
-        setTimeout(() => setShowTooltip(false), 5000)
-      }, 30000)
-      
-      return () => clearInterval(interval)
-    }, 10000)
-
     return () => {
       clearTimeout(timer)
-      clearTimeout(tooltipTimer)
     }
   }, [])
 
@@ -35,51 +22,10 @@ export default function WhatsAppFloat() {
     window.open(`https://wa.me/15615231300?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
   }
 
-  const handleTooltipClose = () => {
-    setShowTooltip(false)
-  }
-
   return (
     <AnimatePresence>
       {isVisible && (
         <div className="fixed bottom-3 right-3 xs:bottom-4 xs:right-4 sm:bottom-6 sm:right-6 z-50">
-          {/* Tooltip */}
-          <AnimatePresence>
-            {showTooltip && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                className="absolute bottom-20 right-0 mb-2 mr-2"
-              >
-                <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-xs relative">
-                  <button
-                    onClick={handleTooltipClose}
-                    className="absolute top-1 right-1 min-w-8 min-h-8 w-8 h-8 text-gray-400 hover:text-gray-600 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2"
-                    aria-label="Fechar dica do WhatsApp"
-                    type="button"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                  <div className="pr-6">
-                    <p className="text-sm font-medium text-gray-900 mb-1">
-                      Precisa de ajuda?
-                    </p>
-                    <p className="text-xs text-gray-600">
-                      Converse conosco pelo WhatsApp e receba seu orçamento em minutos!
-                    </p>
-                  </div>
-                  {/* Arrow */}
-                  <div className="absolute bottom-2 right-6 transform translate-y-2">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
           {/* WhatsApp Button - OTIMIZADO: Melhor acessibilidade */}
           <motion.button
             initial={{ scale: 0, rotate: -180 }}

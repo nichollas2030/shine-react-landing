@@ -12,7 +12,7 @@ const HeroBackground = React.lazy(() =>
       <div 
         className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400"
         style={{
-          backgroundImage: 'url(/src/assets/hero-bg.jpg)',
+          backgroundImage: 'url(/assets/hero-bg.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

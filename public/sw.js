@@ -114,7 +114,7 @@ self.addEventListener('fetch', (event) => {
   // 🔒 SECURITY: Sanitizar URL para cache
   const sanitizedUrl = sanitizeCacheKey(request);
   
-  // 🚀 LIGHTHOUSE: Cache de fontes do Google (Cache First)
+  // 🚀 LIGHTHOUSE: Cache de fontes do Google (Cache First com error handling)
   if (request.url.includes('fonts.googleapis.com') || request.url.includes('fonts.gstatic.com')) {
     event.respondWith(
       caches.open(FONT_CACHE_NAME).then((cache) => {
@@ -127,6 +127,14 @@ self.addEventListener('fetch', (event) => {
               cache.put(request, response.clone());
             }
             return response;
+          }).catch((error) => {
+            console.warn('Font fetch failed:', error);
+            // Retornar uma resposta vazia em caso de erro CSP
+            return new Response('', {
+              status: 200,
+              statusText: 'OK',
+              headers: { 'Content-Type': 'text/css' }
+            });
           });
         });
       })

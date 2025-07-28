@@ -1,7 +1,6 @@
 /* 🔧 CORREÇÃO: CSS imports otimizados para Critical Rendering Path */
 
-/* 1. IMPORTS primeiro (regra CSS) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* 1. IMPORTS apenas para CSS local (fontes carregadas via HTML preload) */
 @import './styles/optimized-animations.css';
 
 /* 2. TAILWIND BASE - CSS Foundation crítico */

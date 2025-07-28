@@ -60,6 +60,7 @@ export default function Footer() {
               {[
                 { label: 'Início', id: 'hero' },
                 { label: 'Nossos Serviços', id: 'services' },
+                { label: 'Galeria', id: 'gallery' },
                 { label: 'Depoimentos', id: 'testimonials' },
                 { label: 'Solicitar Orçamento', id: 'contact' }
               ].map((item) => (

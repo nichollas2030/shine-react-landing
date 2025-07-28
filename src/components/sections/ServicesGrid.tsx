@@ -69,9 +69,9 @@ export default function ServicesGrid() {
           </p>
         </motion.div>
         
-        {/* Services Grid */}
+        {/* Services Grid - 2x2 Desktop, Vertical Mobile */}
         <motion.div 
-          className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6 sm:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

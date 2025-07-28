@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import HeroSection from '@/components/sections/HeroSection'
 import ServicesGrid from '@/components/sections/ServicesGrid'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
+import GallerySection from '@/components/sections/GallerySection'
 import ContactForm from '@/components/sections/ContactForm'
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
 
@@ -17,6 +18,9 @@ const Index = () => {
         </div>
         <div id="services">
           <ServicesGrid />
+        </div>
+        <div id="gallery">
+          <GallerySection />
         </div>
         <div id="testimonials">
           <TestimonialsSection />

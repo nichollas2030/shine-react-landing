@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { servicesContent } from '@/components/content'
+import { useServicesContent, openWhatsApp } from '@/lib/useContent'
 
 // Service Icons
 const ServiceIcon = ({ icon, className }: { icon: string; className?: string }) => {
@@ -49,6 +49,9 @@ const itemVariants = {
 }
 
 export default function ServicesGrid() {
+  // 🎯 CONTEÚDO DINÂMICO - Centralizado em /lib/content.ts
+  const servicesContent = useServicesContent()
+  
   return (
     <section className="py-16 xs:py-20 sm:py-24 lg:py-28 bg-tc-background-50">
       <div className="container mx-auto px-4 xs:px-6 sm:px-8 lg:px-12">
@@ -61,11 +64,10 @@ export default function ServicesGrid() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-text-900 mb-3 xs:mb-4">
-            Nossos Serviços Especializados
+            {servicesContent.sectionTitle}
           </h2>
           <p className="text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
-            Soluções completas de limpeza para todas as suas necessidades, 
-            com qualidade profissional e atenção aos detalhes.
+            {servicesContent.sectionDescription}
           </p>
         </motion.div>
         
@@ -77,7 +79,7 @@ export default function ServicesGrid() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {servicesContent.map((service, index) => (
+          {servicesContent.services.map((service, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -122,10 +124,7 @@ export default function ServicesGrid() {
                   variant="outline" 
                   size="sm" 
                   className="w-full border-tc-border-200 text-tc-text-700 hover:bg-tc-primary-500 hover:border-tc-primary-500 hover:text-white transition-all duration-300 min-h-touch text-xs xs:text-sm"
-                  onClick={() => {
-                    const message = `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`
-                    window.open(`https://wa.me/15615231300?text=${encodeURIComponent(message)}`, '_blank')
-                  }}
+                  onClick={() => openWhatsApp('custom', `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`)}
                 >
                   Solicitar Orçamento
                 </Button>
@@ -143,18 +142,15 @@ export default function ServicesGrid() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <p className="text-sm xs:text-base text-tc-text-600 mb-4 xs:mb-6">
-            Não encontrou exatamente o que precisa? Oferecemos soluções personalizadas.
+            {servicesContent.bottomCta.text}
           </p>
           <Button 
             variant="primary" 
             size="lg"
             className="min-h-touch text-sm xs:text-base"
-            onClick={() => {
-              const message = "Olá! Gostaria de discutir uma solução personalizada de limpeza para minha necessidade específica."
-              window.open(`https://wa.me/15615231300?text=${encodeURIComponent(message)}`, '_blank')
-            }}
+            onClick={() => openWhatsApp('custom')}
           >
-            Conversar sobre Necessidades Especiais
+            {servicesContent.bottomCta.buttonText}
           </Button>
         </motion.div>
       </div>

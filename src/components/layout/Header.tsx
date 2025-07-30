@@ -3,9 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { companyContent } from "@/components/content";
+import { useCompanyInfo, useNavigationContent } from "@/lib/useContent";
 
 export default function Header() {
+  // 🎯 CONTEÚDO DINÂMICO - Centralizado em /lib/content.ts
+  const companyInfo = useCompanyInfo()
+  const navigation = useNavigationContent()
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -49,13 +53,7 @@ export default function Header() {
     }
   };
 
-  const navItems = [
-    { label: "Início", id: "hero" },
-    { label: "Serviços", id: "services" },
-    { label: "Galeria", id: "gallery" },
-    { label: "Depoimentos", id: "testimonials" },
-    { label: "Contato", id: "contact" },
-  ];
+  const navItems = navigation.menuItems;
 
   return (
     <motion.header
@@ -89,7 +87,7 @@ export default function Header() {
                   isScrolled ? "text-tc-text-900" : "text-white"
                 }`}
               >
-                {companyContent.name.split(" ")[0]}{" "}
+                {companyInfo.name.split(" ")[0]}{" "}
                 <span className="text-tc-primary-500">Shine</span>
               </h1>
               <p
@@ -97,7 +95,7 @@ export default function Header() {
                   isScrolled ? "text-tc-text-600" : "text-white/80"
                 }`}
               >
-                {companyContent.tagline}
+                {companyInfo.tagline}
               </p>
             </div>
           </motion.div>
@@ -169,7 +167,7 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   className="text-left font-medium text-tc-text-700 hover:text-tc-primary-500 transition-all duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-background-100 flex items-center gap-3"
                 >
-                  {item.id === "hero" && (
+                  {item.id === "home" && (
                     <svg
                       className="w-4 h-4"
                       fill="none"

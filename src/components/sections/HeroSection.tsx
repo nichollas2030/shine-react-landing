@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { WhatsAppButton, Button } from '@/components/ui/button'
-import { heroContent, companyContent } from '@/components/content'
+import { useHeroContent, useCompanyInfo, openWhatsApp } from '@/lib/useContent'
 
 // 🚀 LIGHTHOUSE OPTIMIZATION: Lazy loading da imagem hero
 const HeroBackground = React.lazy(() => 
@@ -23,8 +23,12 @@ const HeroBackground = React.lazy(() =>
 );
 
 export default function HeroSection() {
+  // 🎯 CONTEÚDO DINÂMICO - Centralizado em /lib/content.ts
+  const heroContent = useHeroContent()
+  const companyInfo = useCompanyInfo()
+  
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       {/* 🚀 LIGHTHOUSE: Background Image com Suspense */}
       <Suspense 
         fallback={
@@ -82,16 +86,16 @@ export default function HeroSection() {
                   ))}
                 </div>
                 <span className="text-xs xs:text-sm sm:text-base font-medium whitespace-nowrap">
-                  5.0 • {companyContent.socialProof.happyClients}+ clientes
+                  {heroContent.trustElements.rating} • {heroContent.trustElements.clients}
                 </span>
               </div>
               
               <div className="text-xs xs:text-sm sm:text-base whitespace-nowrap">
-                <span className="font-medium">{companyContent.socialProof.yearsExperience}+ anos</span> de experiência
+                <span className="font-medium">{companyInfo.socialProof.yearsExperience}+ anos</span> de experiência
               </div>
               
               <div className="text-xs xs:text-sm sm:text-base whitespace-nowrap">
-                <span className="font-medium">{companyContent.socialProof.cleaningsCompleted.toLocaleString()}+</span> limpezas realizadas
+                <span className="font-medium">{companyInfo.socialProof.cleaningsCompleted.toLocaleString()}+</span> limpezas realizadas
               </div>
             </motion.div>
             
@@ -104,7 +108,7 @@ export default function HeroSection() {
             >
               <WhatsAppButton 
                 size="lg"
-                message="Olá! Gostaria de solicitar um orçamento para limpeza residencial."
+                onClick={() => openWhatsApp('residential')}
                 className="w-full sm:flex-1 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium px-4 xs:px-6"
               >
                 {heroContent.ctaText}
@@ -120,7 +124,7 @@ export default function HeroSection() {
                 }}
                 className="w-full sm:w-auto sm:px-6 xs:sm:px-8 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium"
               >
-                Ver Serviços
+                {heroContent.secondaryCtaText}
               </Button>
             </motion.div>
           </motion.div>

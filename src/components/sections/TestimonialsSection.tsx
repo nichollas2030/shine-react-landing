@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { testimonialsContent } from '@/components/content'
+import { useTestimonialsContent } from '@/lib/useContent'
 
 const StarRating = ({ rating }: { rating: number }) => (
   <div className="flex gap-1 mb-3 xs:mb-4 justify-center">
@@ -19,6 +19,9 @@ const StarRating = ({ rating }: { rating: number }) => (
 )
 
 export default function TestimonialsSection() {
+  // 🎯 CONTEÚDO DINÂMICO - Centralizado em /lib/content.ts
+  const testimonialsContent = useTestimonialsContent()
+  
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
   
@@ -44,18 +47,16 @@ export default function TestimonialsSection() {
     return Math.abs(offset) * velocity
   }
   
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection)
-    setCurrentIndex((prevIndex) => {
-      if (newDirection === 1) {
-        return prevIndex === testimonialsContent.length - 1 ? 0 : prevIndex + 1
-      } else {
-        return prevIndex === 0 ? testimonialsContent.length - 1 : prevIndex - 1
-      }
-    })
-  }
-  
-  // Auto-scroll every 6 seconds
+    const paginate = (newDirection: number) => {
+      setDirection(newDirection)
+      setCurrentIndex((prevIndex) => {
+        if (newDirection === 1) {
+          return prevIndex === testimonialsContent.testimonials.length - 1 ? 0 : prevIndex + 1
+        } else {
+          return prevIndex === 0 ? testimonialsContent.testimonials.length - 1 : prevIndex - 1
+        }
+      })
+    }  // Auto-scroll every 6 seconds
   React.useEffect(() => {
     const timer = setInterval(() => {
       paginate(1)
@@ -76,11 +77,10 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-text-900 mb-3 xs:mb-4">
-            Depoimentos dos Nossos Clientes
+            {testimonialsContent.sectionTitle}
           </h2>
           <p className="text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
-            Confiança construída através de anos de serviço excepcional 
-            e relacionamentos duradouros com nossos clientes.
+            {testimonialsContent.sectionDescription}
           </p>
         </motion.div>
         
@@ -113,24 +113,24 @@ export default function TestimonialsSection() {
                 }}
                 className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing"
               >
-                <div className="card-testimonial max-w-3xl mx-auto text-center px-4 xs:px-6">
-                  <StarRating rating={testimonialsContent[currentIndex].rating} />
+                                <div className="card-testimonial max-w-3xl mx-auto text-center px-4 xs:px-6">
+                  <StarRating rating={testimonialsContent.testimonials[currentIndex].rating} />
                   
                   <blockquote className="text-sm xs:text-base sm:text-lg lg:text-xl text-tc-text-700 mb-4 xs:mb-6 leading-relaxed italic">
-                    "{testimonialsContent[currentIndex].quote}"
+                    "{testimonialsContent.testimonials[currentIndex].quote}"
                   </blockquote>
                   
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 xs:gap-4">
                     <div className="text-center sm:text-left">
                       <div className="font-semibold text-tc-text-900 text-sm xs:text-base">
-                        {testimonialsContent[currentIndex].author}
+                        {testimonialsContent.testimonials[currentIndex].author}
                       </div>
                       <div className="text-tc-text-600 text-xs xs:text-sm">
-                        {testimonialsContent[currentIndex].location}
+                        {testimonialsContent.testimonials[currentIndex].location}
                       </div>
-                      {testimonialsContent[currentIndex].date && (
+                      {testimonialsContent.testimonials[currentIndex].date && (
                         <div className="text-tc-text-500 text-xs">
-                          {testimonialsContent[currentIndex].date}
+                          {testimonialsContent.testimonials[currentIndex].date}
                         </div>
                       )}
                     </div>
@@ -165,7 +165,7 @@ export default function TestimonialsSection() {
           
           {/* Dots Indicator - CORRIGIDO: Área de toque adequada e aria-labels */}
           <div className="flex justify-center mt-6 xs:mt-8 gap-1 xs:gap-2" role="tablist" aria-label="Navegação de depoimentos">
-            {testimonialsContent.map((_, index) => (
+            {testimonialsContent.testimonials.map((_, index) => (
               <button
                 key={index}
                 className={`relative min-w-touch min-h-touch p-3 xs:p-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
@@ -177,7 +177,7 @@ export default function TestimonialsSection() {
                   setDirection(index > currentIndex ? 1 : -1)
                   setCurrentIndex(index)
                 }}
-                aria-label={`Ver depoimento ${index + 1} de ${testimonialsContent.length}`}
+                aria-label={`Ver depoimento ${index + 1} de ${testimonialsContent.testimonials.length}`}
                 aria-selected={index === currentIndex}
                 role="tab"
                 type="button"
@@ -203,26 +203,22 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="flex items-center gap-2">
+        {testimonialsContent.trustBadges.map((badge, index) => (
+          <div key={index} className="flex items-center gap-2">
             <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              {badge.icon === 'shield' && (
+                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              )}
+              {badge.icon === 'check' && (
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              )}
+              {badge.icon === 'leaf' && (
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              )}
             </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">Licenciado & Segurado</span>
+            <span className="font-medium text-xs xs:text-sm sm:text-base">{badge.text}</span>
           </div>
-          
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">100% Garantia de Satisfação</span>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">Produtos Eco-Friendly</span>
-          </div>
+        ))}
         </motion.div>
       </div>
     </section>

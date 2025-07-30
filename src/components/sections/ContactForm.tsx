@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { contactContent } from '@/components/content'
+import { useContactContent, useCompanyInfo, openWhatsApp } from '@/lib/useContent'
 
 interface ContactFormData {
   name: string
@@ -13,7 +13,11 @@ interface ContactFormData {
 }
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState<ContactFormData>({
+  // 🎯 CONTEÚDO DINÂMICO - Centralizado em /lib/content.ts
+  const contactContent = useContactContent()
+  const companyInfo = useCompanyInfo()
+  
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     service: '',
@@ -102,10 +106,10 @@ _Enviado através do site tcshine.com_
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 xs:mb-4">
-              {contactContent.title}
+              {contactContent.sectionTitle}
             </h2>
             <p className="text-sm xs:text-base sm:text-lg text-white/80 mb-6 xs:mb-8">
-              {contactContent.subtitle}
+              {contactContent.sectionDescription}
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4 xs:space-y-6">

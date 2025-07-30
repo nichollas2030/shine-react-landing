@@ -10,16 +10,14 @@ const HeroBackground = React.lazy(() =>
   Promise.resolve({
     default: () => (
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400"
+        className="absolute inset-0"
         style={{
           backgroundImage: 'url(/assets/hero-bg.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
-      >
-        <div className="absolute inset-0 hero-overlay" />
-      </div>
+      />
     )
   })
 );
@@ -30,9 +28,7 @@ export default function HeroSection() {
       {/* 🚀 LIGHTHOUSE: Background Image com Suspense */}
       <Suspense 
         fallback={
-          <div className="absolute inset-0 bg-gradient-to-br from-tc-primary-600 via-tc-primary-500 to-tc-primary-400">
-            <div className="absolute inset-0 hero-overlay" />
-          </div>
+          <div className="absolute inset-0 bg-tc-background-100" />
         }
       >
         <HeroBackground />
@@ -49,7 +45,8 @@ export default function HeroSection() {
           >
             {/* Main Headline - MOBILE FIRST */}
             <motion.h1 
-              className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 xs:mb-6 md:mb-8 leading-[1.15] xs:leading-[1.1] tracking-tight"
+              className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 xs:mb-6 md:mb-8 leading-[1.15] xs:leading-[1.1] tracking-tight drop-shadow-lg"
+              style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -59,7 +56,8 @@ export default function HeroSection() {
             
             {/* Subheadline - RESPONSIVE */}
             <motion.p 
-              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl"
+              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl drop-shadow-md"
+              style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.6)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -69,7 +67,8 @@ export default function HeroSection() {
             
             {/* Social Proof - MOBILE OPTIMIZED */}
             <motion.div 
-              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/80"
+              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/90 drop-shadow-md"
+              style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}

@@ -94,82 +94,98 @@ export default {
 				'38': '9.5rem',         // 152px
 			},
 			
-			colors: {
-				// 🎨 NOVA PALETA - Turquesa & Coral System
-				'tc-primary': {
-					50: '#f0fdfa',       // Turquesa muito claro
-					100: '#ccfbf1',      // Turquesa claro
-					200: '#99f6e4',      // Turquesa suave
-					300: '#5eead4',      // Turquesa médio claro
-					400: '#2dd4bf',      // Turquesa médio
-					500: '#14b8a6',      // Turquesa (PRINCIPAL) #14b8a6
-					600: '#0d9488',      // Turquesa escuro
-					700: '#0f766e',      // Turquesa mais escuro
-					800: '#115e59',      // Turquesa muito escuro
-					900: '#134e4a',      // Turquesa profundo
-				},
-				'tc-secondary': {
-					50: '#FDF8E1',       // Bege Areia (PRINCIPAL) #FDF8E1
-					100: '#fef7cd',      // Bege claro
-					200: '#fef08a',      // Bege suave
-					300: '#fde047',      // Bege médio
-					400: '#facc15',      // Bege vibrante
-					500: '#eab308',      // Bege forte
-					600: '#ca8a04',      // Bege escuro
-					700: '#a16207',      // Bege mais escuro
-					800: '#854d0e',      // Bege muito escuro
-					900: '#713f12',      // Bege profundo
-				},
-				'tc-accent': {
-					50: '#fff7ed',       // Coral muito claro
-					100: '#ffedd5',      // Coral claro
-					200: '#fed7aa',      // Coral suave
-					300: '#fdba74',      // Coral médio
-					400: '#fb923c',      // Coral vibrante
-					500: '#F97316',      // Coral Vivo (PRINCIPAL) #F97316
-					600: '#ea580c',      // Coral escuro
-					700: '#c2410c',      // Coral mais escuro
-					800: '#9a3412',      // Coral muito escuro
-					900: '#7c2d12',      // Coral profundo
-				},
-				'tc-background': {
-					50: '#F7FAFC',       // Branco Neve (PRINCIPAL) #F7FAFC
-					100: '#ffffff',      // Branco puro
-					200: '#f8fafc',      // Branco suave
-					300: '#f1f5f9',      // Branco médio
-					400: '#e2e8f0',      // Branco escuro
-					500: '#cbd5e1',      // Branco forte
-					600: '#94a3b8',      // Branco profundo
-					700: '#64748b',      // Branco escuríssimo
-					800: '#475569',      // Branco máximo
-					900: '#334155',      // Branco extremo
-				},
-				'tc-text': {
-					50: '#f8fafc',       // Azul petróleo muito claro
-					100: '#f1f5f9',      // Azul petróleo claro
-					200: '#e2e8f0',      // Azul petróleo suave
-					300: '#cbd5e1',      // Azul petróleo médio claro
-					400: '#94a3b8',      // Azul petróleo médio
-					500: '#64748b',      // Azul petróleo forte
-					600: '#475569',      // Azul petróleo escuro
-					700: '#334155',      // Azul petróleo mais escuro
-					800: '#1A202C',      // Azul Petróleo (PRINCIPAL) #1A202C
-					900: '#0f172a',      // Azul petróleo profundo
-				},
-				'tc-border': {
-					50: '#f9fafb',       // Cinza gelo muito claro
-					100: '#f3f4f6',      // Cinza gelo claro
-					200: '#E1E5E9',      // Cinza Gelo (PRINCIPAL) #E1E5E9
-					300: '#d1d5db',      // Cinza gelo médio
-					400: '#9ca3af',      // Cinza gelo forte
-					500: '#6b7280',      // Cinza gelo escuro
-					600: '#4b5563',      // Cinza gelo mais escuro
-					700: '#374151',      // Cinza gelo muito escuro
-					800: '#1f2937',      // Cinza gelo profundo
-					900: '#111827',      // Cinza gelo máximo
-				},
-				
-				// Manter compatibilidade com sistema antigo
+            colors: {
+                // 🎨 NOVA PALETA PROFISSIONAL - Preto, Branco e Azul Escuro
+                
+                // Core Brand Colors - Azul Escuro para CTAs
+                'tc-primary': {
+                    50: '#f0f4f8',   // Azul muito claro
+                    100: '#d9e2ec',  // Azul claro
+                    200: '#bcccdc',  // Azul suave
+                    300: '#9fb3c8',  // Azul médio claro
+                    400: '#829ab1',  // Azul médio
+                    500: '#2A5B8C',  // Azul Escuro (PRINCIPAL) #2A5B8C
+                    600: '#1e3a5f',  // Azul mais escuro
+                    700: '#1a2d4a',  // Azul profundo
+                    800: '#162238',  // Azul muito escuro
+                    900: '#121829',  // Azul máximo
+                    DEFAULT: '#2A5B8C', // Azul Escuro
+                },
+                
+                // Texto Principal - Preto
+                'tc-text': {
+                    50: '#f8f9fa',   // Quase branco
+                    100: '#f1f3f4',  // Branco suave
+                    200: '#e8eaed',  // Cinza muito claro
+                    300: '#dadce0',  // Cinza claro
+                    400: '#bdc1c6',  // Cinza médio
+                    500: '#9aa0a6',  // Cinza
+                    600: '#80868b',  // Cinza escuro
+                    700: '#5f6368',  // Cinza mais escuro
+                    800: '#3c4043',  // Cinza muito escuro
+                    900: '#000000',  // Preto (PRINCIPAL) #000000
+                    DEFAULT: '#000000', // Preto
+                },
+                
+                // Background - Branco e Cinzas
+                'tc-background': {
+                    50: '#FFFFFF',   // Branco Puro (PRINCIPAL) #FFFFFF
+                    100: '#FEFEFE',  // Branco quase puro
+                    200: '#F5F5F5',  // Cinza Muito Claro (SECUNDÁRIO) #F5F5F5
+                    300: '#F0F0F0',  // Cinza claro
+                    400: '#E8E8E8',  // Cinza médio claro
+                    500: '#E0E0E0',  // Cinza Claro (BORDAS) #E0E0E0
+                    600: '#D0D0D0',  // Cinza médio
+                    700: '#C0C0C0',  // Cinza escuro
+                    800: '#A0A0A0',  // Cinza mais escuro
+                    900: '#808080',  // Cinza profundo
+                    DEFAULT: '#FFFFFF', // Branco
+                },
+                
+                // Border - Cinza Claro
+                'tc-border': {
+                    50: '#FAFAFA',   // Quase branco
+                    100: '#F5F5F5',  // Cinza muito suave
+                    200: '#E0E0E0',  // Cinza Claro (PRINCIPAL) #E0E0E0
+                    300: '#D0D0D0',  // Cinza médio
+                    400: '#C0C0C0',  // Cinza
+                    500: '#A0A0A0',  // Cinza escuro
+                    600: '#808080',  // Cinza mais escuro
+                    700: '#606060',  // Cinza profundo
+                    800: '#404040',  // Cinza muito escuro
+                    900: '#202020',  // Quase preto
+                    DEFAULT: '#E0E0E0', // Cinza Claro
+                },
+                
+                // Secondary - Manter compatibilidade (mapeado para nova paleta)
+                'tc-secondary': {
+                    50: '#F5F5F5',   // Cinza muito claro
+                    100: '#F0F0F0',  // Cinza claro
+                    200: '#E8E8E8',  // Cinza suave
+                    300: '#E0E0E0',  // Cinza médio
+                    400: '#D0D0D0',  // Cinza
+                    500: '#C0C0C0',  // Cinza escuro
+                    600: '#A0A0A0',  // Cinza mais escuro
+                    700: '#808080',  // Cinza profundo
+                    800: '#606060',  // Cinza muito escuro
+                    900: '#404040',  // Quase preto
+                    DEFAULT: '#F5F5F5', // Cinza muito claro
+                },
+                
+                // Accent - Azul escuro para destaques
+                'tc-accent': {
+                    50: '#f0f4f8',   // Azul muito claro
+                    100: '#d9e2ec',  // Azul claro
+                    200: '#bcccdc',  // Azul suave
+                    300: '#9fb3c8',  // Azul médio claro
+                    400: '#829ab1',  // Azul médio
+                    500: '#2A5B8C',  // Azul Escuro (PRINCIPAL) #2A5B8C
+                    600: '#1e3a5f',  // Azul mais escuro
+                    700: '#1a2d4a',  // Azul profundo
+                    800: '#162238',  // Azul muito escuro
+                    900: '#121829',  // Azul máximo
+                    DEFAULT: '#2A5B8C', // Azul Escuro
+                },				// Manter compatibilidade com sistema antigo
 				'tc-whatsapp': {
 					50: 'hsl(142 80% 95%)',
 					100: 'hsl(142 75% 90%)',

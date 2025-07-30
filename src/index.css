@@ -23,59 +23,60 @@
   }
   
   :root {
-    /* 🎨 NOVA PALETA DE CORES - Sistema Turquesa & Coral */
+    /* 🎨 NOVA PALETA PROFISSIONAL - Preto, Branco e Azul Escuro */
     
-    /* Core Brand Colors - Turquesa como primária */
-    --tc-primary: 174 83% 39%;        /* Turquesa #14b8a6 */
-    --tc-primary-light: 174 70% 52%;  /* Turquesa mais claro */
-    --tc-primary-dark: 174 100% 26%;  /* Turquesa mais escuro */
+    /* Core Brand Colors - Azul Escuro para CTAs */
+    --tc-primary: 210 50% 36%;        /* Azul Escuro #2A5B8C */
+    --tc-primary-light: 210 50% 50%;  /* Azul mais claro */
+    --tc-primary-dark: 210 60% 25%;   /* Azul mais escuro */
     
-    /* Cor Secundária - Bege Areia */
-    --tc-secondary: 53 100% 94%;      /* Bege Areia #FDF8E1 */
-    --tc-secondary-dark: 47 89% 70%;  /* Bege escuro */
+    /* Texto Principal - Preto */
+    --tc-text: 0 0% 0%;               /* Preto #000000 */
+    --tc-text-light: 220 13% 18%;     /* Cinza escuro */
+    --tc-text-muted: 220 9% 46%;      /* Cinza médio */
     
-    /* Destaque/CTA - Coral Vivo */
-    --tc-accent: 20 91% 52%;          /* Coral Vivo #F97316 */
-    --tc-accent-light: 20 91% 60%;    /* Coral mais claro */
+    /* Background - Branco e Cinzas */
+    --tc-background: 0 0% 100%;       /* Branco #FFFFFF */
+    --tc-background-alt: 0 0% 96%;    /* Cinza muito claro #F5F5F5 */
+    --tc-background-section: 0 0% 96%; /* Para seções alternadas */
     
-    /* Fundo/Base - Branco Neve */
-    --tc-background: 208 100% 97%;    /* Branco Neve #F7FAFC */
-    --tc-background-alt: 0 0% 100%;   /* Branco puro */
+    /* Bordas - Cinza Claro */
+    --tc-border: 0 0% 88%;            /* Cinza Claro #E0E0E0 */
+    --tc-border-light: 0 0% 94%;      /* Cinza mais claro */
     
-    /* Texto Principal - Azul Petróleo */
-    --tc-text: 210 22% 15%;           /* Azul Petróleo #1A202C */
-    --tc-text-light: 215 14% 34%;     /* Azul petróleo claro */
-    --tc-text-muted: 220 9% 46%;      /* Azul petróleo suave */
+    /* Secondary - Cinza muito claro para seções */
+    --tc-secondary: 0 0% 96%;         /* Cinza muito claro #F5F5F5 */
+    --tc-secondary-dark: 0 0% 88%;    /* Cinza claro */
     
-    /* Bordas/Divisores - Cinza Gelo */
-    --tc-border: 210 14% 89%;         /* Cinza Gelo #E1E5E9 */
-    --tc-border-light: 210 14% 95%;   /* Cinza mais claro */
+    /* Accent - Azul escuro para destaques */
+    --tc-accent: 210 50% 36%;         /* Azul Escuro #2A5B8C */
+    --tc-accent-light: 210 50% 50%;   /* Azul mais claro */
     
     /* WhatsApp & Success Colors */
     --tc-whatsapp: 142 77% 43%;       /* WhatsApp green #25D366 */
-    --tc-success: 174 83% 39%;        /* Turquesa como success */
+    --tc-success: 142 70% 45%;        /* Success green */
     
     /* Sistema de alertas */
-    --tc-warning: 20 91% 52%;         /* Usar coral para warning */
+    --tc-warning: 45 100% 51%;        /* Warning orange */
     --tc-error: 0 84% 60%;            /* Error red #ef4444 */
     
-    /* Neutral Grays - Baseados no azul petróleo */
-    --tc-neutral-50: 208 100% 97%;    /* Base branco neve */
-    --tc-neutral-100: 210 17% 95%;    /* Branco suave */
-    --tc-neutral-200: 210 14% 89%;    /* Cinza gelo */
-    --tc-neutral-300: 212 13% 82%;    /* Cinza médio */
-    --tc-neutral-400: 220 9% 46%;     /* Azul petróleo suave */
-    --tc-neutral-500: 215 14% 34%;    /* Azul petróleo médio */
-    --tc-neutral-600: 215 19% 28%;    /* Azul petróleo escuro */
-    --tc-neutral-700: 215 25% 21%;    /* Azul petróleo mais escuro */
-    --tc-neutral-800: 210 22% 15%;    /* Azul petróleo principal */
-    --tc-neutral-900: 222 47% 11%;    /* Azul petróleo muito escuro */
+    /* Neutral Grays - Baseados no preto/branco */
+    --tc-neutral-50: 0 0% 100%;       /* Branco */
+    --tc-neutral-100: 0 0% 96%;       /* Cinza muito claro */
+    --tc-neutral-200: 0 0% 88%;       /* Cinza claro */
+    --tc-neutral-300: 0 0% 82%;       /* Cinza médio claro */
+    --tc-neutral-400: 0 0% 64%;       /* Cinza médio */
+    --tc-neutral-500: 0 0% 50%;       /* Cinza */
+    --tc-neutral-600: 0 0% 38%;       /* Cinza escuro */
+    --tc-neutral-700: 0 0% 25%;       /* Cinza mais escuro */
+    --tc-neutral-800: 0 0% 13%;       /* Cinza muito escuro */
+    --tc-neutral-900: 0 0% 0%;        /* Preto */
     
     /* Gradients com nova paleta */
     --tc-gradient-primary: linear-gradient(135deg, hsl(var(--tc-primary)), hsl(var(--tc-primary-light)));
     --tc-gradient-secondary: linear-gradient(135deg, hsl(var(--tc-secondary)), hsl(var(--tc-secondary-dark)));
     --tc-gradient-accent: linear-gradient(135deg, hsl(var(--tc-accent)), hsl(var(--tc-accent-light)));
-    --tc-gradient-hero: linear-gradient(135deg, hsl(var(--tc-primary) / 0.9), hsl(var(--tc-primary-dark) / 0.8));
+    --tc-gradient-hero: linear-gradient(135deg, hsl(var(--tc-background) / 0.95), hsl(var(--tc-background-alt) / 0.9));
     
     /* Shadows com cores atualizadas */
     --tc-shadow-sm: 0 1px 2px 0 hsl(var(--tc-text) / 0.05);
@@ -101,20 +102,20 @@
     /* Core Design System Variables - Mapeados para nova paleta */
     --background: var(--tc-background);
     --foreground: var(--tc-text);
-    --card: var(--tc-background-alt);
+    --card: var(--tc-background);
     --card-foreground: var(--tc-text);
-    --popover: var(--tc-background-alt);
+    --popover: var(--tc-background);
     --popover-foreground: var(--tc-text);
     --primary: var(--tc-primary);
-    --primary-foreground: var(--tc-background-alt);
+    --primary-foreground: var(--tc-background);
     --secondary: var(--tc-secondary);
     --secondary-foreground: var(--tc-text);
     --muted: var(--tc-neutral-100);
     --muted-foreground: var(--tc-neutral-500);
     --accent: var(--tc-accent);
-    --accent-foreground: var(--tc-background-alt);
+    --accent-foreground: var(--tc-background);
     --destructive: var(--tc-error);
-    --destructive-foreground: var(--tc-background-alt);
+    --destructive-foreground: var(--tc-background);
     --border: var(--tc-border);
     --input: var(--tc-border);
     --ring: var(--tc-primary);
@@ -160,7 +161,7 @@
 }
 
 @layer components {
-  /* TC Shine Button Variants com nova paleta Turquesa & Coral */
+  /* TC Shine Button Variants com nova paleta profissional */
   .btn-whatsapp {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold 
            transition-all duration-300 min-h-[48px] touch-manipulation
@@ -172,36 +173,36 @@
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold
            transition-all duration-300 min-h-[48px] touch-manipulation
-           bg-gradient-to-r from-teal-500 to-teal-600 text-white
-           hover:from-teal-600 hover:to-teal-700 hover:scale-105 hover:shadow-lg
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
+           bg-tc-primary-500 text-white
+           hover:bg-tc-primary-600 hover:scale-105 hover:shadow-lg
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2;
   }
   
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold
            transition-all duration-300 min-h-[48px] touch-manipulation
-           bg-white text-teal-600 border-2 border-teal-600
-           hover:bg-teal-50 hover:scale-105 hover:shadow-lg
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2;
+           bg-white text-tc-primary-500 border-2 border-tc-primary-500
+           hover:bg-tc-primary-50 hover:scale-105 hover:shadow-lg
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2;
   }
   
-  .btn-coral {
+  .btn-outline {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold
            transition-all duration-300 min-h-[48px] touch-manipulation
-           bg-gradient-to-r from-orange-500 to-orange-600 text-white
-           hover:from-orange-600 hover:to-orange-700 hover:scale-105 hover:shadow-lg
-           active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+           bg-transparent text-tc-text-700 border-2 border-tc-border-200
+           hover:bg-tc-primary-500 hover:border-tc-primary-500 hover:text-white hover:scale-105 hover:shadow-lg
+           active:scale-95 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2;
   }
   
   /* Card Variants com nova paleta */
   .card-service {
-    @apply bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300
-           border border-slate-100 hover:border-teal-200 hover:-translate-y-1;
+    @apply bg-white rounded-xl p-7 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300
+           border border-tc-border-200 hover:border-tc-primary-200 hover:-translate-y-1;
   }
   
   .card-testimonial {
     @apply bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300
-           border border-slate-100 relative;
+           border border-tc-border-200 relative;
   }
   
   /* Floating WhatsApp Button */

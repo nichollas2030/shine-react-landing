@@ -75,10 +75,10 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-neutral-900 mb-3 xs:mb-4">
-            O Que Nossos Clientes Dizem
+          <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-text-900 mb-3 xs:mb-4">
+            Depoimentos dos Nossos Clientes
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg text-tc-neutral-600 max-w-3xl mx-auto">
+          <p className="text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
             Confiança construída através de anos de serviço excepcional 
             e relacionamentos duradouros com nossos clientes.
           </p>
@@ -116,20 +116,20 @@ export default function TestimonialsSection() {
                 <div className="card-testimonial max-w-3xl mx-auto text-center px-4 xs:px-6">
                   <StarRating rating={testimonialsContent[currentIndex].rating} />
                   
-                  <blockquote className="text-sm xs:text-base sm:text-lg lg:text-xl text-tc-neutral-700 mb-4 xs:mb-6 leading-relaxed italic">
+                  <blockquote className="text-sm xs:text-base sm:text-lg lg:text-xl text-tc-text-700 mb-4 xs:mb-6 leading-relaxed italic">
                     "{testimonialsContent[currentIndex].quote}"
                   </blockquote>
                   
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 xs:gap-4">
                     <div className="text-center sm:text-left">
-                      <div className="font-semibold text-tc-neutral-900 text-sm xs:text-base">
+                      <div className="font-semibold text-tc-text-900 text-sm xs:text-base">
                         {testimonialsContent[currentIndex].author}
                       </div>
-                      <div className="text-tc-neutral-600 text-xs xs:text-sm">
+                      <div className="text-tc-text-600 text-xs xs:text-sm">
                         {testimonialsContent[currentIndex].location}
                       </div>
                       {testimonialsContent[currentIndex].date && (
-                        <div className="text-tc-neutral-500 text-xs">
+                        <div className="text-tc-text-500 text-xs">
                           {testimonialsContent[currentIndex].date}
                         </div>
                       )}
@@ -171,7 +171,7 @@ export default function TestimonialsSection() {
                 className={`relative min-w-touch min-h-touch p-3 xs:p-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
                   index === currentIndex 
                     ? 'bg-tc-primary-50' 
-                    : 'hover:bg-tc-neutral-100'
+                    : 'hover:bg-tc-background-100'
                 }`}
                 onClick={() => {
                   setDirection(index > currentIndex ? 1 : -1)
@@ -186,7 +186,7 @@ export default function TestimonialsSection() {
                   className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 xs:w-3 xs:h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
                       ? 'bg-tc-primary-500 scale-125' 
-                      : 'bg-tc-neutral-300'
+                      : 'bg-tc-border-300'
                   }`}
                   aria-hidden="true"
                 />
@@ -197,7 +197,7 @@ export default function TestimonialsSection() {
         
         {/* Trust Badges */}
         <motion.div 
-          className="flex flex-col xs:flex-row flex-wrap justify-center items-center gap-4 xs:gap-6 sm:gap-8 mt-12 xs:mt-16 text-tc-neutral-600"
+          className="flex flex-col xs:flex-row flex-wrap justify-center items-center gap-4 xs:gap-6 sm:gap-8 mt-12 xs:mt-16 text-tc-text-600"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

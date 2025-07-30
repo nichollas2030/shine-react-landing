@@ -15,9 +15,9 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // TC Shine Custom Variants
-        whatsapp: "bg-gradient-to-r from-tc-whatsapp-500 to-tc-whatsapp-600 text-white hover:from-tc-whatsapp-600 hover:to-tc-whatsapp-700 hover:scale-105 hover:shadow-lg focus:ring-tc-whatsapp-500 focus:ring-offset-2 animate-pulse-whatsapp hover:animate-none",
-        primary: "bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 text-white hover:from-tc-primary-600 hover:to-tc-primary-700 hover:scale-105 hover:shadow-lg focus:ring-tc-primary-500 focus:ring-offset-2",
+        // TC Shine Custom Variants - PALETA PROFISSIONAL
+        whatsapp: "bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 hover:scale-105 hover:shadow-lg focus:ring-emerald-500 focus:ring-offset-2 animate-pulse-whatsapp hover:animate-none",
+        primary: "bg-tc-primary-500 text-white hover:bg-tc-primary-600 hover:scale-105 hover:shadow-lg focus:ring-tc-primary-500 focus:ring-offset-2",
         hero: "bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:scale-105 backdrop-blur-sm focus:ring-white/50 focus:ring-offset-0",
       },
       size: {

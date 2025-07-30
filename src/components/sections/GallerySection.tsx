@@ -5,12 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 // 🔥 CARREGAMENTO DINÂMICO: Títulos e descrições baseados no nome do arquivo
 const imageDescriptions: Record<string, { title: string; description: string; alt: string }> = {
-  // 🚨 SUAS FOTOS ESPECÍFICAS ATUALIZADAS:
-  'imagem_ladind_page (1)': { 
-    title: 'Limpeza Residencial Premium', 
-    description: 'Transformação completa com nosso serviço profissional',
-    alt: 'Resultado da limpeza residencial profissional TC Shine'
-  },
+  // 🚨 FOTOS ATUALIZADAS - Todas as 11 imagens na pasta:
   'imagem_ladind_page (2)': { 
     title: 'Qualidade Excepcional', 
     description: 'Padrão de excelência em cada detalhe',
@@ -21,11 +16,6 @@ const imageDescriptions: Record<string, { title: string; description: string; al
     description: 'Satisfação garantida em todos os serviços',
     alt: 'Resultado impecável da limpeza TC Shine'
   },
-  'imagem_ladind_page (7)': { 
-    title: 'Limpeza Detalhada', 
-    description: 'Cuidado especial em cada ambiente',
-    alt: 'Limpeza detalhada realizada pela TC Shine'
-  },
   'imagem_ladind_page (8)': { 
     title: 'Higienização Completa', 
     description: 'Ambiente totalmente higienizado e seguro',
@@ -35,11 +25,6 @@ const imageDescriptions: Record<string, { title: string; description: string; al
     title: 'Padrão Profissional', 
     description: 'Limpeza com padrão profissional de qualidade',
     alt: 'Padrão profissional de limpeza TC Shine'
-  },
-  'imagem_ladind_page (15)': { 
-    title: 'Excelência Comprovada', 
-    description: 'Demonstração da nossa excelência em serviços',
-    alt: 'Excelência em limpeza demonstrada pela TC Shine'
   },
   'imagem_ladind_page (47)': { 
     title: 'Ambiente Renovado', 
@@ -65,6 +50,16 @@ const imageDescriptions: Record<string, { title: string; description: string; al
     title: 'Perfeição em Limpeza', 
     description: 'A perfeição que você merece',
     alt: 'Perfeição em limpeza demonstrada pela TC Shine'
+  },
+  'imagem_lading_page (1)': { 
+    title: 'Excelência Comprovada', 
+    description: 'Excelência comprovada em cada projeto',
+    alt: 'Excelência comprovada dos serviços TC Shine'
+  },
+  'imagem_lading_page (3)': { 
+    title: 'Satisfação Total', 
+    description: 'Satisfação total dos nossos clientes',
+    alt: 'Satisfação total demonstrada pelos clientes TC Shine'
   },
   
   // Exemplos baseados em nomes comuns de arquivos
@@ -175,20 +170,19 @@ const getImageMetadata = (filename: string, index: number) => {
 
 // 🔥 CARREGAMENTO DINÂMICO DAS IMAGENS
 const loadGalleryImages = () => {
-  // 🚨 FOTOS REAIS ATUALIZADAS NA PASTA:
+  // 🚨 TODAS AS 11 FOTOS REAIS NA PASTA - Lista atualizada:
   const realImages = [
-    'imagem_ladind_page (1).JPG',
     'imagem_ladind_page (2).JPG',
     'imagem_ladind_page (5).jpg',
-    'imagem_ladind_page (7).jpg',
     'imagem_ladind_page (8).JPG',
     'imagem_ladind_page (10).JPG',
-    'imagem_ladind_page (15).JPG',
     'imagem_ladind_page (47).jpg',
     'imagem_ladind_page (48).jpg',
     'imagem_ladind_page (51).jpg',
     'imagem_ladind_page (52).jpg',
-    'imagem_ladind_page (55).jpg'
+    'imagem_ladind_page (55).jpg',
+    'imagem_lading_page (1).jpg',
+    'imagem_lading_page (3).jpg'
   ]
   
   // Fallback para nomes comuns caso as fotos sejam renomeadas

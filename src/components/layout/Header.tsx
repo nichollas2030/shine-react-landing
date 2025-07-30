@@ -86,7 +86,7 @@ export default function Header() {
             <div className="min-w-0 flex-1 sm:flex-initial">
               <h1
                 className={`font-heading font-bold text-xs xs:text-sm sm:text-base md:text-lg leading-tight truncate transition-colors duration-300 ${
-                  isScrolled ? "text-tc-neutral-900" : "text-white"
+                  isScrolled ? "text-tc-text-900" : "text-white"
                 }`}
               >
                 {companyContent.name.split(" ")[0]}{" "}
@@ -94,7 +94,7 @@ export default function Header() {
               </h1>
               <p
                 className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 truncate ${
-                  isScrolled ? "text-tc-neutral-600" : "text-white/80"
+                  isScrolled ? "text-tc-text-600" : "text-white/80"
                 }`}
               >
                 {companyContent.tagline}
@@ -110,7 +110,7 @@ export default function Header() {
                 onClick={() => scrollToSection(item.id)}
                 className={`font-medium text-sm lg:text-base transition-colors duration-300 hover:text-tc-primary-500 px-2 py-1 rounded-md hover:bg-white/10 ${
                   isScrolled
-                    ? "text-tc-neutral-700 hover:bg-tc-neutral-100"
+                    ? "text-tc-text-700 hover:bg-tc-background-100"
                     : "text-white/90"
                 }`}
               >
@@ -122,7 +122,7 @@ export default function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 min-w-touch min-h-touch rounded-lg transition-all duration-300 ${
-              isScrolled ? "text-tc-neutral-700" : "text-white"
+              isScrolled ? "text-tc-text-700" : "text-white"
             }`}
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
@@ -167,7 +167,7 @@ export default function Header() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-left font-medium text-tc-neutral-700 hover:text-tc-primary-500 transition-all duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-neutral-100 flex items-center gap-3"
+                  className="text-left font-medium text-tc-text-700 hover:text-tc-primary-500 transition-all duration-300 py-3 px-3 min-h-touch rounded-lg hover:bg-tc-background-100 flex items-center gap-3"
                 >
                   {item.id === "hero" && (
                     <svg

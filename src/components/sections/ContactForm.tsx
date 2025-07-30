@@ -91,7 +91,7 @@ _Enviado através do site tcshine.com_
   }
 
   return (
-    <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-tc-neutral-900 text-white">
+    <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-tc-text-900 text-white">
       <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xs:gap-12 sm:gap-16 items-center">
           {/* Left Column - Form */}
@@ -104,7 +104,7 @@ _Enviado através do site tcshine.com_
             <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 xs:mb-4">
               {contactContent.title}
             </h2>
-            <p className="text-sm xs:text-base sm:text-lg text-tc-neutral-300 mb-6 xs:mb-8">
+            <p className="text-sm xs:text-base sm:text-lg text-white/80 mb-6 xs:mb-8">
               {contactContent.subtitle}
             </p>
             
@@ -120,7 +120,7 @@ _Enviado através do site tcshine.com_
                   id="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-3 xs:px-4 py-2 xs:py-3 text-sm xs:text-base rounded-lg bg-tc-neutral-800 border border-tc-neutral-700 text-white placeholder-tc-neutral-400 focus:border-tc-primary-400 focus:ring-1 focus:ring-tc-primary-400 focus:outline-none transition-colors duration-300 min-h-touch"
+                  className="w-full px-3 xs:px-4 py-2 xs:py-3 text-sm xs:text-base rounded-lg bg-tc-text-800 border border-tc-text-700 text-white placeholder-tc-text-400 focus:border-tc-primary-400 focus:ring-1 focus:ring-tc-primary-400 focus:outline-none transition-colors duration-300 min-h-touch"
                   placeholder="Seu nome completo"
                 />
                 {errors.name && (

@@ -67,10 +67,13 @@ export default function Header() {
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-14 xs:h-16 sm:h-18 md:h-20">
           {/* Logo - MOBILE OPTIMIZED */}
-          <motion.div
-            className="flex items-center gap-2 xs:gap-3 min-w-0 flex-1 sm:flex-initial"
+          <motion.button
+            className="flex items-center gap-2 xs:gap-3 min-w-0 flex-1 sm:flex-initial cursor-pointer focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 rounded-lg"
             whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
+            onClick={() => scrollToSection('home')}
+            aria-label="Ir para o início"
           >
             <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0" style={{ backgroundColor: '#1c1c1c' }}>
               <svg
@@ -88,7 +91,9 @@ export default function Header() {
                 }`}
               >
                 {companyInfo.name.split(" ")[0]}{" "}
-                <span style={{ color: '#1c1c1c' }}>Shine</span>
+                <span className={`transition-colors duration-300 ${
+                  isScrolled ? "" : ""
+                }`} style={{ color: isScrolled ? '#1c1c1c' : 'white' }}>Shine</span>
               </h1>
               <p
                 className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 truncate ${
@@ -98,7 +103,7 @@ export default function Header() {
                 {companyInfo.tagline}
               </p>
             </div>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">

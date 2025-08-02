@@ -38,6 +38,9 @@ export default function HeroSection() {
         <HeroBackground />
       </Suspense>
       
+      {/* 🎨 Overlay escuro moderno e suave */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/50 to-black/60 z-[1]"></div>
+      
       {/* Content */}
       <div className="relative z-10 w-full">
         <div className="container mx-auto py-16 xs:py-20 sm:py-24 md:py-28 lg:py-32">
@@ -49,7 +52,7 @@ export default function HeroSection() {
           >
             {/* Main Headline - MOBILE FIRST */}
             <motion.h1 
-              className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 xs:mb-6 md:mb-8 leading-[1.15] xs:leading-[1.1] tracking-tight drop-shadow-lg"
+              className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 xs:mb-6 md:mb-8 leading-[1.15] xs:leading-[1.1] tracking-tight drop-shadow-lg"
               style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,7 +63,7 @@ export default function HeroSection() {
             
             {/* Subheadline - RESPONSIVE */}
             <motion.p 
-              className="font-secondary text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl drop-shadow-md"
+              className="font-secondary text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl drop-shadow-md font-semibold"
               style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.6)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,7 +74,7 @@ export default function HeroSection() {
             
             {/* Social Proof - MOBILE OPTIMIZED */}
             <motion.div 
-              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/90 drop-shadow-md font-secondary"
+              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/90 drop-shadow-md font-secondary font-semibold"
               style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -85,17 +88,17 @@ export default function HeroSection() {
                     </svg>
                   ))}
                 </div>
-                <span className="font-secondary text-xs xs:text-sm sm:text-base font-medium whitespace-nowrap">
+                <span className="font-secondary text-xs xs:text-sm sm:text-base font-bold whitespace-nowrap">
                   {heroContent.trustElements.rating} • {heroContent.trustElements.clients}
                 </span>
               </div>
               
               <div className="font-secondary text-xs xs:text-sm sm:text-base whitespace-nowrap">
-                <span className="font-medium">{companyInfo.socialProof.yearsExperience}+ anos</span> de experiência
+                <span className="font-bold">{companyInfo.socialProof.yearsExperience}+ anos</span> de experiência
               </div>
               
               <div className="font-secondary text-xs xs:text-sm sm:text-base whitespace-nowrap">
-                <span className="font-medium">{companyInfo.socialProof.cleaningsCompleted.toLocaleString()}+</span> limpezas realizadas
+                <span className="font-bold">{companyInfo.socialProof.cleaningsCompleted.toLocaleString()}+</span> limpezas realizadas
               </div>
             </motion.div>
             
@@ -109,7 +112,7 @@ export default function HeroSection() {
               <WhatsAppButton 
                 size="lg"
                 onClick={() => openWhatsApp('residential')}
-                className="w-full sm:flex-1 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium px-4 xs:px-6"
+                className="w-full sm:flex-1 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-bold px-4 xs:px-6"
               >
                 {heroContent.ctaText}
               </WhatsAppButton>
@@ -122,7 +125,7 @@ export default function HeroSection() {
                     behavior: 'smooth' 
                   })
                 }}
-                className="w-full sm:w-auto sm:px-6 xs:sm:px-8 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium"
+                className="w-full sm:w-auto sm:px-6 xs:sm:px-8 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-bold"
                 style={{ backgroundColor: '#1c1c1c' }}
               >
                 {heroContent.secondaryCtaText}

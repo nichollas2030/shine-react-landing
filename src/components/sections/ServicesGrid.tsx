@@ -121,20 +121,12 @@ export default function ServicesGrid() {
                 
                 {/* CTA */}
                 <Button 
-                  variant="outline" 
+                  variant="primary" 
                   size="sm" 
-                  className="w-full border-tc-border-200 text-tc-text-700 hover:text-white transition-all duration-300 min-h-touch text-xs xs:text-sm"
+                  className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm"
                   style={{
-                    '--hover-bg': '#1c1c1c',
-                    '--hover-border': '#1c1c1c'
-                  } as React.CSSProperties}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#1c1c1c';
-                    e.currentTarget.style.borderColor = '#1c1c1c';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '';
-                    e.currentTarget.style.borderColor = '';
+                    backgroundColor: '#1c1c1c',
+                    borderColor: '#1c1c1c'
                   }}
                   onClick={() => openWhatsApp('custom', `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`)}
                 >
@@ -159,7 +151,7 @@ export default function ServicesGrid() {
           <Button 
             variant="primary" 
             size="lg"
-            className="min-h-touch text-sm xs:text-base"
+            className="min-h-touch text-sm xs:text-base text-white hover:opacity-90 transition-all duration-300"
             style={{ backgroundColor: '#1c1c1c', borderColor: '#1c1c1c' }}
             onClick={() => openWhatsApp('custom')}
           >

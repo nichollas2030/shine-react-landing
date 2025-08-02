@@ -60,7 +60,7 @@ export default function HeroSection() {
             
             {/* Subheadline - RESPONSIVE */}
             <motion.p 
-              className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl drop-shadow-md"
+              className="font-secondary text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 mb-6 xs:mb-8 md:mb-10 leading-relaxed max-w-4xl drop-shadow-md"
               style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.6)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export default function HeroSection() {
             
             {/* Social Proof - MOBILE OPTIMIZED */}
             <motion.div 
-              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/90 drop-shadow-md"
+              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/90 drop-shadow-md font-secondary"
               style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -85,16 +85,16 @@ export default function HeroSection() {
                     </svg>
                   ))}
                 </div>
-                <span className="text-xs xs:text-sm sm:text-base font-medium whitespace-nowrap">
+                <span className="font-secondary text-xs xs:text-sm sm:text-base font-medium whitespace-nowrap">
                   {heroContent.trustElements.rating} • {heroContent.trustElements.clients}
                 </span>
               </div>
               
-              <div className="text-xs xs:text-sm sm:text-base whitespace-nowrap">
+              <div className="font-secondary text-xs xs:text-sm sm:text-base whitespace-nowrap">
                 <span className="font-medium">{companyInfo.socialProof.yearsExperience}+ anos</span> de experiência
               </div>
               
-              <div className="text-xs xs:text-sm sm:text-base whitespace-nowrap">
+              <div className="font-secondary text-xs xs:text-sm sm:text-base whitespace-nowrap">
                 <span className="font-medium">{companyInfo.socialProof.cleaningsCompleted.toLocaleString()}+</span> limpezas realizadas
               </div>
             </motion.div>
@@ -123,6 +123,7 @@ export default function HeroSection() {
                   })
                 }}
                 className="w-full sm:w-auto sm:px-6 xs:sm:px-8 min-h-[48px] xs:min-h-[52px] text-sm xs:text-base sm:text-lg font-medium"
+                style={{ backgroundColor: '#1c1c1c' }}
               >
                 {heroContent.secondaryCtaText}
               </Button>

@@ -108,14 +108,14 @@ _Enviado através do site tcshine.com_
             <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 xs:mb-4">
               {contactContent.sectionTitle}
             </h2>
-            <p className="text-sm xs:text-base sm:text-lg text-white/80 mb-6 xs:mb-8">
+            <p className="font-secondary text-sm xs:text-base sm:text-lg text-white/80 mb-6 xs:mb-8">
               {contactContent.sectionDescription}
             </p>
             
             <form onSubmit={handleSubmit} className="space-y-4 xs:space-y-6">
               {/* Name Field */}
               <div>
-                <label htmlFor="name" className="block text-xs xs:text-sm font-medium mb-2">
+                <label htmlFor="name" className="font-secondary block text-xs xs:text-sm font-medium mb-2">
                   {contactContent.formLabels.name}
                 </label>
                 <input
@@ -128,13 +128,13 @@ _Enviado através do site tcshine.com_
                   placeholder="Seu nome completo"
                 />
                 {errors.name && (
-                  <p className="text-red-400 text-xs xs:text-sm mt-1">{errors.name}</p>
+                  <p className="font-secondary text-red-400 text-xs xs:text-sm mt-1">{errors.name}</p>
                 )}
               </div>
               
               {/* Email Field */}
               <div>
-                <label htmlFor="email" className="block text-xs xs:text-sm font-medium mb-2">
+                <label htmlFor="email" className="font-secondary block text-xs xs:text-sm font-medium mb-2">
                   {contactContent.formLabels.email}
                 </label>
                 <input
@@ -147,13 +147,13 @@ _Enviado através do site tcshine.com_
                   placeholder="seu@email.com"
                 />
                 {errors.email && (
-                  <p className="text-red-400 text-xs xs:text-sm mt-1">{errors.email}</p>
+                  <p className="font-secondary text-red-400 text-xs xs:text-sm mt-1">{errors.email}</p>
                 )}
               </div>
               
               {/* Service Selection */}
               <div>
-                <label htmlFor="service" className="block text-xs xs:text-sm font-medium mb-2">
+                <label htmlFor="service" className="font-secondary block text-xs xs:text-sm font-medium mb-2">
                   {contactContent.formLabels.service}
                 </label>
                 <select
@@ -171,13 +171,13 @@ _Enviado através do site tcshine.com_
                   <option value="Personalizada">Solução Personalizada</option>
                 </select>
                 {errors.service && (
-                  <p className="text-red-400 text-xs xs:text-sm mt-1">{errors.service}</p>
+                  <p className="font-secondary text-red-400 text-xs xs:text-sm mt-1">{errors.service}</p>
                 )}
               </div>
               
               {/* Message Field */}
               <div>
-                <label htmlFor="message" className="block text-xs xs:text-sm font-medium mb-2">
+                <label htmlFor="message" className="font-secondary block text-xs xs:text-sm font-medium mb-2">
                   {contactContent.formLabels.message}
                 </label>
                 <textarea
@@ -190,7 +190,7 @@ _Enviado através do site tcshine.com_
                   placeholder="Ex: Casa de 3 quartos, 2 banheiros. Preciso de limpeza quinzenal. Tenho pets em casa."
                 />
                 {errors.message && (
-                  <p className="text-red-400 text-xs xs:text-sm mt-1">{errors.message}</p>
+                  <p className="font-secondary text-red-400 text-xs xs:text-sm mt-1">{errors.message}</p>
                 )}
               </div>
               

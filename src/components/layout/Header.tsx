@@ -72,7 +72,7 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-tc-primary-500 to-tc-primary-600 rounded-lg flex items-center justify-center shadow-md flex-shrink-0">
+            <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0" style={{ backgroundColor: '#1c1c1c' }}>
               <svg
                 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-6 sm:h-6 text-white"
                 fill="currentColor"
@@ -88,7 +88,7 @@ export default function Header() {
                 }`}
               >
                 {companyInfo.name.split(" ")[0]}{" "}
-                <span className="text-tc-primary-500">Shine</span>
+                <span style={{ color: '#1c1c1c' }}>Shine</span>
               </h1>
               <p
                 className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 truncate ${

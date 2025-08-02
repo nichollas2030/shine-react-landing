@@ -53,7 +53,7 @@ export default function ServicesGrid() {
   const servicesContent = useServicesContent()
   
   return (
-    <section className="py-16 xs:py-20 sm:py-24 lg:py-28 bg-tc-background-50">
+    <section className="py-16 xs:py-20 sm:py-24 lg:py-28" style={{ backgroundColor: '#ffffff' }}>
       <div className="container mx-auto px-4 xs:px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
         <motion.div 
@@ -63,10 +63,10 @@ export default function ServicesGrid() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-text-900 mb-3 xs:mb-4">
+          <h2 className="font-subtitle text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-text-900 mb-3 xs:mb-4">
             {servicesContent.sectionTitle}
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
+          <p className="font-secondary text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
             {servicesContent.sectionDescription}
           </p>
         </motion.div>
@@ -87,24 +87,24 @@ export default function ServicesGrid() {
             >
               <div className="card-service h-full">
                 {/* Icon */}
-                <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-tc-primary-500 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#1c1c1c' }}>
                   <ServiceIcon icon={service.icon} className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
                 
                 {/* Content */}
-                <h3 className="font-heading text-base xs:text-lg sm:text-xl font-bold text-tc-primary-600 mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300">
+                <h3 className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300" style={{ color: '#1c1c1c' }}>
                   {service.title}
                 </h3>
                 
-                <p className="text-xs xs:text-sm sm:text-base text-tc-text-600 mb-4 xs:mb-5 leading-relaxed">
+                <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-4 xs:mb-5 leading-relaxed">
                   {service.description}
                 </p>
                 
                 {/* Features */}
                 <ul className="space-y-2 xs:space-y-3 mb-5 xs:mb-6">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-xs xs:text-sm text-tc-text-700">
-                      <svg className="w-3 h-3 xs:w-4 xs:h-4 text-tc-primary-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <li key={featureIndex} className="font-secondary flex items-center text-xs xs:text-sm text-tc-text-700">
+                      <svg className="w-3 h-3 xs:w-4 xs:h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#1c1c1c' }}>
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       {feature}
@@ -114,7 +114,7 @@ export default function ServicesGrid() {
                 
                 {/* Pricing */}
                 {service.pricing && (
-                  <div className="text-tc-primary-600 font-semibold mb-4 xs:mb-5 text-sm xs:text-base">
+                  <div className="font-secondary font-semibold mb-4 xs:mb-5 text-sm xs:text-base" style={{ color: '#1c1c1c' }}>
                     {service.pricing}
                   </div>
                 )}
@@ -123,7 +123,19 @@ export default function ServicesGrid() {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="w-full border-tc-border-200 text-tc-text-700 hover:bg-tc-primary-500 hover:border-tc-primary-500 hover:text-white transition-all duration-300 min-h-touch text-xs xs:text-sm"
+                  className="w-full border-tc-border-200 text-tc-text-700 hover:text-white transition-all duration-300 min-h-touch text-xs xs:text-sm"
+                  style={{
+                    '--hover-bg': '#1c1c1c',
+                    '--hover-border': '#1c1c1c'
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1c1c1c';
+                    e.currentTarget.style.borderColor = '#1c1c1c';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '';
+                    e.currentTarget.style.borderColor = '';
+                  }}
                   onClick={() => openWhatsApp('custom', `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`)}
                 >
                   Solicitar Orçamento
@@ -141,13 +153,14 @@ export default function ServicesGrid() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <p className="text-sm xs:text-base text-tc-text-600 mb-4 xs:mb-6">
+          <p className="font-secondary text-sm xs:text-base text-tc-text-600 mb-4 xs:mb-6">
             {servicesContent.bottomCta.text}
           </p>
           <Button 
             variant="primary" 
             size="lg"
             className="min-h-touch text-sm xs:text-base"
+            style={{ backgroundColor: '#1c1c1c', borderColor: '#1c1c1c' }}
             onClick={() => openWhatsApp('custom')}
           >
             {servicesContent.bottomCta.buttonText}

@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
   }, [])
   
   return (
-    <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-tc-primary-50 to-tc-primary-100">
+    <section className="py-12 xs:py-16 sm:py-20 lg:py-24" style={{ backgroundColor: '#ffffff' }}>
       <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div 
@@ -79,7 +79,7 @@ export default function TestimonialsSection() {
           <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-text-900 mb-3 xs:mb-4">
             {testimonialsContent.sectionTitle}
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
+          <p className="font-secondary text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
             {testimonialsContent.sectionDescription}
           </p>
         </motion.div>
@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
                                 <div className="card-testimonial max-w-3xl mx-auto text-center px-4 xs:px-6">
                   <StarRating rating={testimonialsContent.testimonials[currentIndex].rating} />
                   
-                  <blockquote className="text-sm xs:text-base sm:text-lg lg:text-xl text-tc-text-700 mb-4 xs:mb-6 leading-relaxed italic">
+                  <blockquote className="font-secondary text-sm xs:text-base sm:text-lg lg:text-xl text-tc-text-700 mb-4 xs:mb-6 leading-relaxed italic">
                     "{testimonialsContent.testimonials[currentIndex].quote}"
                   </blockquote>
                   
@@ -125,11 +125,11 @@ export default function TestimonialsSection() {
                       <div className="font-semibold text-tc-text-900 text-sm xs:text-base">
                         {testimonialsContent.testimonials[currentIndex].author}
                       </div>
-                      <div className="text-tc-text-600 text-xs xs:text-sm">
+                      <div className="font-secondary text-tc-text-600 text-xs xs:text-sm">
                         {testimonialsContent.testimonials[currentIndex].location}
                       </div>
                       {testimonialsContent.testimonials[currentIndex].date && (
-                        <div className="text-tc-text-500 text-xs">
+                        <div className="font-secondary text-tc-text-500 text-xs">
                           {testimonialsContent.testimonials[currentIndex].date}
                         </div>
                       )}
@@ -185,9 +185,10 @@ export default function TestimonialsSection() {
                 <span 
                   className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 xs:w-3 xs:h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-tc-primary-500 scale-125' 
+                      ? 'scale-125' 
                       : 'bg-tc-border-300'
                   }`}
+                  style={{ backgroundColor: index === currentIndex ? '#1c1c1c' : undefined }}
                   aria-hidden="true"
                 />
               </button>
@@ -205,7 +206,7 @@ export default function TestimonialsSection() {
         >
         {testimonialsContent.trustBadges.map((badge, index) => (
           <div key={index} className="flex items-center gap-2">
-            <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-5 h-5 xs:w-6 xs:h-6" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#1c1c1c' }}>
               {badge.icon === 'shield' && (
                 <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               )}
@@ -216,7 +217,7 @@ export default function TestimonialsSection() {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               )}
             </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">{badge.text}</span>
+            <span className="font-secondary font-medium text-xs xs:text-sm sm:text-base">{badge.text}</span>
           </div>
         ))}
         </motion.div>

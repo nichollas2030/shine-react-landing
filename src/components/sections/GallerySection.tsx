@@ -325,7 +325,7 @@ export default function GallerySection() {
   // Não renderizar se não há imagens
   if (galleryImages.length === 0) {
     return (
-      <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-tc-primary-50 to-white">
+      <section className="py-12 xs:py-16 sm:py-20 lg:py-24" style={{ backgroundColor: '#ffffff' }}>
         <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="animate-pulse">
@@ -339,7 +339,7 @@ export default function GallerySection() {
   }
   
   return (
-    <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-tc-primary-50 to-white">
+    <section className="py-12 xs:py-16 sm:py-20 lg:py-24" style={{ backgroundColor: '#ffffff' }}>
       <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div 
@@ -352,7 +352,7 @@ export default function GallerySection() {
           <h2 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-tc-neutral-900 mb-3 xs:mb-4">
             Nossos Trabalhos Realizados
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg text-tc-neutral-600 max-w-3xl mx-auto">
+          <p className="font-secondary text-sm xs:text-base sm:text-lg text-tc-text-600 max-w-3xl mx-auto">
             Veja a qualidade e excelência dos nossos serviços através de 
             fotos reais dos nossos trabalhos de limpeza profissional.
           </p>
@@ -393,10 +393,10 @@ export default function GallerySection() {
                   {isImageLoading && (
                     <div className="absolute inset-0 bg-tc-neutral-200 animate-pulse rounded-2xl flex items-center justify-center">
                       <div className="flex flex-col items-center gap-3">
-                        <svg className="w-12 h-12 text-tc-neutral-400" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-12 h-12 text-tc-text-400" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
                         </svg>
-                        <span className="text-tc-neutral-500 text-sm">Carregando imagem...</span>
+                        <span className="font-secondary text-tc-text-500 text-sm">Carregando imagem...</span>
                       </div>
                     </div>
                   )}
@@ -424,7 +424,7 @@ export default function GallerySection() {
                       <h3 className="font-heading text-lg xs:text-xl sm:text-2xl font-bold mb-1 xs:mb-2">
                         {galleryImages[currentIndex].title}
                       </h3>
-                      <p className="text-sm xs:text-base text-white/90">
+                      <p className="font-secondary text-sm xs:text-base text-white/90">
                         {galleryImages[currentIndex].description}
                       </p>
                     </motion.div>
@@ -479,9 +479,10 @@ export default function GallerySection() {
                 <span 
                   className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 xs:w-3 xs:h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-tc-primary-500 scale-125' 
+                      ? 'scale-125' 
                       : 'bg-tc-neutral-300'
                   }`}
+                  style={{ backgroundColor: index === currentIndex ? '#1c1c1c' : undefined }}
                   aria-hidden="true"
                 />
               </button>
@@ -491,31 +492,31 @@ export default function GallerySection() {
         
         {/* Gallery Stats */}
         <motion.div 
-          className="flex flex-col xs:flex-row flex-wrap justify-center items-center gap-4 xs:gap-6 sm:gap-8 mt-12 xs:mt-16 text-tc-neutral-600"
+          className="flex flex-col xs:flex-row flex-wrap justify-center items-center gap-4 xs:gap-6 sm:gap-8 mt-12 xs:mt-16 text-tc-text-600"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-5 h-5 xs:w-6 xs:h-6" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#1c1c1c' }}>
               <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" />
             </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">Fotos Reais dos Trabalhos</span>
+            <span className="font-secondary font-medium text-xs xs:text-sm sm:text-base">Fotos Reais dos Trabalhos</span>
           </div>
           
           <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-5 h-5 xs:w-6 xs:h-6" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#1c1c1c' }}>
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">Resultados Comprovados</span>
+            <span className="font-secondary font-medium text-xs xs:text-sm sm:text-base">Resultados Comprovados</span>
           </div>
           
           <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 xs:w-6 xs:h-6 text-tc-primary-500" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-5 h-5 xs:w-6 xs:h-6" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#1c1c1c' }}>
               <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            <span className="font-medium text-xs xs:text-sm sm:text-base">Padrão de Excelência</span>
+            <span className="font-secondary font-medium text-xs xs:text-sm sm:text-base">Padrão de Excelência</span>
           </div>
         </motion.div>
       </div>

@@ -279,8 +279,10 @@ export default {
 			},
 			
 			fontFamily: {
-				'heading': ['Montserrat', 'system-ui', 'sans-serif'],
-				'body': ['Open Sans', 'system-ui', 'sans-serif'],
+				'heading': ['Libre Baskerville', 'Georgia', 'Times New Roman', 'serif'],
+				'subtitle': ['Libre Baskerville', 'Georgia', 'Times New Roman', 'serif'], 
+				'body': ['Inter', 'system-ui', 'sans-serif'],
+				'secondary': ['Roboto', 'system-ui', 'sans-serif'],
 			},
 			
 			// BACKGROUND SYSTEM - Brand consistency universal

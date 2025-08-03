@@ -7,9 +7,9 @@ import { useCompanyInfo, useNavigationContent } from "@/lib/useContent";
 
 export default function Header() {
   // 🎯 CONTEÚDO DINÂMICO - Centralizado em /lib/content.ts
-  const companyInfo = useCompanyInfo()
-  const navigation = useNavigationContent()
-  
+  const companyInfo = useCompanyInfo();
+  const navigation = useNavigationContent();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -72,10 +72,13 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            onClick={() => scrollToSection('home')}
+            onClick={() => scrollToSection("home")}
             aria-label="Ir para o início"
           >
-            <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0" style={{ backgroundColor: '#1c1c1c' }}>
+            <div
+              className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shadow-md flex-shrink-0"
+              style={{ backgroundColor: "#1c1c1c" }}
+            >
               <svg
                 className="w-3 h-3 xs:w-4 xs:h-4 sm:w-6 sm:h-6 text-white"
                 fill="currentColor"
@@ -91,9 +94,14 @@ export default function Header() {
                 }`}
               >
                 {companyInfo.name.split(" ")[0]}{" "}
-                <span className={`transition-colors duration-300 ${
-                  isScrolled ? "" : ""
-                }`} style={{ color: isScrolled ? '#1c1c1c' : 'white' }}>Shine</span>
+                <span
+                  className={`transition-colors duration-300 ${
+                    isScrolled ? "" : ""
+                  }`}
+                  style={{ color: isScrolled ? "#1c1c1c" : "white" }}
+                >
+                  Shine
+                </span>
               </h1>
               <p
                 className={`text-xs hidden xs:block sm:text-sm leading-tight transition-colors duration-300 truncate ${

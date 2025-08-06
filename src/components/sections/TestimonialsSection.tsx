@@ -195,18 +195,18 @@ export default function TestimonialsSection() {
             </svg>
           </button>
 
-          {/* Dots Indicator - CORRIGIDO: Área de toque adequada e aria-labels */}
+          {/* Dots Indicator - MOBILE FIRST: Tamanho adequado para touch e melhor contraste */}
           <div
-            className="flex justify-center mt-6 xs:mt-8 gap-1 xs:gap-2"
+            className="flex justify-center mt-6 xs:mt-8 gap-3 xs:gap-4"
             role="tablist"
             aria-label="Navegação de depoimentos"
           >
             {testimonialsContent.testimonials.map((_, index) => (
               <button
                 key={index}
-                className={`relative min-w-touch min-h-touch p-3 xs:p-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
+                className={`relative min-w-[44px] min-h-[44px] p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
                   index === currentIndex
-                    ? "bg-tc-primary-50"
+                    ? "bg-tc-primary-100"
                     : "hover:bg-tc-background-100"
                 }`}
                 onClick={() => {
@@ -221,12 +221,14 @@ export default function TestimonialsSection() {
                 type="button"
               >
                 <span
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 xs:w-3 xs:h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "scale-125" : "bg-tc-border-300"
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 xs:w-4 xs:h-4 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? "scale-110 shadow-md" 
+                      : "scale-100"
                   }`}
                   style={{
                     backgroundColor:
-                      index === currentIndex ? "#1c1c1c" : undefined,
+                      index === currentIndex ? "#1c1c1c" : "#94a3b8",
                   }}
                   aria-hidden="true"
                 />

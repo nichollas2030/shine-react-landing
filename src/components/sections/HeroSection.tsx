@@ -73,53 +73,12 @@ export default function HeroSection() {
               {heroContent.subheadline}
             </motion.p>
 
-            {/* Social Proof - MOBILE OPTIMIZED */}
-            <motion.div
-              className="flex flex-col xs:flex-row xs:flex-wrap gap-3 xs:gap-4 sm:gap-6 mb-6 xs:mb-8 md:mb-10 text-white/90 drop-shadow-md font-secondary font-semibold"
-              style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 15l-5.5 3 1-6.5L0 6l6.5-1L10 0l3.5 5L20 6l-5.5 5.5 1 6.5z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="font-secondary text-xs xs:text-sm sm:text-base font-bold whitespace-nowrap">
-                  {heroContent.trustElements.rating} •{" "}
-                  {heroContent.trustElements.clients}
-                </span>
-              </div>
-
-              <div className="font-secondary text-xs xs:text-sm sm:text-base whitespace-nowrap">
-                <span className="font-bold">
-                  {companyInfo.socialProof.yearsExperience}+ anos
-                </span>{" "}
-                de experiência
-              </div>
-
-              <div className="font-secondary text-xs xs:text-sm sm:text-base whitespace-nowrap">
-                <span className="font-bold">
-                  {companyInfo.socialProof.cleaningsCompleted.toLocaleString()}+
-                </span>{" "}
-                limpezas realizadas
-              </div>
-            </motion.div>
-
             {/* CTAs - MOBILE FIRST DESIGN */}
             <motion.div
               className="flex flex-col sm:flex-row gap-3 xs:gap-4 w-full max-w-lg"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
               <WhatsAppButton
                 size="lg"

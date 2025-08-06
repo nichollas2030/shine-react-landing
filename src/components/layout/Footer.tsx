@@ -116,11 +116,9 @@ export default function Footer() {
             {/* Service Areas */}
             <div>
               <h5 className="font-semibold text-tc-primary-400 mb-2 xs:mb-3 text-sm xs:text-base">{footer.serviceAreas.title}:</h5>
-              <div className="grid grid-cols-2 gap-1 text-xs xs:text-sm text-tc-text-400">
-                {companyInfo.serviceAreas.slice(0, 6).map((area) => (
-                  <div key={area}>• {area}</div>
-                ))}
-              </div>
+              <p className="text-xs xs:text-sm text-tc-text-400">
+                Atendimento de Miami a West Palm Beach
+              </p>
               <p className="text-xs text-tc-text-500 mt-1 xs:mt-2">{footer.serviceAreas.areas}</p>
             </div>
           </motion.div>

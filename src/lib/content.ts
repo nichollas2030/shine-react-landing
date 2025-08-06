@@ -47,31 +47,24 @@ export const COMPANY_INFO = {
 // 🦸‍♂️ SEÇÃO HERO (PRINCIPAL)
 export const HERO_CONTENT = {
   // 🎯 Título Principal - Aparecer grande na tela
-  headline: "Seu Lar Brilhante com a Confiança da Flórida",
+  headline:
+    "Serviço confiável, resultado impecável: de Miami a West Palm Beach",
 
   // 📝 Subtítulo - Descrição do serviço
   subheadline:
     "Limpeza residencial premium para famílias ocupadas e propriedades Airbnb - Atendemos de Miami até West Palm Beach com pontualidade e atenção aos detalhes",
 
   // 🔘 Texto do Botão Principal
-  ctaText: "Agende via WhatsApp",
+  ctaText: "Agende Agora",
 
   // 🔘 Texto do Botão Secundário
   secondaryCtaText: "Ver Serviços",
-
-  // ⭐ Elementos de Confiança (aparecem embaixo do título)
-  trustElements: {
-    rating: "5.0",
-    clients: `${COMPANY_INFO.socialProof.happyClients}+ clientes`,
-    experience: `${COMPANY_INFO.socialProof.yearsExperience}+ anos de experiência`,
-    completed: `${COMPANY_INFO.socialProof.cleaningsCompleted.toLocaleString()}+ limpezas realizadas`,
-  },
 } as const;
 
 // 🛠️ SEÇÃO DE SERVIÇOS
 export const SERVICES_CONTENT = {
   // 📋 Título da Seção
-  sectionTitle: "Nossos Serviços Especializados",
+  sectionTitle: "Nossos Serviços",
 
   // 📝 Descrição da Seção
   sectionDescription:
@@ -81,55 +74,28 @@ export const SERVICES_CONTENT = {
   services: [
     {
       icon: "home",
-      title: "Limpeza Residencial",
-      description:
-        "Limpeza completa para sua casa, incluindo todos os cômodos com produtos profissionais e técnicas especializadas.",
-      features: [
-        "Limpeza de todos os cômodos",
-        "Produtos profissionais inclusos",
-        "Equipe uniformizada e treinada",
-        "Flexibilidade de horários",
-      ],
-      pricing: "A partir de $80",
+      title: "Limpeza Profunda",
+      description: "Faxina completa e detalhada para todos os ambientes.",
     },
     {
       icon: "calendar",
       title: "Limpeza Regular",
-      description:
-        "Serviço recorrente semanal, quinzenal ou mensal para manter sua casa sempre impecável.",
-      features: [
-        "Agendamento flexível",
-        "Desconto para contratos",
-        "Mesmo time dedicado",
-        "Relatório de limpeza",
-      ],
-      pricing: "Desconto até 15%",
+      description: "Limpeza leve para manter a casa sempre em ordem.",
     },
     {
       icon: "sparkles",
-      title: "Limpeza Pós-Obras",
-      description:
-        "Remoção completa de poeira, detritos e resíduos após reformas ou construções.",
-      features: [
-        "Equipamentos especializados",
-        "Limpeza profunda",
-        "Remoção de detritos",
-        "Resultado final impecável",
-      ],
-      pricing: "Orçamento personalizado",
+      title: "Pós-Obra",
+      description: "Remoção de pó e resíduos após reformas ou construções.",
     },
     {
       icon: "hammer",
-      title: "Airbnb & Imóveis",
-      description:
-        "Limpeza especializada para propriedades de aluguel por temporada e imóveis comerciais.",
-      features: [
-        "Limpeza entre hóspedes",
-        "Check-list completo",
-        "Disponibilidade 7 dias",
-        "Relatório com fotos",
-      ],
-      pricing: "A partir de $120",
+      title: "Limpeza de Airbnb",
+      description: "Limpezas rápidas e caprichadas entre uma reserva e outra.",
+    },
+    {
+      icon: "truck",
+      title: "Limpeza de Mudança",
+      description: "Ideal para quem está se mudando — antes da entrega ou da entrada no imóvel.",
     },
   ],
 

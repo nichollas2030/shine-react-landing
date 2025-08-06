@@ -74,6 +74,21 @@ const ServiceIcon = ({
         />
       </svg>
     ),
+    truck: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"
+        />
+      </svg>
+    ),
   };
 
   return icons[icon as keyof typeof icons] || icons.calendar;
@@ -120,96 +135,125 @@ export default function ServicesGrid() {
           </p>
         </motion.div>
 
-        {/* Services Grid - 2x2 Desktop, Vertical Mobile */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {servicesContent.services.map((service, index) => (
-            <motion.div key={index} variants={itemVariants} className="group">
-              <div className="card-service h-full">
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: "#1c1c1c" }}
-                >
-                  <ServiceIcon
-                    icon={service.icon}
-                    className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 text-white"
-                  />
-                </div>
-
-                {/* Content */}
-                <h3
-                  className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300"
-                  style={{ color: "#1c1c1c" }}
-                >
-                  {service.title}
-                </h3>
-
-                <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-4 xs:mb-5 leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-2 xs:space-y-3 mb-5 xs:mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="font-secondary flex items-center text-xs xs:text-sm text-tc-text-700"
-                    >
-                      <svg
-                        className="w-3 h-3 xs:w-4 xs:h-4 mr-2 flex-shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        style={{ color: "#1c1c1c" }}
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Pricing */}
-                {service.pricing && (
+        {/* Services Grid - 4 cards em 2x2 + 1 centralizado */}
+        <div className="max-w-5xl mx-auto">
+          {/* Primeiros 4 cards em grid 2x2 */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-10 lg:mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {servicesContent.services.slice(0, 4).map((service, index) => (
+              <motion.div key={index} variants={itemVariants} className="group">
+                <div className="card-service h-full">
+                  {/* Icon */}
                   <div
-                    className="font-secondary font-semibold mb-4 xs:mb-5 text-sm xs:text-base"
+                    className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: "#1c1c1c" }}
+                  >
+                    <ServiceIcon
+                      icon={service.icon}
+                      className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 text-white"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <h3
+                    className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300"
                     style={{ color: "#1c1c1c" }}
                   >
-                    {service.pricing}
-                  </div>
-                )}
+                    {service.title}
+                  </h3>
 
-                {/* CTA */}
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm"
-                  style={{
-                    backgroundColor: "#1c1c1c",
-                    borderColor: "#1c1c1c",
-                  }}
-                  onClick={() =>
-                    openWhatsApp(
-                      "custom",
-                      `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`
-                    )
-                  }
-                >
-                  Solicitar Orçamento
-                </Button>
-              </div>
+                  <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-5 xs:mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {/* CTA */}
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm"
+                    style={{
+                      backgroundColor: "#1c1c1c",
+                      borderColor: "#1c1c1c",
+                    }}
+                    onClick={() =>
+                      openWhatsApp(
+                        "custom",
+                        `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`
+                      )
+                    }
+                  >
+                    Solicitar Orçamento
+                  </Button>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Quinto card centralizado */}
+          {servicesContent.services.length > 4 && (
+            <motion.div
+              className="flex justify-center"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                variants={itemVariants} 
+                className="group w-full max-w-md"
+              >
+                <div className="card-service h-full">
+                  {/* Icon */}
+                  <div
+                    className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: "#1c1c1c" }}
+                  >
+                    <ServiceIcon
+                      icon={servicesContent.services[4].icon}
+                      className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 text-white"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <h3
+                    className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300"
+                    style={{ color: "#1c1c1c" }}
+                  >
+                    {servicesContent.services[4].title}
+                  </h3>
+
+                  <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-5 xs:mb-6 leading-relaxed">
+                    {servicesContent.services[4].description}
+                  </p>
+
+                  {/* CTA */}
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm"
+                    style={{
+                      backgroundColor: "#1c1c1c",
+                      borderColor: "#1c1c1c",
+                    }}
+                    onClick={() =>
+                      openWhatsApp(
+                        "custom",
+                        `Olá! Tenho interesse no serviço de ${servicesContent.services[4].title}. Gostaria de solicitar um orçamento.`
+                      )
+                    }
+                  >
+                    Solicitar Orçamento
+                  </Button>
+                </div>
+              </motion.div>
             </motion.div>
-          ))}
-        </motion.div>
+          )}
+        </div>
 
         {/* Bottom CTA */}
         <motion.div

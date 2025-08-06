@@ -167,13 +167,6 @@ export const TESTIMONIALS_CONTENT = {
       rating: 5,
     },
     {
-      author: "Thierry D.",
-      date: "Outubro, 2023",
-      quote:
-        "A great professional, performs everything with excellence and very reliable.",
-      rating: 5,
-    },
-    {
       author: "Kay Muller-Thym",
       date: "Junho, 2025",
       quote:

@@ -95,7 +95,8 @@ export const SERVICES_CONTENT = {
     {
       icon: "truck",
       title: "Limpeza de Mudança",
-      description: "Ideal para quem está se mudando — antes da entrega ou da entrada no imóvel.",
+      description:
+        "Ideal para quem está se mudando — antes da entrega ou da entrada no imóvel.",
     },
   ],
 
@@ -118,28 +119,80 @@ export const TESTIMONIALS_CONTENT = {
   // ⭐ Lista de Depoimentos
   testimonials: [
     {
+      author: "Priyanka S.",
+      date: "Dezembro, 2023",
       quote:
-        "A TC Shine transformou completamente a limpeza da nossa casa. São pontuais, detalhistas e usam produtos de qualidade. Recomendo sem hesitar!",
-      author: "Maria Silva",
-      location: "Boca Raton, FL",
+        "Josie arrived on time; she brought her own supplies and did an amazing job. The house looks neat and smells great! Thanks.",
       rating: 5,
-      date: "Dezembro 2024",
     },
     {
-      quote:
-        "Serviço impecável para nosso Airbnb. A equipe é super profissional e sempre deixa tudo perfeito para os próximos hóspedes. Parceria de confiança!",
-      author: "Carlos Rodriguez",
-      location: "Miami Beach, FL",
+      author: "Alex r.",
+      date: "Novembro, 2023",
+      quote: "Great experience! Will be using from now on!",
       rating: 5,
-      date: "Janeiro 2025",
     },
     {
+      author: "Sam M.",
+      date: "Novembro, 2023",
       quote:
-        "Depois da reforma da cozinha, a TC Shine fez uma limpeza pós-obra incrível. Removeram toda a poeira e deixaram tudo brilhando. Excelente trabalho!",
-      author: "Ana Johnson",
-      location: "Fort Lauderdale, FL",
+        "Thaiz did a great an amazing cleaning my home. Definitely, recommend her work to others seeking a professional cleaning person. She was friendly, did a complete and thorough job and brought her own supplies. Look forward to working with her again.",
       rating: 5,
-      date: "Novembro 2024",
+    },
+    {
+      author: "Christopher C.",
+      date: "Outubro, 2023",
+      quote:
+        "Thaiz is great! She was right on time, well prepared and did a very thorough and professional job. My place looks and smells amazing! Highly recommended!!",
+      rating: 5,
+    },
+    {
+      author: "Alfredo M.",
+      date: "Outubro, 2023",
+      quote:
+        "Thaiz provides white glove cleaning services that make my home feel like new every time. She is thorough, detail oriented and dedicated. Thaiz is very self aware and always tries to do her work without causing too much intrusions or getting in the way. This is perfect because I work from home and constantly on calls. Even with my home's busy schedule, Thaiz is very accommodating, punctual and responsive to cleaning requests.",
+      rating: 5,
+    },
+    {
+      author: "Krystal D.",
+      date: "Outubro, 2023",
+      quote:
+        "Thaiz is amazing! Her work is exceptional- both with cleaning and organization. I appreciate her so much and highly recommend her!",
+      rating: 5,
+    },
+    {
+      author: "Craig W.",
+      date: "Outubro, 2023",
+      quote:
+        "She is a perfectionist with a keen eye for making the cleaning experience special. Making the beds look beautiful and doing fun designs with toilet paper and paper towels are just a few. Most important, she is a joy to have around.",
+      rating: 5,
+    },
+    {
+      author: "Thierry D.",
+      date: "Outubro, 2023",
+      quote:
+        "A great professional, performs everything with excellence and very reliable.",
+      rating: 5,
+    },
+    {
+      author: "Kay Muller-Thym",
+      date: "Junho, 2025",
+      quote:
+        "If you're searching for a reliable and trustworthy cleaning service, I highly recommend Thaiz Costa! She was referred to me by my neighbor, and I couldn't be happier. Thaiz is very accommodating and professional.",
+      rating: 5,
+    },
+    {
+      author: "Pri Ks",
+      date: "Junho, 2025",
+      quote:
+        "Highly recommend this cleaning service!! Very efficient, trustworthy and great work ethic. We've had a great experience with them consistently.",
+      rating: 5,
+    },
+    {
+      author: "Sam Mathew",
+      date: "Junho, 2025",
+      quote:
+        "I can't say enough wonderful things about Thaiz! She is hands-down the best house cleaner I've ever worked with. Not only is she incredibly thorough and detail-oriented, but she brings such a positive energy into our home every time she visits. Every corner sparkles, and she always finds the little things others miss — baseboards, under furniture, even organizing spaces I didn't think of. She is professional, punctual, trustworthy, and goes above and beyond with every visit. Whether it's a routine clean or a deep refresh, I know I can count on her to make our home look and feel amazing. If you're looking for someone who truly takes pride in their work and treats your home with care and respect, look no further. Thaiz is a great cleaner and I'm so grateful to have found her!",
+      rating: 5,
     },
   ],
 

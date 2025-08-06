@@ -203,8 +203,8 @@ export default function ServicesGrid() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.div 
-                variants={itemVariants} 
+              <motion.div
+                variants={itemVariants}
                 className="group w-full max-w-md"
               >
                 <div className="card-service h-full">

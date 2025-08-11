@@ -7,27 +7,55 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import GallerySection from '@/components/sections/GallerySection'
 import ContactForm from '@/components/sections/ContactForm'
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
+import SEOConfig from '@/components/seo/SEOConfig'
+import { useSEONavigation, useWebVitalsTracking } from '@/hooks/useSEONavigation'
+import { useLocation } from 'react-router-dom'
 
 const Index = () => {
+  const location = useLocation();
+  const { getCurrentSection } = useSEONavigation();
+  
+  // Initialize web vitals tracking for SEO
+  useWebVitalsTracking();
+  
+  // Get current section for dynamic SEO
+  const currentSection = getCurrentSection();
+  
+  // Determine page type based on URL
+  const getPageType = (): 'home' | 'services' | 'portfolio' | 'testimonials' | 'contact' | 'about' => {
+    if (location.pathname.includes('/services') || location.pathname.includes('/our-services')) return 'services';
+    if (location.pathname.includes('/portfolio') || location.pathname.includes('/our-work')) return 'portfolio';
+    if (location.pathname.includes('/testimonials') || location.pathname.includes('/client-reviews')) return 'testimonials';
+    if (location.pathname.includes('/contact') || location.pathname.includes('/get-quote')) return 'contact';
+    if (location.pathname.includes('/about')) return 'about';
+    return 'home';
+  };
+
   return (
     <div className="min-h-screen">
+      <SEOConfig 
+        page={getPageType()}
+        title={currentSection.title}
+        description={currentSection.description}
+        keywords={currentSection.keywords}
+      />
       <Header />
       <main>
-        <div id="hero">
+        <section id="hero">
           <HeroSection />
-        </div>
-        <div id="services">
+        </section>
+        <section id="services">
           <ServicesGrid />
-        </div>
-        <div id="gallery">
+        </section>
+        <section id="gallery">
           <GallerySection />
-        </div>
-        <div id="testimonials">
+        </section>
+        <section id="testimonials">
           <TestimonialsSection />
-        </div>
-        <div id="contact">
+        </section>
+        <section id="contact">
           <ContactForm />
-        </div>
+        </section>
       </main>
       <Footer />
       <WhatsAppFloat />

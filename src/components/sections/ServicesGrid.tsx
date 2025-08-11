@@ -135,17 +135,20 @@ export default function ServicesGrid() {
           </p>
         </motion.div>
 
-        {/* Services Grid - 4 cards em 2x2 + 1 centralizado */}
-        <div className="max-w-5xl mx-auto">
-          {/* Primeiros 4 cards em grid 2x2 */}
+        {/* Services Grid - Layout 3x2 uniforme no desktop */}
+        <div className="max-w-6xl mx-auto">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-10 lg:mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 auto-rows-fr"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            style={{
+              // No desktop, garantir que temos exatamente 2 linhas
+              gridTemplateRows: "repeat(2, 1fr)",
+            }}
           >
-            {servicesContent.services.slice(0, 4).map((service, index) => (
+            {servicesContent.services.map((service, index) => (
               <motion.div key={index} variants={itemVariants} className="group">
                 <div className="card-service h-full">
                   {/* Icon */}
@@ -196,69 +199,6 @@ export default function ServicesGrid() {
               </motion.div>
             ))}
           </motion.div>
-
-          {/* Quinto card centralizado */}
-          {servicesContent.services.length > 4 && (
-            <motion.div
-              className="flex justify-center"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.div
-                variants={itemVariants}
-                className="group w-full max-w-md"
-              >
-                <div className="card-service h-full">
-                  {/* Icon */}
-                  <div
-                    className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300"
-                    style={{ backgroundColor: "#1c1c1c" }}
-                  >
-                    <ServiceIcon
-                      icon={servicesContent.services[4].icon}
-                      className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 text-white"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <h3
-                    className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300"
-                    style={{ color: "#1c1c1c" }}
-                  >
-                    {servicesContent.services[4].title}
-                  </h3>
-
-                  <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-5 xs:mb-6 leading-relaxed">
-                    {servicesContent.services[4].description}
-                  </p>
-
-                  {/* CTA */}
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm"
-                    style={{
-                      backgroundColor: "#1c1c1c",
-                      borderColor: "#1c1c1c",
-                    }}
-                    onClick={() =>
-                      openWhatsApp(
-                        "custom",
-                        servicesContent.buttons.requestQuoteMessage.replace(
-                          "{serviceName}",
-                          servicesContent.services[4].title
-                        )
-                      )
-                    }
-                  >
-                    {servicesContent.buttons.requestQuote}
-                  </Button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
         </div>
 
         {/* Bottom CTA */}

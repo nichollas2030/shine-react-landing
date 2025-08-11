@@ -1,14 +1,14 @@
 {
-  "name": "TC Shine Cleaning - Limpeza Residencial Premium",
-  "short_name": "TC Shine",
-  "description": "Serviços de limpeza residencial premium para famílias ocupadas e propriedades Airbnb na Flórida",
+  "name": "Shine Digital Solutions - Professional Landing Pages",
+  "short_name": "Shine Digital",
+  "description": "Professional landing page solutions for US businesses. High-converting designs that transform your digital presence.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#667eea",
-  "theme_color": "#667eea",
+  "background_color": "#1c1c1c",
+  "theme_color": "#1c1c1c",
   "orientation": "portrait-primary",
-  "categories": ["lifestyle", "business"],
-  "lang": "pt-BR",
+  "categories": ["business", "productivity", "marketing"],
+  "lang": "en-US",
   "dir": "ltr",
   "icons": [
     {

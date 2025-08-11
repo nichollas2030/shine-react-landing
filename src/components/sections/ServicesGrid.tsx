@@ -183,11 +183,14 @@ export default function ServicesGrid() {
                     onClick={() =>
                       openWhatsApp(
                         "custom",
-                        `Olá! Tenho interesse no serviço de ${service.title}. Gostaria de solicitar um orçamento.`
+                        servicesContent.buttons.requestQuoteMessage.replace(
+                          "{serviceName}",
+                          service.title
+                        )
                       )
                     }
                   >
-                    Solicitar Orçamento
+                    {servicesContent.buttons.requestQuote}
                   </Button>
                 </div>
               </motion.div>
@@ -243,11 +246,14 @@ export default function ServicesGrid() {
                     onClick={() =>
                       openWhatsApp(
                         "custom",
-                        `Olá! Tenho interesse no serviço de ${servicesContent.services[4].title}. Gostaria de solicitar um orçamento.`
+                        servicesContent.buttons.requestQuoteMessage.replace(
+                          "{serviceName}",
+                          servicesContent.services[4].title
+                        )
                       )
                     }
                   >
-                    Solicitar Orçamento
+                    {servicesContent.buttons.requestQuote}
                   </Button>
                 </div>
               </motion.div>

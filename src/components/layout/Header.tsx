@@ -307,7 +307,7 @@ export default function Header() {
                   {item.label}
                 </button>
               ))}
-              
+
               {/* Número de contato no mobile - MESMO ESPAÇAMENTO */}
               <a
                 href={`tel:${companyInfo.phone}`}

@@ -1,5 +1,5 @@
 /**
- * 🎯 SISTEMA DE CONTEÚDO DINÂMICO CENTRALIZADO
+ * 🎯 SISTEMA DE CONTEÚDO DINÂMICO CENTRALIZADO - BACKUP
  *
  * ✅ MODIFICAÇÃO FÁCIL: Altere qualquer texto da landing page aqui
  * ✅ SEM TOCAR COMPONENTES: Zero modificação em arquivos .tsx
@@ -16,7 +16,7 @@
 // 🏢 INFORMAÇÕES DA EMPRESA
 export const COMPANY_INFO = {
   name: "TC Shine Cleaning Services",
-  tagline: "Confiança e Brilho para Seu Lar",
+  tagline: "Confidence and Brilliance for Your Home",
   phone: "(561) 523-1300",
   whatsappNumber: "15615231300",
   email: "contato@tcshine.com",
@@ -48,73 +48,81 @@ export const COMPANY_INFO = {
 export const HERO_CONTENT = {
   // 🎯 Título Principal - Aparecer grande na tela
   headline:
-    "Serviço confiável, resultado impecável: de Miami a West Palm Beach",
+    "Reliable service, impeccable results: from Miami to West Palm Beach",
 
   // 📝 Subtítulo - Descrição do serviço
   subheadline:
-    "Limpeza residencial premium para famílias ocupadas e propriedades Airbnb - Atendemos de Miami até West Palm Beach com pontualidade e atenção aos detalhes",
+    "Premium residential cleaning for busy families and Airbnb properties - We serve Miami to West Palm Beach with punctuality and attention to detail",
 
   // 🔘 Texto do Botão Principal
-  ctaText: "Agende Agora",
+  ctaText: "Schedule Now",
 
   // 🔘 Texto do Botão Secundário
-  secondaryCtaText: "Ver Serviços",
+  secondaryCtaText: "See services",
 } as const;
 
 // 🛠️ SEÇÃO DE SERVIÇOS
 export const SERVICES_CONTENT = {
   // 📋 Título da Seção
-  sectionTitle: "Nossos Serviços",
+  sectionTitle: "Our Services",
 
   // 📝 Descrição da Seção
   sectionDescription:
-    "Soluções completas de limpeza para todas as suas necessidades, com qualidade profissional e atenção aos detalhes.",
+    "Complete cleaning solutions for all your needs, with professional quality and attention to detail.",
 
   // 🏠 Lista de Serviços
   services: [
     {
       icon: "home",
-      title: "Limpeza Profunda",
-      description: "Faxina completa e detalhada para todos os ambientes.",
+      title: "Deep Cleaning",
+      description: "Complete and detailed cleaning for all rooms.",
     },
     {
       icon: "calendar",
-      title: "Limpeza Regular",
-      description: "Limpeza leve para manter a casa sempre em ordem.",
+      title: "Regular Cleaning",
+      description: "Light cleaning to keep the house tidy.",
     },
     {
       icon: "sparkles",
-      title: "Pós-Obra",
-      description: "Remoção de pó e resíduos após reformas ou construções.",
+      title: "Post-Construction",
+      description:
+        "Removal of dust and debris after renovations or construction.",
     },
     {
       icon: "hammer",
-      title: "Limpeza de Airbnb",
-      description: "Limpezas rápidas e caprichadas entre uma reserva e outra.",
+      title: "Airbnb cleaning",
+      description: "Quick and thorough cleaning between reservations.",
     },
     {
       icon: "truck",
-      title: "Limpeza de Mudança",
+      title: "Moving Cleaning",
       description:
-        "Ideal para quem está se mudando — antes da entrega ou da entrada no imóvel.",
+        "Ideal for those who are moving — before delivery or moving into the property.",
     },
   ],
 
   // 🎯 Call-to-Action Final da Seção
   bottomCta: {
-    text: "Não encontrou exatamente o que precisa? Oferecemos soluções personalizadas.",
-    buttonText: "Conversar sobre Necessidades Especiais",
+    text: "Can't find exactly what you need? We offer customized solutions.",
+    buttonText: "Talking About Special Needs",
+  },
+
+  // 🔘 Textos dos Botões
+  buttons: {
+    requestQuote: "Request a Quote",
+    requestQuoteMessage:
+      "Hello! I am interested in the {serviceName} service. I would like to request a quote.",
   },
 } as const;
 
 // 💬 SEÇÃO DE DEPOIMENTOS
 export const TESTIMONIALS_CONTENT = {
   // 📋 Título da Seção
-  sectionTitle: "Depoimentos dos Nossos Clientes",
+  sectionTitle: "Testimonials from Our Customers",
 
   // 📝 Descrição da Seção
   sectionDescription:
-    "Confiança construída através de anos de serviço excepcional e relacionamentos duradouros com nossos clientes.",
+    "Trust built through years of exceptional service and lasting relationships with our customers.",
 
   // ⭐ Lista de Depoimentos
   testimonials: [
@@ -193,15 +201,15 @@ export const TESTIMONIALS_CONTENT = {
   trustBadges: [
     {
       icon: "shield",
-      text: "Licenciado & Segurado",
+      text: "Licensed & Insured",
     },
     {
       icon: "check",
-      text: "100% Garantia de Satisfação",
+      text: "100% Satisfaction Guarantee",
     },
     {
       icon: "leaf",
-      text: "Produtos Eco-Friendly",
+      text: "Eco-Friendly Products",
     },
   ],
 } as const;
@@ -209,76 +217,308 @@ export const TESTIMONIALS_CONTENT = {
 // 📞 SEÇÃO DE CONTATO
 export const CONTACT_CONTENT = {
   // 📋 Título da Seção
-  sectionTitle: "Solicite seu Orçamento Gratuito",
+  sectionTitle: "Request your free quote",
 
   // 📝 Descrição da Seção
   sectionDescription:
-    "Entre em contato conosco e receba uma proposta personalizada para suas necessidades de limpeza.",
+    "Contact us and receive a personalized proposal for your cleaning needs.",
 
   // 📝 Labels do Formulário
   formLabels: {
-    name: "Nome Completo",
+    name: "Full Name",
     email: "E-mail",
-    phone: "Telefone",
-    service: "Tipo de Serviço",
-    message: "Mensagem (Opcional)",
-    submit: "Enviar pelo WhatsApp",
+    phone: "Phone",
+    service: "Type of Service",
+    message: "Message (Optional)",
+    submit: "Send via WhatsApp",
+  },
+
+  // 🏷️ Placeholders do Formulário
+  formPlaceholders: {
+    name: "Your full name",
+    email: "your@email.com",
+    service: "Select a service...",
+    message:
+      "E.g.: 3-bedroom house, 2 bathrooms. I need cleaning every two weeks. I have pets at home.",
+  },
+
+  // 🧹 Opções de Serviços
+  serviceOptions: [
+    "Regular Cleaning (Weekly/Biweekly)",
+    "Deep Cleaning",
+    "Post-Construction Cleaning",
+    "Cleaning for Airbnb",
+    "Customized Solution",
+  ],
+
+  // ⚠️ Mensagens de Erro
+  errorMessages: {
+    name: "Name must be at least 2 characters long",
+    email: "Please enter a valid email address",
+    service: "Please select a service",
+  },
+
+  // 🔄 Estados de Loading
+  loadingStates: {
+    submitting: "Sending...",
+    success: "Form submitted successfully!",
+    error: "Error sending form:",
+  },
+
+  // 💬 Template da Mensagem WhatsApp
+  whatsappTemplate: {
+    header: "🏠 *New Quote Request - TC Shine Cleaning*",
+    fields: {
+      name: "👤 *Name:*",
+      email: "📧 *Email:*",
+      service: "🧹 *Service:*",
+      message: "📝 *Details:*",
+    },
+    footer: "_Sent via tcshine.com website_",
   },
 
   // 📍 Informações de Contato
   contactInfo: {
-    title: "Informações de Contato",
-    description:
-      "Estamos prontos para atender você com excelência e pontualidade.",
-    areas: "Atendimento em toda região metropolitana de Miami",
+    title: "Contact Information",
+    description: "We are ready to serve you with excellence and punctuality",
+    areas: "Service throughout the Miami metropolitan area",
   },
 
-  // 🕒 Horários
-  schedule: {
-    title: "Horário de Atendimento",
-    hours: [
-      "Segunda a Sexta: 7:00 - 19:00",
-      "Sábado: 8:00 - 16:00",
-      "Domingo: 9:00 - 15:00",
-      "Emergências: 24/7",
+  // 🗺️ Áreas de Atendimento
+  serviceAreas: {
+    title: "Areas of Service",
+    description: "Serving Miami to West Palm Beach",
+    areas: [
+      "Miami",
+      "Miami Beach",
+      "Fort Lauderdale",
+      "Boca Raton",
+      "Coral Gables",
+      "Aventura",
+      "West Palm Beach",
+      "Hollywood",
     ],
+  },
+
+  // 🕒 Horários de Funcionamento
+  businessHours: {
+    title: "Office Hours",
+    schedule: [{ day: "Monday - Friday:", hours: "7:00 AM - 7:00 PM" }],
+  },
+
+  // 🕒 Horários (formato original mantido para compatibilidade)
+  schedule: {
+    title: "Office Hours",
+    hours: ["Monday - Saturday: 7:00 a.m. - 7:00 p.m."],
   },
 } as const;
 
 // 🖼️ SEÇÃO GALERIA
 export const GALLERY_CONTENT = {
   // 📋 Título da Seção
-  sectionTitle: "Nossos Trabalhos",
+  sectionTitle: "Our Completed Projects",
 
   // 📝 Descrição da Seção
   sectionDescription:
-    "Veja a qualidade do nosso trabalho através dos resultados que entregamos para nossos clientes.",
+    "See the quality and excellence of our services through real photos of our professional cleaning work.",
+
+  // 🔄 Estados de Carregamento
+  loading: {
+    text: "Loading image...",
+    placeholder: {
+      title: "Add Your Photos",
+      description: "Paste your photos into the public/images/gallery/ folder. ",
+      alt: "Placeholder for photo gallery",
+    },
+  },
 
   // 🎯 Call-to-Action
   cta: {
-    text: "Gostou do que viu? Solicite seu orçamento personalizado agora mesmo!",
-    buttonText: "Solicitar Orçamento Gratuito",
+    text: "Like what you see? Request your personalized quote now!",
+    buttonText: "Request a Free Quote",
   },
+
+  // 🎛️ Controles de Navegação
+  navigation: {
+    previousLabel: "Ver foto anterior",
+    nextLabel: "Ver próxima foto",
+    galleryLabel: "Navegação de galeria",
+    photoCounter: "Ver foto {current} de {total}",
+  },
+
+  // 📊 Estatísticas da Galeria
+  stats: [
+    {
+      icon: "camera",
+      text: "Real Photos of the Work",
+    },
+    {
+      icon: "check",
+      text: "Proven Results",
+    },
+    {
+      icon: "star",
+      text: "Standard of Excellence",
+    },
+  ],
+
+  // 🖼️ Metadados das Imagens
+  imageDescriptions: {
+    // Imagens reais da pasta
+    "imagem_ladind_page (2)": {
+      title: "Exceptional Quality",
+      description: "Standard of excellence in every detail",
+      alt: "Demonstration of exceptional quality TC Shine",
+    },
+    "imagem_ladind_page (5)": {
+      title: "Flawless Results",
+      description: "Satisfaction guaranteed on all services",
+      alt: "Impeccable cleaning results with TC Shine",
+    },
+    "imagem_ladind_page (8)": {
+      title: "Complete Sanitization",
+      description: "Completely sanitized and safe environment",
+      alt: "HComplete cleaning performed by TC Shine",
+    },
+    "imagem_ladind_page (10)": {
+      title: "Professional Standard",
+      description: "Professional standard cleaning",
+      alt: "TC Shine professional cleaning standard",
+    },
+    "imagem_ladind_page (47)": {
+      title: "Renovated Environment",
+      description: "Complete renovation of the environment",
+      alt: "Refreshed environment after professional cleaning by TC Shine",
+    },
+    "imagem_ladind_page (48)": {
+      title: "Specialized Cleaning",
+      description: "Specialized cleaning techniques",
+      alt: "Specialized cleaning performed by TC Shine",
+    },
+    "imagem_ladind_page (51)": {
+      title: "Premium Care",
+      description: "Premium care in every detail",
+      alt: "Premium care demonstrated by TC Shine",
+    },
+    "imagem_ladind_page (52)": {
+      title: "Professional Result",
+      description: "Guaranteed professional results",
+      alt: "Professional cleaning results with TC Shine",
+    },
+    "imagem_ladind_page (55)": {
+      title: "Perfection in Cleaning",
+      description: "The perfection you deserve",
+      alt: "Perfection in cleaning demonstrated by TC Shine",
+    },
+    "imagem_lading_page (1)": {
+      title: "Proven Excellence",
+      description: "Proven excellence in every project",
+      alt: "Proven excellence of TC Shine services",
+    },
+    "imagem_lading_page (3)": {
+      title: "Total Satisfaction",
+      description: "Total customer satisfaction",
+      alt: "Total satisfaction demonstrated by TC Shine customers",
+    },
+    // Fallbacks genéricos
+    "before-after": {
+      title: "Complete Transformation",
+      description: "Before and after our professional service",
+      alt: "Comparison before and after professional cleaning",
+    },
+    cozinha: {
+      title: "Impeccable Cuisine",
+      description: "Clean and organized kitchen",
+      alt: "Kitchen after professional cleaning - Clean countertops and appliances",
+    },
+    banheiro: {
+      title: "Professional Bathroom",
+      description: "Sanitized and disinfected bathroom",
+      alt: "Bathroom after professional cleaning - Sparkling tiles and fixtures",
+    },
+    sala: {
+      title: "Living Room",
+      description: "Cozy and clean environment",
+      alt: "Living room after cleaning - Clean furniture and floor",
+    },
+    quarto: {
+      title: "Organized Room",
+      description: "Clean and airy room",
+      alt: "Room after professional cleaning - Organized and clean",
+    },
+    escritorio: {
+      title: "Professional Office",
+      description: "Clean and organized work environment",
+      alt: "Office after professional cleaning",
+    },
+    varanda: {
+      title: "Outdoor Area",
+      description: "Sanitized outdoor spaces",
+      alt: "Outdoor area after cleaning - Clean balcony or yard",
+    },
+    casa: {
+      title: "Complete House",
+      description: "Impeccable results in residential cleaning",
+      alt: "Professional residential cleaning - Clean house after service",
+    },
+    apartamento: {
+      title: "Clean Apartment",
+      description: "Apartment completely sanitized",
+      alt: "Apartment after thorough professional cleaning",
+    },
+    comercial: {
+      title: "Commercial Cleaning",
+      description: "Professionally cleaned commercial environment",
+      alt: "Commercial space after professional cleaning",
+    },
+  },
+
+  // 🏷️ Títulos e Descrições Fallback
+  fallbackTitles: [
+    "Complete Residential Cleaning",
+    "Professionally Clean Kitchen",
+    "Impeccable Bathroom",
+    "Clean Living Room",
+    "Organized Room",
+    "Clean Outdoor Area",
+    "Professional Office",
+    "Complete House",
+    "Clean Apartment",
+    "Commercial Environment",
+  ],
+
+  fallbackDescriptions: [
+    "Impeccable results in residential cleaning",
+    "Clean and organized kitchen",
+    "Sanitized and disinfected bathroom",
+    "Cozy and clean environment",
+    "Clean and airy room",
+    "Sanitized outdoor spaces",
+    "Organized work environment",
+    "House completely sanitized",
+    "Clean and airy apartment",
+    "Professional commercial space",
+  ],
 } as const;
 
 // 🔗 NAVEGAÇÃO DO SITE
 export const NAVIGATION = {
   // 📱 Menu Principal
   menuItems: [
-    { id: "home", label: "Início" },
-    { id: "services", label: "Serviços" },
-    { id: "gallery", label: "Galeria" },
-    { id: "testimonials", label: "Depoimentos" },
-    { id: "contact", label: "Contato" },
+    { id: "home", label: "Home" },
+    { id: "services", label: "Services" },
+    { id: "gallery", label: "Gallery" },
+    { id: "testimonials", label: "Testimonials" },
+    { id: "contact", label: "Contact" },
   ],
 
   // 📱 Menu Mobile (com ícones)
   mobileMenuItems: [
-    { id: "home", label: "Início", icon: "home" },
-    { id: "services", label: "Serviços", icon: "sparkles" },
-    { id: "gallery", label: "Galeria", icon: "camera" },
-    { id: "testimonials", label: "Depoimentos", icon: "star" },
-    { id: "contact", label: "Contato", icon: "phone" },
+    { id: "home", label: "Home", icon: "home" },
+    { id: "services", label: "Services", icon: "sparkles" },
+    { id: "gallery", label: "Gallery", icon: "camera" },
+    { id: "testimonials", label: "Testimonials", icon: "star" },
+    { id: "contact", label: "Contact", icon: "phone" },
   ],
 } as const;
 
@@ -286,64 +526,60 @@ export const NAVIGATION = {
 export const FOOTER_CONTENT = {
   // 📝 Descrição da Empresa
   companyDescription:
-    "Sua parceira de confiança em limpeza residencial no sul da Flórida. Transformamos casas em lares brilhantes com atenção aos detalhes e carinho especial.",
+    "Your trusted partner in residential cleaning in South Florida. We transform houses into sparkling homes with attention to detail and special care.",
 
   // 🔗 Links Rápidos
   quickLinks: {
-    title: "Links Rápidos",
+    title: "Quick Links",
     links: [
-      { label: "Início", id: "hero" },
-      { label: "Nossos Serviços", id: "services" },
-      { label: "Galeria", id: "gallery" },
-      { label: "Depoimentos", id: "testimonials" },
-      { label: "Solicitar Orçamento", id: "contact" },
+      { label: "Home", id: "hero" },
+      { label: "Our Services", id: "services" },
+      { label: "Gallery", id: "gallery" },
+      { label: "Testimonials", id: "testimonials" },
+      { label: "Request a Quote", id: "contact" },
     ],
   },
 
   // 🛠️ Serviços
   services: {
-    title: "Nossos Serviços",
+    title: "Our Services",
     list: [
-      "Limpeza Regular",
-      "Limpeza Profunda",
-      "Limpeza Pós-Obra",
-      "Limpeza para Airbnb",
-      "Soluções Personalizadas",
+      "Regular Cleaning",
+      "Deep Cleaning",
+      "Post-Construction Cleaning",
+      "Airbnb Cleaning",
+      "Custom Solutions",
     ],
   },
 
   // 📞 Informações de Contato
   contactInfo: {
-    title: "Contato & Áreas",
+    title: "Contact & Areas",
   },
 
   // 🏘️ Áreas de Atendimento
   serviceAreas: {
-    title: "Atendemos",
-    areas: "E região metropolitana",
+    title: "We serve",
+    coverage: "Serving Miami to West Palm Beach",
+    areas: "and the metropolitan area",
   },
 
   // 🕒 Horário de Funcionamento
   businessHours: {
-    title: "Horário de Atendimento",
-    hours: [
-      "Segunda - Sábado: 7:00 - 19:00",
-      "Sábado: 8:00 - 16:00",
-      "Domingo: 9:00 - 15:00",
-      "Emergências: 24/7",
-    ],
+    title: "Office Hours",
+    hours: ["Monday - Saturday: 7:00 AM - 7:00 PM"],
   },
 
   // ⚖️ Copyright
   copyright: `© ${new Date().getFullYear()} ${
     COMPANY_INFO.name
-  }. Todos os direitos reservados.`,
+  }. All rights reserved.`,
 
   // ✅ Features
   features: [
-    { icon: "🛡️", text: "Licenciado & Segurado" },
-    { icon: "✅", text: "Garantia de Satisfação" },
-    { icon: "🌱", text: "Produtos Eco-Friendly" },
+    { icon: "🛡️", text: "Licensed & Insured" },
+    { icon: "✅", text: "Satisfaction Guarantee" },
+    { icon: "🌱", text: "Eco-Friendly Products" },
   ],
 
   // 🔗 Links Legais
@@ -358,39 +594,38 @@ export const FOOTER_CONTENT = {
 export const WHATSAPP_MESSAGES = {
   // 🏠 Serviço Residencial
   residential:
-    "Olá! Gostaria de solicitar um orçamento para limpeza residencial.",
+    "Hello! I would like to request a quote for residential cleaning.",
 
   // 📅 Serviço Regular
-  regular:
-    "Olá! Tenho interesse em um serviço de limpeza regular para minha casa.",
+  regular: "Hello! I am interested in a regular cleaning service for my home.",
 
   // 🏗️ Pós-Obras
   postConstruction:
-    "Olá! Preciso de limpeza pós-obra/reforma. Gostaria de um orçamento.",
+    "Hello! I need post-construction/renovation cleaning. I would like a quote.",
 
   // 🏨 Airbnb
   airbnb:
-    "Olá! Tenho uma propriedade Airbnb e gostaria de orçar limpeza entre hóspedes.",
+    "Hello! I have an Airbnb property and would like to get a quote for cleaning between guests.",
 
   // 🎯 Personalizada
   custom:
-    "Olá! Gostaria de discutir uma solução personalizada de limpeza para minha necessidade específica.",
+    "Hello! I would like to discuss a customized cleaning solution for my specific needs.",
 
   // 📞 Contato Geral
   general:
-    "Olá! Gostaria de saber mais sobre os serviços da TC Shine Cleaning.",
+    "Hello! I would like to know more about TC Shine Cleaning's services.",
 } as const;
 
 // 🌐 SEO E METADADOS
 export const SEO_CONTENT = {
   title: `${COMPANY_INFO.name} - ${COMPANY_INFO.tagline}`,
   description:
-    "Limpeza residencial premium em Miami, Fort Lauderdale e região. Serviços para casas, Airbnb e pós-obras. Orçamento gratuito!",
+    "Expert home, Airbnb, and post-construction cleaning services in Miami, Fort Lauderdale, and Boca Raton. Trusted, reliable, and premium quality. Get your free estimate today!",
   keywords:
-    "limpeza residencial, Miami, Fort Lauderdale, Boca Raton, Airbnb cleaning, house cleaning, pós-obra",
+    "house cleaning Miami, maid service Fort Lauderdale, residential cleaning Boca Raton, Airbnb cleaning service, post-construction cleanup, deep cleaning Florida, home cleaning services",
   author: COMPANY_INFO.name,
   robots: "index, follow",
-  language: "pt-BR",
+  language: "en-US",
   region: "FL, US",
 } as const;
 

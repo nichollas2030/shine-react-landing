@@ -222,9 +222,7 @@ export default function TestimonialsSection() {
               >
                 <span
                   className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 xs:w-4 xs:h-4 rounded-full transition-all duration-300 ${
-                    index === currentIndex 
-                      ? "scale-110 shadow-md" 
-                      : "scale-100"
+                    index === currentIndex ? "scale-110 shadow-md" : "scale-100"
                   }`}
                   style={{
                     backgroundColor:

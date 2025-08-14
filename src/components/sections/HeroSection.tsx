@@ -101,6 +101,17 @@ export default function HeroSection() {
               >
                 {heroContent.secondaryCtaText}
               </Button>
+
+              {/* Botão SMS */}
+              <a
+                href={`sms:+15615231300?body=${encodeURIComponent('Hi, I would like to request a quote!')}`}
+                className="w-full sm:w-auto sm:px-6 min-h-[48px] flex items-center justify-center rounded-lg font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-300 text-sm xs:text-base sm:text-lg"
+                style={{ textAlign: 'center' }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Send SMS
+              </a>
             </motion.div>
           </motion.div>
         </div>

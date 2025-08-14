@@ -79,3 +79,4 @@ export function openWhatsApp(messageKey: keyof typeof SITE_CONTENT.whatsapp, cus
 }
 
 export default useContent
+

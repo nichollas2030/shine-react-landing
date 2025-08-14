@@ -28,6 +28,7 @@ export default function ContactForm() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSmsSubmitting, setIsSmsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
 
   const validateForm = (): boolean => {
@@ -108,12 +109,13 @@ ${contactContent.whatsappTemplate.footer}
     }
   };
 
-  const handleSmsSubmit = async (e: React.FormEvent) => {
+  const handleSmsSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    e.stopPropagation();
 
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
+    setIsSmsSubmitting(true);
 
     try {
       // Simulate form submission
@@ -149,7 +151,7 @@ ${contactContent.whatsappTemplate.footer}
     } catch (error) {
       console.error(contactContent.loadingStates.error, error);
     } finally {
-      setIsSubmitting(false);
+      setIsSmsSubmitting(false);
     }
   };
 
@@ -321,11 +323,11 @@ ${contactContent.whatsappTemplate.footer}
                   type="button"
                   variant="outline"
                   size="full"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || isSmsSubmitting}
                   onClick={handleSmsSubmit}
                   className="justify-center min-h-touch text-sm xs:text-base flex-1 bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700"
                 >
-                  {isSubmitting ? (
+                  {isSmsSubmitting ? (
                     <>
                       <svg
                         className="animate-spin -ml-1 mr-3 h-4 w-4 xs:h-5 xs:w-5 text-white"

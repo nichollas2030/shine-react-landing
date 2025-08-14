@@ -18,7 +18,7 @@ export default function WhatsAppFloat() {
   }, [])
 
   const handleClick = () => {
-    const message = "Olá! Gostaria de solicitar um orçamento para limpeza residencial."
+    const message = "Hi! I would like to request a quote for residential cleaning services."
     window.open(`https://wa.me/15615231300?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer')
   }
 
@@ -34,7 +34,7 @@ export default function WhatsAppFloat() {
             whileTap={{ scale: 0.95 }}
             onClick={handleClick}
             className="min-w-16 min-h-16 w-16 h-16 bg-gradient-to-r from-tc-whatsapp-500 to-tc-whatsapp-600 hover:from-tc-whatsapp-600 hover:to-tc-whatsapp-700 text-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all duration-300 animate-pulse-whatsapp hover:animate-none focus:outline-none focus:ring-4 focus:ring-tc-whatsapp-300 focus:ring-offset-2"
-            aria-label="Conversar no WhatsApp para solicitar orçamento de limpeza"
+            aria-label="Chat on WhatsApp to request a cleaning quote"
             type="button"
           >
             <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

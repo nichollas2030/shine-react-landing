@@ -149,8 +149,8 @@ export default function ServicesGrid() {
             }}
           >
             {servicesContent.services.map((service, index) => (
-              <motion.div key={index} variants={itemVariants} className="group">
-                <div className="card-service h-full">
+              <motion.div key={index} variants={itemVariants} className="group h-full">
+                <div className="card-service h-full flex flex-col">
                   {/* Icon */}
                   <div
                     className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 xs:mb-6 group-hover:scale-110 transition-transform duration-300"
@@ -162,23 +162,25 @@ export default function ServicesGrid() {
                     />
                   </div>
 
-                  {/* Content */}
-                  <h3
-                    className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300"
-                    style={{ color: "#1c1c1c" }}
-                  >
-                    {service.title}
-                  </h3>
+                  {/* Content - flex-grow para empurrar o botão para baixo */}
+                  <div className="flex-grow">
+                    <h3
+                      className="font-heading text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 group-hover:text-tc-primary-700 transition-colors duration-300"
+                      style={{ color: "#1c1c1c" }}
+                    >
+                      {service.title}
+                    </h3>
 
-                  <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-5 xs:mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
+                    <p className="font-secondary text-xs xs:text-sm sm:text-base text-tc-text-600 mb-5 xs:mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
 
-                  {/* CTA */}
+                  {/* CTA - sempre alinhado na parte inferior */}
                   <Button
                     variant="primary"
                     size="sm"
-                    className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm"
+                    className="w-full text-white hover:opacity-90 transition-all duration-300 min-h-touch text-xs xs:text-sm mt-auto"
                     style={{
                       backgroundColor: "#1c1c1c",
                       borderColor: "#1c1c1c",

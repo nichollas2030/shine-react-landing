@@ -108,6 +108,51 @@ ${contactContent.whatsappTemplate.footer}
     }
   };
 
+  const handleSmsSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate form submission
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      // Create SMS message
+      const message = `
+${contactContent.whatsappTemplate.header}
+
+${contactContent.whatsappTemplate.fields.name} ${formData.name}
+${contactContent.whatsappTemplate.fields.email} ${formData.email}
+${contactContent.whatsappTemplate.fields.service} ${formData.service}
+${
+  formData.message
+    ? `${contactContent.whatsappTemplate.fields.message} ${formData.message}`
+    : ""
+}
+
+${contactContent.whatsappTemplate.footer}
+      `.trim();
+
+      // Open SMS with the message
+      window.open(
+        `sms:+15615231300?body=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+
+      // Reset form
+      setFormData({ name: "", email: "", service: "", message: "" });
+      setErrors({});
+
+      console.log(contactContent.loadingStates.success);
+    } catch (error) {
+      console.error(contactContent.loadingStates.error, error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-tc-text-900 text-white">
       <div className="container mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
@@ -234,42 +279,81 @@ ${contactContent.whatsappTemplate.footer}
                 )}
               </div>
 
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                variant="whatsapp"
-                size="full"
-                disabled={isSubmitting}
-                className="justify-center min-h-touch text-sm xs:text-base"
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg
-                      className="animate-spin -ml-1 mr-3 h-4 w-4 xs:h-5 xs:w-5 text-white"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    {contactContent.loadingStates.submitting}
-                  </>
-                ) : (
-                  contactContent.formLabels.submit
-                )}
-              </Button>
+              {/* Submit Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Button
+                  type="submit"
+                  variant="whatsapp"
+                  size="full"
+                  disabled={isSubmitting}
+                  className="justify-center min-h-touch text-sm xs:text-base flex-1"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-4 w-4 xs:h-5 xs:w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      {contactContent.loadingStates.submitting}
+                    </>
+                  ) : (
+                    contactContent.formLabels.submit
+                  )}
+                </Button>
+                
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="full"
+                  disabled={isSubmitting}
+                  onClick={handleSmsSubmit}
+                  className="justify-center min-h-touch text-sm xs:text-base flex-1 bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-4 w-4 xs:h-5 xs:w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    "Send SMS"
+                  )}
+                </Button>
+              </div>
             </form>
           </motion.div>
 

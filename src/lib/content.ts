@@ -25,14 +25,31 @@ export const COMPANY_INFO = {
   serviceAreas: [
     "Miami",
     "Miami Beach",
-    "Fort Lauderdale",
-    "Boca Raton",
-    "Delray Beach",
-    "Boynton Beach",
-    "West Palm Beach",
-    "Coral Gables",
+    "North Miami",
+    "North Miami Beach",
     "Aventura",
+    "Sunny Isles Beach",
+    "Bal Harbour",
+    "Surfside",
     "Hollywood",
+    "Hallandale Beach",
+    "Dania Beach",
+    "Fort Lauderdale",
+    "Lauderdale-by-the-Sea",
+    "Oakland Park",
+    "Wilton Manors",
+    "Pompano Beach",
+    "Lighthouse Point",
+    "Deerfield Beach",
+    "Boca Raton",
+    "Highland Beach",
+    "Delray Beach",
+    "Gulf Stream",
+    "Boynton Beach",
+    "Lake Worth",
+    "Lantana",
+    "Palm Beach",
+    "West Palm Beach",
   ],
 
   // 📊 Prova Social
@@ -294,16 +311,7 @@ export const CONTACT_CONTENT = {
   serviceAreas: {
     title: "Areas of Service",
     description: "Serving Miami to West Palm Beach",
-    areas: [
-      "Miami",
-      "Miami Beach",
-      "Fort Lauderdale",
-      "Boca Raton",
-      "Coral Gables",
-      "Aventura",
-      "West Palm Beach",
-      "Hollywood",
-    ],
+    areas: COMPANY_INFO.serviceAreas,
   },
 
   // 🕒 Horários de Funcionamento
@@ -574,7 +582,7 @@ export const FOOTER_CONTENT = {
   serviceAreas: {
     title: "We serve",
     coverage: "Serving Miami to West Palm Beach",
-    areas: "and the metropolitan area",
+    areas: COMPANY_INFO.serviceAreas.slice(0, 8).join(", ") + " and more",
   },
 
   // 🕒 Horário de Funcionamento

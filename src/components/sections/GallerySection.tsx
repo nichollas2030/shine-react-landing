@@ -397,14 +397,14 @@ export default function GallerySection() {
 
           {/* Dots Indicator - MOBILE FIRST: Tamanho adequado para touch e melhor contraste */}
           <div
-            className="flex justify-center mt-6 xs:mt-8 gap-3 xs:gap-4"
+            className="flex justify-center mt-6 xs:mt-8 gap-1 xs:gap-2 sm:gap-3 px-2"
             role="tablist"
             aria-label={galleryContent.navigation.galleryLabel}
           >
             {galleryImages.map((_, index) => (
               <button
                 key={index}
-                className={`relative min-w-[44px] min-h-[44px] p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
+                className={`relative min-w-[32px] min-h-[32px] xs:min-w-[36px] xs:min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] p-1 xs:p-1.5 sm:p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
                   index === currentIndex
                     ? "bg-tc-primary-100"
                     : "hover:bg-tc-neutral-100"
@@ -421,7 +421,7 @@ export default function GallerySection() {
                 type="button"
               >
                 <span
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 xs:w-4 xs:h-4 rounded-full transition-all duration-300 ${
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
                     index === currentIndex ? "scale-110 shadow-md" : "scale-100"
                   }`}
                   style={{

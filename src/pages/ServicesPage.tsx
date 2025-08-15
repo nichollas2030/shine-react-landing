@@ -2,7 +2,6 @@ import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ServicesGrid from "@/components/sections/ServicesGrid";
-import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import SEOConfig from "@/components/seo/SEOConfig";
 import { motion } from "framer-motion";
 
@@ -122,7 +121,6 @@ const ServicesPage = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppFloat />
     </div>
   );
 };

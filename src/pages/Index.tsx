@@ -2,11 +2,11 @@ import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import GallerySection from "@/components/sections/GallerySection";
 import ContactForm from "@/components/sections/ContactForm";
-import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import SEOConfig from "@/components/seo/SEOConfig";
 import {
   useSEONavigation,
@@ -69,6 +69,9 @@ const Index = () => {
         <section id="hero">
           <HeroSection />
         </section>
+        <section id="about">
+          <AboutSection />
+        </section>
         <section id="services">
           <ServicesGrid />
         </section>
@@ -83,7 +86,6 @@ const Index = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppFloat />
     </div>
   );
 };

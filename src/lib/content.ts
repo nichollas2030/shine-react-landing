@@ -78,6 +78,20 @@ export const HERO_CONTENT = {
   secondaryCtaText: "See services",
 } as const;
 
+// 👥 SEÇÃO ABOUT US
+export const ABOUT_CONTENT = {
+  // 📋 Título da Seção
+  sectionTitle: "About TC Shine Cleaning",
+
+  // 📝 Descrição Principal
+  sectionDescription:
+    "Your trusted cleaning partner in South Florida, delivering excellence since day one.",
+
+  // 📖 Descrição Completa sobre a Empresa
+  description:
+    "Hi there! I'm Thaiz, and I started TC Shine because I believe cleaning is so much more than just making things sparkle. It's about trust - knowing you can leave your home in the hands of someone who genuinely cares. I've always been a bit obsessed with clean, organized spaces that just feel good to be in. You know that feeling when you come home after a long day and everything is exactly how you want it? That's what drives me every single day. My day always starts and ends at home, and there's honestly nothing better than being somewhere that truly feels like your sanctuary. Over the past three years, I've been caring for homes from Miami all the way to West Palm Beach. What makes me most proud isn't just the spaces I've transformed, but the genuine friendships I've built along the way. Some of my clients have become like family - that's just how it happens when you really connect with people. My goal was never just to clean houses. I want you to fall in love with your space all over again. Because at the end of the day, your home isn't just clean - it's the place where you actually want to spend your time, where you feel completely yourself.",
+} as const;
+
 // 🛠️ SEÇÃO DE SERVIÇOS
 export const SERVICES_CONTENT = {
   // 📋 Título da Seção
@@ -526,6 +540,7 @@ export const NAVIGATION = {
   // 📱 Menu Principal
   menuItems: [
     { id: "home", label: "Home" },
+    { id: "about", label: "About us" },
     { id: "services", label: "Services" },
     { id: "gallery", label: "Gallery" },
     { id: "testimonials", label: "Testimonials" },
@@ -535,6 +550,7 @@ export const NAVIGATION = {
   // 📱 Menu Mobile (com ícones)
   mobileMenuItems: [
     { id: "home", label: "Home", icon: "home" },
+    { id: "about", label: "About us", icon: "users" },
     { id: "services", label: "Services", icon: "sparkles" },
     { id: "gallery", label: "Gallery", icon: "camera" },
     { id: "testimonials", label: "Testimonials", icon: "star" },
@@ -664,6 +680,7 @@ export const SEO_CONTENT = {
 export const SITE_CONTENT = {
   company: COMPANY_INFO,
   hero: HERO_CONTENT,
+  about: ABOUT_CONTENT,
   services: SERVICES_CONTENT,
   testimonials: TESTIMONIALS_CONTENT,
   contact: CONTACT_CONTENT,

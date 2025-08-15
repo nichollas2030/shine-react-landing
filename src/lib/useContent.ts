@@ -78,5 +78,17 @@ export function openWhatsApp(messageKey: keyof typeof SITE_CONTENT.whatsapp, cus
   window.open(url, '_blank', 'noopener,noreferrer')
 }
 
+// 🎯 Helper para mensagens específicas do SMS
+export function getSMSUrl(customMessage: string) {
+  const phoneNumber = SITE_CONTENT.company.phone.replace(/\D/g, '') // Remove non-digits
+  return `sms:+1${phoneNumber}?body=${encodeURIComponent(customMessage)}`
+}
+
+// 🎯 Helper para abrir SMS
+export function openSMS(customMessage: string) {
+  const url = getSMSUrl(customMessage)
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
 export default useContent
 

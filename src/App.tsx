@@ -25,6 +25,7 @@ const App = () => (
             <Analytics />
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/home" element={<Index />} />
               <Route path="/services" element={<Index />} />
               <Route path="/portfolio" element={<Index />} />
               <Route path="/testimonials" element={<Index />} />

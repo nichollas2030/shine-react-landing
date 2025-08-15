@@ -27,6 +27,24 @@ export const US_SECTION_ROUTES: SectionRouteConfig[] = [
       "house cleaning services, residential cleaning, commercial cleaning, cleaning service miami, eco-friendly cleaning",
   },
   {
+    id: "hero",
+    path: "/home",
+    title: "Home | TC Shine Cleaning Services",
+    description:
+      "Welcome to TC Shine Cleaning! Premium residential and commercial cleaning services in South Florida. Book your cleaning today!",
+    keywords:
+      "tc shine cleaning home, house cleaning services, residential cleaning, commercial cleaning, cleaning service miami",
+  },
+  {
+    id: "about",
+    path: "/about",
+    title: "About TC Shine Cleaning | Your Trusted Cleaning Partner",
+    description:
+      "Meet Thaiz, founder of TC Shine Cleaning. Over 5 years serving South Florida with professional, eco-friendly cleaning services across 18 cities.",
+    keywords:
+      "about tc shine cleaning, professional cleaning company florida, licensed cleaning service, eco-friendly cleaning south florida",
+  },
+  {
     id: "services",
     path: "/services",
     title: "Our Services | Tailored Cleaning Solutions",

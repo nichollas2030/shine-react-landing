@@ -318,7 +318,7 @@ ${contactContent.whatsappTemplate.footer}
                     contactContent.formLabels.submit
                   )}
                 </Button>
-                
+
                 <Button
                   type="button"
                   variant="outline"
@@ -396,7 +396,9 @@ ${contactContent.whatsappTemplate.footer}
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1 xs:gap-2 text-xs xs:text-sm text-tc-neutral-300">
                 {contactContent.serviceAreas.areas.map((area, index) => (
-                  <div key={index} className="py-1">• {area}</div>
+                  <div key={index} className="py-1">
+                    • {area}
+                  </div>
                 ))}
               </div>
             </div>

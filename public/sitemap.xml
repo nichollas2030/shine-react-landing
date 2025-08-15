@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Homepage -->
+    <!-- Homepage -->
   <url>
     <loc>https://tcshineoasisclean.netlify.app/</loc>
     <xhtml:link rel="alternate" hreflang="en-us" href="https://tcshineoasisclean.netlify.app/" />
@@ -16,6 +16,25 @@
       <image:title>Professional Landing Page Solutions</image:title>
       <image:caption>High-converting landing pages for US businesses</image:caption>
     </image:image>
+  </url>
+
+  <!-- Home Page (Alternative URL) -->
+  <url>
+    <loc>https://tcshineoasisclean.netlify.app/home</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://tcshineoasisclean.netlify.app/home" />
+    <lastmod>2025-08-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About Page -->
+
+  <url>
+    <loc>https://tcshineoasisclean.netlify.app/about</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://tcshineoasisclean.netlify.app/about" />
+    <lastmod>2025-08-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- About Page -->

@@ -1,6 +1,15 @@
 # 🛡️ HEADERS DE SEGURANÇA - TC SHINE CLEANING LANDING PAGE
 # Para usar no Netlify, coloque este arquivo na pasta public como _headers
 
+# 🗺️ SITEMAP E ROBOTS - Headers específicos para SEO
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /*
   # Segurança de Conteúdo
   Content-Security-Policy: default-src 'self'; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://wa.me; frame-ancestors 'none';

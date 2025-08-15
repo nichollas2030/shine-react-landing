@@ -9,7 +9,7 @@
 
 *Landing page moderna e altamente otimizada para serviços de limpeza residencial premium na Flórida*
 
-[🚀 **Demo ao Vivo**](https://cleaningserviceladingpage.netlify.app/) | [📋 **Guia de Deploy**](./QUICK_DEPLOY_GUIDE.md)
+[🚀 **Demo ao Vivo**](https://tcshineoasisclean.netlify.app/) | [📋 **Guia de Deploy**](./QUICK_DEPLOY_GUIDE.md)
 
 </div>
 
@@ -288,7 +288,7 @@ npm run test             # Testes (se configurados)
 Trigger: Push to main branch
 Build: npm run build
 Publish: ./dist
-Domain: cleaningserviceladingpage.netlify.app
+Domain: tcshineoasisclean.netlify.app
 ```
 
 ### **🔧 Variáveis de Ambiente**

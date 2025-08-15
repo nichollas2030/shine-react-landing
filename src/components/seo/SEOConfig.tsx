@@ -22,7 +22,7 @@ const SEOConfig: React.FC<SEOConfigProps> = ({
   keywords = "landing pages usa, business conversion, professional web design, sales funnels, digital marketing, conversion optimization, us business solutions",
   canonicalUrl = typeof window !== "undefined"
     ? window.location.href
-    : "https://cleaningserviceladingpage.netlify.app/",
+    : "https://tcshineoasisclean.netlify.app/",
   ogImage = "/assets/og-image-us.jpg",
   page = "home",
 }) => {

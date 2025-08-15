@@ -99,6 +99,12 @@ export const SERVICES_CONTENT = {
       description:
         "Ideal for those who are moving — before delivery or moving into the property.",
     },
+    {
+      icon: "briefcase",
+      title: "Office Cleaning",
+      description:
+        "Detailed office cleaning to keep your space always organized and sanitized.",
+    },
   ],
 
   // 🎯 Call-to-Action Final da Seção
@@ -303,13 +309,19 @@ export const CONTACT_CONTENT = {
   // 🕒 Horários de Funcionamento
   businessHours: {
     title: "Office Hours",
-    schedule: [{ day: "Monday - Friday:", hours: "7:00 AM - 7:00 PM" }],
+    schedule: [
+      { day: "Monday - Saturday:", hours: "7:00 AM - 7:00 PM" },
+      { day: "Sunday:", hours: "Emergency Service 24/7" },
+    ],
   },
 
   // 🕒 Horários (formato original mantido para compatibilidade)
   schedule: {
     title: "Office Hours",
-    hours: ["Monday - Saturday: 7:00 a.m. - 7:00 p.m."],
+    hours: [
+      "Monday - Saturday: 7:00 a.m. - 7:00 p.m.",
+      "Sunday: Emergency Service 24/7",
+    ],
   },
 } as const;
 
@@ -549,6 +561,7 @@ export const FOOTER_CONTENT = {
       "Post-Construction Cleaning",
       "Airbnb Cleaning",
       "Custom Solutions",
+      "Office Cleaning",
     ],
   },
 
@@ -567,7 +580,10 @@ export const FOOTER_CONTENT = {
   // 🕒 Horário de Funcionamento
   businessHours: {
     title: "Office Hours",
-    hours: ["Monday - Saturday: 7:00 AM - 7:00 PM"],
+    hours: [
+      "Monday - Saturday: 7:00 AM - 7:00 PM",
+      "Sunday: Emergency Service 24/7",
+    ],
   },
 
   // ⚖️ Copyright

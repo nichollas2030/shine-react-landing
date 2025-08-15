@@ -43,10 +43,10 @@ git push origin main
 ### **🔍 Validação Pós-Deploy:**
 ```bash
 # Testar Lighthouse
-npx lighthouse https://cleaningserviceladingpage.netlify.app/ --output=html
+npx lighthouse https://tcshineoasisclean.netlify.app/ --output=html
 
 # Verificar headers de segurança
-curl -I https://cleaningserviceladingpage.netlify.app/
+curl -I https://tcshineoasisclean.netlify.app/
 ```
 
 **STATUS: 🟢 READY TO DEPLOY 🟢**

@@ -89,6 +89,21 @@ const ServiceIcon = ({
         />
       </svg>
     ),
+    briefcase: (
+      <svg
+        className={className}
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 6V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2m8 0V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0h5l-1 12a2 2 0 01-2 2H6a2 2 0 01-2-2L3 6h5m8 0H8m0 0v.01M8 6v6m8-6v.01M16 6v6"
+        />
+      </svg>
+    ),
   };
 
   return icons[icon as keyof typeof icons] || icons.calendar;
@@ -149,7 +164,11 @@ export default function ServicesGrid() {
             }}
           >
             {servicesContent.services.map((service, index) => (
-              <motion.div key={index} variants={itemVariants} className="group h-full">
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="group h-full"
+              >
                 <div className="card-service h-full flex flex-col">
                   {/* Icon */}
                   <div

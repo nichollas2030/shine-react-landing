@@ -24,7 +24,7 @@ Disallow: /_next/
 Disallow: /temp/
 
 # Sitemap location
-Sitemap: https://cleaningserviceladingpage.netlify.app/sitemap.xml
+Sitemap: https://tcshineoasisclean.netlify.app/sitemap.xml
 
 # Host directive for US targeting
-Host: https://cleaningserviceladingpage.netlify.app
+Host: https://tcshineoasisclean.netlify.app

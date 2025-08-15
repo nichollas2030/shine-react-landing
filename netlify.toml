@@ -2,7 +2,20 @@
   publish = "dist"
   command = "npm run build"
 
-# 🚀 LIGHTHOUSE OPTIMIZATION: Compressão e caching otimizados
+# �️ SEO FILES: Headers específicos para sitemap e robots
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# �🚀 LIGHTHOUSE OPTIMIZATION: Compressão e caching otimizados
 [[headers]]
   for = "/*"
   [headers.values]

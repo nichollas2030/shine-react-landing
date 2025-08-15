@@ -5,7 +5,7 @@ const FONT_CACHE_NAME = 'tc-shine-fonts-v1';
 
 // 🔒 SECURITY: Origens permitidas
 const ALLOWED_ORIGINS = [
-  'https://cleaningserviceladingpage.netlify.app',
+  'https://tcshineoasisclean.netlify.app',
   'https://tc-shine-cleaning.netlify.app',
   self.location.origin
 ];

@@ -237,7 +237,11 @@ export default function ServicesGrid() {
             size="lg"
             className="min-h-touch text-sm xs:text-base text-white hover:opacity-90 transition-all duration-300"
             style={{ backgroundColor: "#1c1c1c", borderColor: "#1c1c1c" }}
-            onClick={() => openSMS("Can't find exactly what you need? I'd like to discuss customized cleaning solutions.")}
+            onClick={() =>
+              openSMS(
+                "Can't find exactly what you need? I'd like to discuss customized cleaning solutions."
+              )
+            }
           >
             {servicesContent.bottomCta.buttonText}
           </Button>

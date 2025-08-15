@@ -424,26 +424,6 @@ export const GALLERY_CONTENT = {
       description: "Complete renovation of the environment",
       alt: "Refreshed environment after professional cleaning by TC Shine",
     },
-    "imagem_ladind_page (48)": {
-      title: "Specialized Cleaning",
-      description: "Specialized cleaning techniques",
-      alt: "Specialized cleaning performed by TC Shine",
-    },
-    "imagem_ladind_page (51)": {
-      title: "Premium Care",
-      description: "Premium care in every detail",
-      alt: "Premium care demonstrated by TC Shine",
-    },
-    "imagem_ladind_page (52)": {
-      title: "Professional Result",
-      description: "Guaranteed professional results",
-      alt: "Professional cleaning results with TC Shine",
-    },
-    "imagem_ladind_page (55)": {
-      title: "Perfection in Cleaning",
-      description: "The perfection you deserve",
-      alt: "Perfection in cleaning demonstrated by TC Shine",
-    },
     "imagem_lading_page (1)": {
       title: "Proven Excellence",
       description: "Proven excellence in every project",

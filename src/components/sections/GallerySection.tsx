@@ -44,17 +44,13 @@ const getImageMetadata = (
 
 // 🔥 CARREGAMENTO DINÂMICO DAS IMAGENS
 const loadGalleryImages = (galleryContent: any) => {
-  // 🚨 TODAS AS 11 FOTOS REAIS NA PASTA - Lista atualizada:
+  // 🚨 TODAS AS 7 FOTOS REAIS NA PASTA - Lista atualizada:
   const realImages = [
     "imagem_ladind_page (2).JPG",
     "imagem_ladind_page (5).jpg",
     "imagem_ladind_page (8).JPG",
     "imagem_ladind_page (10).JPG",
     "imagem_ladind_page (47).jpg",
-    "imagem_ladind_page (48).jpg",
-    "imagem_ladind_page (51).jpg",
-    "imagem_ladind_page (52).jpg",
-    "imagem_ladind_page (55).jpg",
     "imagem_lading_page (1).jpg",
     "imagem_lading_page (3).jpg",
   ];

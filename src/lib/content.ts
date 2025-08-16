@@ -419,20 +419,65 @@ export const GALLERY_CONTENT = {
       description: "Professional standard cleaning",
       alt: "TC Shine professional cleaning standard",
     },
-    "imagem_ladind_page (47)": {
-      title: "Renovated Environment",
-      description: "Complete renovation of the environment",
-      alt: "Refreshed environment after professional cleaning by TC Shine",
-    },
     "imagem_lading_page (1)": {
       title: "Proven Excellence",
       description: "Proven excellence in every project",
       alt: "Proven excellence of TC Shine services",
     },
-    "imagem_lading_page (3)": {
-      title: "Total Satisfaction",
-      description: "Total customer satisfaction",
-      alt: "Total satisfaction demonstrated by TC Shine customers",
+    "imagem_ladind_page (3)": {
+      title: "Detailed Cleaning",
+      description: "Attention to every detail for perfect results",
+      alt: "Detailed cleaning demonstration by TC Shine",
+    },
+    "imagem_ladind_page (4)": {
+      title: "Fresh Environment",
+      description: "Creating fresh and healthy spaces",
+      alt: "Fresh and clean environment after TC Shine service",
+    },
+    "imagem_ladind_page (6)": {
+      title: "Deep Clean",
+      description: "Deep cleaning for long-lasting results",
+      alt: "Deep cleaning performed by TC Shine professionals",
+    },
+    "imagem_ladind_page (7)": {
+      title: "Spotless Finish",
+      description: "Spotless finish in every corner",
+      alt: "Spotless cleaning finish by TC Shine team",
+    },
+    "imagem_ladind_page (9)": {
+      title: "Premium Service",
+      description: "Premium quality cleaning service",
+      alt: "Premium cleaning service demonstrated by TC Shine",
+    },
+    "imagem_ladind_page (11)": {
+      title: "Thorough Clean",
+      description: "Thorough cleaning from top to bottom",
+      alt: "Thorough cleaning process by TC Shine",
+    },
+    "imagem_ladind_page (12)": {
+      title: "Pristine Results",
+      description: "Pristine and immaculate results",
+      alt: "Pristine cleaning results achieved by TC Shine",
+    },
+    "imagem_ladind_page (13)": {
+      title: "Expert Care",
+      description: "Expert care for your valuable spaces",
+      alt: "Expert cleaning care provided by TC Shine",
+    },
+    "imagem_ladind_page (14)": {
+      title: "Reliable Service",
+      description: "Reliable and consistent cleaning service",
+      alt: "Reliable cleaning service by TC Shine professionals",
+    },
+    "imagem_ladind_page (15)": {
+      title: "Superior Quality",
+      description: "Superior quality in every cleaning task",
+      alt: "Superior quality cleaning by TC Shine team",
+    },
+    "imagem_ladind_page (16)": {
+      title: "Perfect Finish",
+      description: "Perfect finish that exceeds expectations",
+      alt: "Perfect cleaning finish delivered by TC Shine",
     },
     // Fallbacks genéricos
     "before-after": {

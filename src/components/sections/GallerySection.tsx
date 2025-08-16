@@ -44,15 +44,24 @@ const getImageMetadata = (
 
 // 🔥 CARREGAMENTO DINÂMICO DAS IMAGENS
 const loadGalleryImages = (galleryContent: any) => {
-  // 🚨 TODAS AS 7 FOTOS REAIS NA PASTA - Lista atualizada:
+  // 🚨 TODAS AS 16 FOTOS REAIS NA PASTA - Lista atualizada:
   const realImages = [
-    "imagem_ladind_page (2).JPG",
-    "imagem_ladind_page (5).jpg",
-    "imagem_ladind_page (8).JPG",
-    "imagem_ladind_page (10).JPG",
-    "imagem_ladind_page (47).jpg",
     "imagem_lading_page (1).jpg",
-    "imagem_lading_page (3).jpg",
+    "imagem_ladind_page (2).JPG",
+    "imagem_ladind_page (3).jpg",
+    "imagem_ladind_page (4).jpg",
+    "imagem_ladind_page (5).jpg",
+    "imagem_ladind_page (6).jpg",
+    "imagem_ladind_page (7).jpg",
+    "imagem_ladind_page (8).JPG",
+    "imagem_ladind_page (9).jpg",
+    "imagem_ladind_page (10).JPG",
+    "imagem_ladind_page (11).jpg",
+    "imagem_ladind_page (12).jpg",
+    "imagem_ladind_page (13).jpg",
+    "imagem_ladind_page (14).jpg",
+    "imagem_ladind_page (15).jpg",
+    "imagem_ladind_page (16).jpg",
   ];
 
   // Fallback para nomes comuns caso as fotos sejam renomeadas

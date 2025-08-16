@@ -122,20 +122,30 @@ self.addEventListener('fetch', (event) => {
           if (response) {
             return response;
           }
-          return fetch(request).then((response) => {
-            if (response.status === 200) {
-              cache.put(request, response.clone());
-            }
-            return response;
-          }).catch((error) => {
-            console.warn('Font fetch failed:', error);
-            // Retornar uma resposta vazia em caso de erro CSP
-            return new Response('', {
+          // Verificar se o fetch é permitido pelo CSP
+          try {
+            return fetch(request).then((response) => {
+              if (response.status === 200) {
+                cache.put(request, response.clone());
+              }
+              return response;
+            }).catch((error) => {
+              console.warn('Font fetch failed (CSP restriction):', error.message);
+              // Retornar uma resposta vazia em caso de erro CSP
+              return new Response('/* Font fallback due to CSP */', {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'text/css' }
+              });
+            });
+          } catch (cspError) {
+            console.warn('Font fetch blocked by CSP:', cspError);
+            return new Response('/* Font fallback due to CSP */', {
               status: 200,
               statusText: 'OK',
               headers: { 'Content-Type': 'text/css' }
             });
-          });
+          }
         });
       })
     );

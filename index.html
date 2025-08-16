@@ -16,7 +16,7 @@
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      id="font-inter-preload"
     />
 
     <!-- Preload da fonte Libre Baskerville para títulos -->
@@ -24,7 +24,7 @@
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400&display=swap"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      id="font-libre-preload"
     />
 
     <!-- Preload da fonte Roboto para textos secundários -->
@@ -32,7 +32,7 @@
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
       as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      id="font-roboto-preload"
     />
 
     <noscript
@@ -319,6 +319,26 @@
         color: #ffffff;
       }
     </style>
+
+    <!-- 🚀 LIGHTHOUSE: Script para carregar fontes sem event handlers inline -->
+    <script>
+      // Converte preloads de fonte em stylesheets após carregamento
+      document.addEventListener('DOMContentLoaded', function() {
+        const fontPreloads = [
+          'font-inter-preload',
+          'font-libre-preload',
+          'font-roboto-preload'
+        ];
+        
+        fontPreloads.forEach(function(id) {
+          const preloadLink = document.getElementById(id);
+          if (preloadLink) {
+            preloadLink.rel = 'stylesheet';
+            preloadLink.onload = null;
+          }
+        });
+      });
+    </script>
   </head>
 
   <body>

@@ -3,8 +3,18 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useGalleryContent } from "@/lib/useContent";
+import { useOptimizedImageProps } from "@/hooks/useOptimizedImage";
 
-// 🔥 FUNÇÃO PARA GERAR METADADOS INTELIGENTES
+// � LIGHTHOUSE OPTIMIZATION: Função para gerar srcset responsivo
+const generateSrcSet = (imageSrc: string) => {
+  const basePath = imageSrc.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+  const extension = imageSrc.match(/\.(jpg|jpeg|png|webp)$/i)?.[1] || 'jpg';
+  
+  // Para otimização futura com diferentes tamanhos
+  return `${imageSrc} 1x, ${imageSrc} 2x`;
+};
+
+// �🔥 FUNÇÃO PARA GERAR METADADOS INTELIGENTES
 const getImageMetadata = (
   filename: string,
   index: number,
@@ -117,6 +127,32 @@ export default function GallerySection() {
       alt: string;
     }>
   >([]);
+
+  // 🚀 LIGHTHOUSE OPTIMIZATION: Props otimizadas para imagens
+  const firstImageProps = useOptimizedImageProps(true, 'high'); // Primeira imagem com prioridade alta
+  const lazyImageProps = useOptimizedImageProps(false, 'low'); // Demais com lazy loading
+
+  // 🚀 LIGHTHOUSE OPTIMIZATION: Intersection Observer para lazy loading inteligente
+  const [isVisible, setIsVisible] = useState(false);
+  const galleryRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    if (galleryRef.current) {
+      observer.observe(galleryRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
   const [availableImages, setAvailableImages] = useState<
     Array<{
       id: number;
@@ -253,6 +289,7 @@ export default function GallerySection() {
 
   return (
     <section
+      ref={galleryRef}
       className="py-12 xs:py-16 sm:py-20 lg:py-24"
       style={{ backgroundColor: "#ffffff" }}
     >
@@ -328,14 +365,16 @@ export default function GallerySection() {
 
                   {/* Main Image */}
                   <img
-                    src={galleryImages[currentIndex].src}
+                    src={isVisible ? galleryImages[currentIndex].src : ''}
+                    srcSet={isVisible ? generateSrcSet(galleryImages[currentIndex].src) : ''}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 70vw"
                     alt={galleryImages[currentIndex].alt}
                     className={`w-full h-full object-cover rounded-2xl transition-opacity duration-300 ${
                       isImageLoading ? "opacity-0" : "opacity-100"
                     }`}
                     onLoad={handleImageLoad}
                     onError={handleImageError}
-                    loading="lazy"
+                    {...(currentIndex === 0 ? firstImageProps : lazyImageProps)}
                   />
 
                   {/* Image Overlay with Info */}

@@ -27,7 +27,7 @@
   Cross-Origin-Opener-Policy: same-origin
   
   # Cross-Origin Embedder Policy
-  Cross-Origin-Embedder-Policy: require-corp
+  # Cross-Origin-Embedder-Policy: require-corp
   
   # Strict Transport Security (HTTPS)
   Strict-Transport-Security: max-age=31536000; includeSubDomains

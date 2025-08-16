@@ -74,39 +74,8 @@ const loadGalleryImages = (galleryContent: any) => {
     "imagem_ladind_page (16).jpg",
   ];
 
-  // Fallback para nomes comuns caso as fotos sejam renomeadas
-  const commonNames = [
-    "foto-1.jpg",
-    "foto-2.jpg",
-    "foto-3.jpg",
-    "foto-4.jpg",
-    "foto-5.jpg",
-    "foto-6.jpg",
-    "foto-7.jpg",
-    "foto-8.jpg",
-    "foto-9.jpg",
-    "foto-10.jpg",
-    "image-1.jpg",
-    "image-2.jpg",
-    "image-3.jpg",
-    "image-4.jpg",
-    "image-5.jpg",
-    "cozinha.jpg",
-    "banheiro.jpg",
-    "sala.jpg",
-    "quarto.jpg",
-    "varanda.jpg",
-    "antes-depois.jpg",
-    "casa.jpg",
-    "apartamento.jpg",
-    "comercial.jpg",
-    "escritorio.jpg",
-  ];
-
-  // Usar apenas as fotos reais primeiro
-  const allPotentialImages = [...realImages, ...commonNames];
-
-  return allPotentialImages.map((filename, index) =>
+  // 🚨 USAR APENAS AS 16 FOTOS REAIS - Sem fallbacks que não existem
+  return realImages.map((filename, index) =>
     getImageMetadata(filename, index, galleryContent)
   );
 };
@@ -133,8 +102,27 @@ export default function GallerySection() {
   const lazyImageProps = useOptimizedImageProps(false, 'low'); // Demais com lazy loading
 
   // 🚀 LIGHTHOUSE OPTIMIZATION: Intersection Observer para lazy loading inteligente
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Iniciando como true para garantir carregamento
   const galleryRef = React.useRef<HTMLDivElement>(null);
+
+  // 🎯 NAVEGAÇÃO INTELIGENTE: Paginação de bolinhas para evitar overflow
+  const maxVisibleDots = 8; // Máximo de bolinhas visíveis
+  const getVisibleDotRange = () => {
+    if (galleryImages.length <= maxVisibleDots) {
+      return { start: 0, end: galleryImages.length };
+    }
+    
+    const half = Math.floor(maxVisibleDots / 2);
+    let start = Math.max(0, currentIndex - half);
+    let end = Math.min(galleryImages.length, start + maxVisibleDots);
+    
+    // Ajustar se estamos no final
+    if (end - start < maxVisibleDots) {
+      start = Math.max(0, end - maxVisibleDots);
+    }
+    
+    return { start, end };
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -163,30 +151,18 @@ export default function GallerySection() {
     }>
   >([]);
 
-  // 🔥 CARREGAMENTO DINÂMICO: Detectar imagens disponíveis
+  // � Carregamento das imagens disponíveis
   useEffect(() => {
     const detectAvailableImages = async () => {
       const potentialImages = loadGalleryImages(galleryContent);
-      const validImages: typeof potentialImages = [];
-
-      // Testar cada imagem para ver se existe
-      for (const imageData of potentialImages) {
-        try {
-          await new Promise<void>((resolve, reject) => {
-            const img = new Image();
-            img.onload = () => resolve();
-            img.onerror = () => reject();
-            img.src = imageData.src;
-          });
-          validImages.push(imageData);
-        } catch {
-          // Imagem não existe, pular
-          continue;
-        }
-      }
-
-      // Se não encontrou nenhuma imagem, usar placeholders
-      if (validImages.length === 0) {
+      
+      // 🚀 SIMPLIFICADO: Usar todas as imagens definidas sem verificação assíncrona
+      // A verificação de existência será feita pelo onError da tag img
+      if (potentialImages.length > 0) {
+        setGalleryImages(potentialImages);
+        setAvailableImages(potentialImages);
+      } else {
+        // Fallback para placeholder apenas se não há imagens configuradas
         const placeholders = [
           {
             id: 1,
@@ -198,16 +174,11 @@ export default function GallerySection() {
         ];
         setGalleryImages(placeholders);
         setAvailableImages(placeholders);
-      } else {
-        setGalleryImages(validImages);
-        setAvailableImages(validImages);
       }
     };
 
     detectAvailableImages();
-  }, [galleryContent]);
-
-  // Auto-scroll every 5 seconds
+  }, [galleryContent]);  // Auto-scroll every 5 seconds
   useEffect(() => {
     if (galleryImages.length <= 1) return;
 
@@ -377,6 +348,11 @@ export default function GallerySection() {
                     {...(currentIndex === 0 ? firstImageProps : lazyImageProps)}
                   />
 
+                  {/* Photo Counter */}
+                  <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1.5 text-white text-sm font-medium">
+                    {currentIndex + 1} / {galleryImages.length}
+                  </div>
+
                   {/* Image Overlay with Info */}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 xs:p-6 rounded-b-2xl">
                     <motion.div
@@ -449,37 +425,54 @@ export default function GallerySection() {
             role="tablist"
             aria-label={galleryContent.navigation.galleryLabel}
           >
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                className={`relative min-w-[32px] min-h-[32px] xs:min-w-[36px] xs:min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] p-1 xs:p-1.5 sm:p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
-                  index === currentIndex
-                    ? "bg-tc-primary-100"
-                    : "hover:bg-tc-neutral-100"
-                }`}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                aria-label={galleryContent.navigation.photoCounter
-                  .replace("{current}", (index + 1).toString())
-                  .replace("{total}", galleryImages.length.toString())}
-                aria-selected={index === currentIndex}
-                role="tab"
-                type="button"
-              >
-                <span
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "scale-110 shadow-md" : "scale-100"
+            {/* Indicador de mais fotos à esquerda */}
+            {getVisibleDotRange().start > 0 && (
+              <div className="flex items-center mr-2">
+                <span className="text-tc-text-400 text-sm">•••</span>
+              </div>
+            )}
+            
+            {galleryImages.slice(getVisibleDotRange().start, getVisibleDotRange().end).map((_, relativeIndex) => {
+              const actualIndex = getVisibleDotRange().start + relativeIndex;
+              return (
+                <button
+                  key={actualIndex}
+                  className={`relative min-w-[32px] min-h-[32px] xs:min-w-[36px] xs:min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] p-1 xs:p-1.5 sm:p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
+                    actualIndex === currentIndex
+                      ? "bg-tc-primary-100"
+                      : "hover:bg-tc-neutral-100"
                   }`}
-                  style={{
-                    backgroundColor:
-                      index === currentIndex ? "#1c1c1c" : "#94a3b8",
+                  onClick={() => {
+                    setDirection(actualIndex > currentIndex ? 1 : -1);
+                    setCurrentIndex(actualIndex);
                   }}
-                  aria-hidden="true"
-                />
-              </button>
-            ))}
+                  aria-label={galleryContent.navigation.photoCounter
+                    .replace("{current}", (actualIndex + 1).toString())
+                    .replace("{total}", galleryImages.length.toString())}
+                  aria-selected={actualIndex === currentIndex}
+                  role="tab"
+                  type="button"
+                >
+                  <span
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
+                      actualIndex === currentIndex ? "scale-110 shadow-md" : "scale-100"
+                    }`}
+                    style={{
+                      backgroundColor:
+                        actualIndex === currentIndex ? "#1c1c1c" : "#94a3b8",
+                    }}
+                    aria-hidden="true"
+                  />
+                </button>
+              );
+            })}
+            
+            {/* Indicador de mais fotos à direita */}
+            {getVisibleDotRange().end < galleryImages.length && (
+              <div className="flex items-center ml-2">
+                <span className="text-tc-text-400 text-sm">•••</span>
+              </div>
+            )}
           </div>
         </div>
 

@@ -27,6 +27,25 @@ export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
+  // 🎯 NAVEGAÇÃO INTELIGENTE: Paginação de bolinhas para evitar overflow
+  const maxVisibleDots = 8; // Máximo de bolinhas visíveis
+  const getVisibleDotRange = () => {
+    if (testimonialsContent.testimonials.length <= maxVisibleDots) {
+      return { start: 0, end: testimonialsContent.testimonials.length };
+    }
+    
+    const half = Math.floor(maxVisibleDots / 2);
+    let start = Math.max(0, currentIndex - half);
+    let end = Math.min(testimonialsContent.testimonials.length, start + maxVisibleDots);
+    
+    // Ajustar se estamos no final
+    if (end - start < maxVisibleDots) {
+      start = Math.max(0, end - maxVisibleDots);
+    }
+    
+    return { start, end };
+  };
+
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
@@ -201,37 +220,54 @@ export default function TestimonialsSection() {
             role="tablist"
             aria-label="Navegação de depoimentos"
           >
-            {testimonialsContent.testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`relative min-w-[32px] min-h-[32px] xs:min-w-[36px] xs:min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] p-1 xs:p-1.5 sm:p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
-                  index === currentIndex
-                    ? "bg-tc-primary-100"
-                    : "hover:bg-tc-neutral-100"
-                }`}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                aria-label={`Ver depoimento ${index + 1} de ${
-                  testimonialsContent.testimonials.length
-                }`}
-                aria-selected={index === currentIndex}
-                role="tab"
-                type="button"
-              >
-                <span
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "scale-110 shadow-md" : "scale-100"
+            {/* Indicador de mais testemunhos à esquerda */}
+            {getVisibleDotRange().start > 0 && (
+              <div className="flex items-center mr-2">
+                <span className="text-tc-text-400 text-sm">•••</span>
+              </div>
+            )}
+            
+            {testimonialsContent.testimonials.slice(getVisibleDotRange().start, getVisibleDotRange().end).map((_, relativeIndex) => {
+              const actualIndex = getVisibleDotRange().start + relativeIndex;
+              return (
+                <button
+                  key={actualIndex}
+                  className={`relative min-w-[32px] min-h-[32px] xs:min-w-[36px] xs:min-h-[36px] sm:min-w-[44px] sm:min-h-[44px] p-1 xs:p-1.5 sm:p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tc-primary-500 focus:ring-offset-2 ${
+                    actualIndex === currentIndex
+                      ? "bg-tc-primary-100"
+                      : "hover:bg-tc-neutral-100"
                   }`}
-                  style={{
-                    backgroundColor:
-                      index === currentIndex ? "#1c1c1c" : "#94a3b8",
+                  onClick={() => {
+                    setDirection(actualIndex > currentIndex ? 1 : -1);
+                    setCurrentIndex(actualIndex);
                   }}
-                  aria-hidden="true"
-                />
-              </button>
-            ))}
+                  aria-label={`Ver depoimento ${actualIndex + 1} de ${
+                    testimonialsContent.testimonials.length
+                  }`}
+                  aria-selected={actualIndex === currentIndex}
+                  role="tab"
+                  type="button"
+                >
+                  <span
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 ${
+                      actualIndex === currentIndex ? "scale-110 shadow-md" : "scale-100"
+                    }`}
+                    style={{
+                      backgroundColor:
+                        actualIndex === currentIndex ? "#1c1c1c" : "#94a3b8",
+                    }}
+                    aria-hidden="true"
+                  />
+                </button>
+              );
+            })}
+            
+            {/* Indicador de mais testemunhos à direita */}
+            {getVisibleDotRange().end < testimonialsContent.testimonials.length && (
+              <div className="flex items-center ml-2">
+                <span className="text-tc-text-400 text-sm">•••</span>
+              </div>
+            )}
           </div>
         </div>
 
